@@ -1,3 +1,4 @@
+import 'package:board_game_app/pages/home_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'The Board Game App'),
+      home: const HomeScreen(),
     );
   }
 }
