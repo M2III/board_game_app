@@ -22,25 +22,25 @@ class MenuBottom extends StatelessWidget {
           case 0:
             Navigator.push(context, MaterialPageRoute(
                 builder: (context) =>
-                 HomeScreen())
+                 const HomeScreen())
             );
             break;
           case 1:
             Navigator.push(context, MaterialPageRoute(
                 builder: (context) =>
-                    CollectionsScreen())
+                    const CollectionsScreen())
             );
             break;
           case 2:
             Navigator.push(context, MaterialPageRoute(
                 builder: (context) =>
-                    WishListScreen())
+                    const WishListScreen())
             );
             break;
           case 3:
             Navigator.push(context, MaterialPageRoute(
                 builder: (context) =>
-                    SettingsScreen())
+                    const SettingsScreen())
             );
           break;
         }

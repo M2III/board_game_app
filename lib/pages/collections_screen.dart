@@ -9,7 +9,7 @@ class CollectionsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int _selectedIndex = 0;
+    //int _selectedIndex = 0;
     TextEditingController textController = TextEditingController();
     const TextStyle hintStyle = TextStyle(color: Colors.black26,);
 
@@ -35,7 +35,7 @@ class CollectionsScreen extends StatelessWidget {
                     child: Column(
                       children: [
                         const SizedBox(height: 50),
-                        custTextfield(textController: textController, hintText: hintText, hintStyle: hintStyle, labelStyle: labelStyle, fillColor: fillColor, borderSide: borderSide, focusedBorderRadius: focusedBorderRadius, borderRadius: borderRadius),
+                        CustTextfield(textController: textController, hintText: hintText, hintStyle: hintStyle, labelStyle: labelStyle, fillColor: fillColor, borderSide: borderSide, focusedBorderRadius: focusedBorderRadius, borderRadius: borderRadius),
                         const SizedBox(height: 25),
                         const DescriptionCardWidget(),
                       ],

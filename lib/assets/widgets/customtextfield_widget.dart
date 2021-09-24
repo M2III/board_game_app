@@ -2,8 +2,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class custTextfield extends StatelessWidget {
-  const custTextfield({
+class CustTextfield extends StatelessWidget {
+  const CustTextfield({
     Key? key,
     required this.textController,
     required this.hintText,
