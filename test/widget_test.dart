@@ -14,7 +14,7 @@ void main() {
 
   testWidgets('Bottom Navigation Bar Tests', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    await tester.pumpWidget(const Main());
     // Simply verify Icons and text
     expect(find.text('Home'), findsOneWidget);
     expect(find.byIcon(Icons.home), findsOneWidget);
