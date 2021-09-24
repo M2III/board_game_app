@@ -27,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                   color: Colors.white70,
                 ),
-                child: const Text('WishListScreen',
+                child: const Text('Home',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                         fontSize: 22,
