@@ -1,6 +1,5 @@
 import 'package:board_game_app/pages/collections_screen.dart';
 import 'package:board_game_app/pages/home_screen.dart';
-import 'package:board_game_app/pages/login_screen.dart';
 import 'package:board_game_app/pages/settings_screen.dart';
 import 'package:board_game_app/pages/wishlist_screen.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +21,7 @@ class Main extends StatelessWidget {
         '/': (context) => HomeScreen(),
         '/Collections': (context) => const CollectionsScreen(),
         '/WishList': (context) => const WishListScreen(),
-        '/Settings': (context) => const Login(),
+        '/Settings': (context) => const SettingsScreen(),
       },
       initialRoute: '/',
     );

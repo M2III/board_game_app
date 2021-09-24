@@ -14,7 +14,6 @@ class SettingsScreen extends StatelessWidget {
         appBar: AppBar(title: const Text('SettingsScreen')),
         bottomNavigationBar: MenuBottom(),
         body: Container(
-
             child: Center(
                 child: Container(
                     padding: const EdgeInsets.all(24),

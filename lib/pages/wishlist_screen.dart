@@ -15,7 +15,6 @@ class WishListScreen extends StatelessWidget {
       appBar: AppBar(title: const Text('WishListScreen')),
       bottomNavigationBar: MenuBottom(),
       body: Container(
-
           child: Center(
               child: Container(
                   padding: const EdgeInsets.all(24),
