@@ -39,7 +39,7 @@ class custTextfield extends StatelessWidget {
             borderSide: borderSide,
             borderRadius: focusedBorderRadius,
           ),
-          border: OutlineInputBorder(
+          enabledBorder: OutlineInputBorder(
             borderSide: borderSide,
             borderRadius: borderRadius,
           )

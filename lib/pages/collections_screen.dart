@@ -11,15 +11,14 @@ class CollectionsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     int _selectedIndex = 0;
     TextEditingController textController = TextEditingController();
-    const TextStyle hintStyle = TextStyle(color: Colors.grey,);
+    const TextStyle hintStyle = TextStyle(color: Colors.black26,);
 
     String hintText = "Your text";
     BorderSide borderSide = const BorderSide(color: Colors.transparent,);
     BorderRadius borderRadius = BorderRadius.circular(10.0);
     BorderRadius focusedBorderRadius = BorderRadius.circular(25.7);
-    TextStyle labelStyle = TextStyle(color: const Color.fromARGB(174, 182, 191, 1), fontSize: 15, fontStyle: FontStyle.normal);
-    Color fillColor = const Color.fromRGBO(29, 25, 29, 0.34901960784313724);
-
+    TextStyle labelStyle = const TextStyle(color: Color.fromARGB(174, 182, 191, 1), fontSize: 15, fontStyle: FontStyle.normal);
+    Color fillColor = const Color.fromRGBO(255, 255, 255, 1);
 
     return MaterialApp(
       home: Scaffold(
@@ -35,7 +34,7 @@ class CollectionsScreen extends StatelessWidget {
                     ),
                     child: Column(
                       children: [
-                        const SizedBox(height: 30),
+                        const SizedBox(height: 50),
                         custTextfield(textController: textController, hintText: hintText, hintStyle: hintStyle, labelStyle: labelStyle, fillColor: fillColor, borderSide: borderSide, focusedBorderRadius: focusedBorderRadius, borderRadius: borderRadius),
                         const SizedBox(height: 25),
                         const DescriptionCardWidget(),
