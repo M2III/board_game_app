@@ -18,7 +18,7 @@ class Main extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(primarySwatch: Colors.blueGrey),
       routes: {
-        '/': (context) => HomeScreen(),
+        '/': (context) => const HomeScreen(),
         '/Collections': (context) => const CollectionsScreen(),
         '/WishList': (context) => const WishListScreen(),
         '/Settings': (context) => const SettingsScreen(),
