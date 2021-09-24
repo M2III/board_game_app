@@ -1,6 +1,7 @@
+import 'package:board_game_app/assets/widgets/customtextfield_widget.dart';
+import 'package:board_game_app/pages/login_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:board_game_app/assets/widgets/customtextfield_widget.dart';
 import 'package:flutter/painting.dart';
 
 class Register extends StatefulWidget {
@@ -134,7 +135,8 @@ class _RegisterState extends State<Register> {
                               ),
                               onPressed: () {
                                 setState(() {
-                                  // result = codeController.text;
+                                  Navigator.of(context).push(
+                                      MaterialPageRoute(builder: (context)=>const Login(),));
                                 });
                               },
                               style: styleLogin,

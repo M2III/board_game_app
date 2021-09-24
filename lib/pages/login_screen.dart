@@ -1,6 +1,7 @@
+import 'package:board_game_app/assets/widgets/customtextfield_widget.dart';
+import 'package:board_game_app/pages/register_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:board_game_app/assets/widgets/customtextfield_widget.dart';
 import 'package:flutter/painting.dart';
 
 class Login extends StatefulWidget {
@@ -160,7 +161,7 @@ class _LoginState extends State<Login> {
                                   padding: const EdgeInsets.fromLTRB(0, 0, 40, 0),
                                   child: Center(
                                     child: FloatingActionButton(
-                                      heroTag: "done-btn",
+                                      heroTag: "done-btn1",
                                       onPressed: () {
                                         setState(() {
                                           // result = codeController.text;
@@ -175,7 +176,7 @@ class _LoginState extends State<Login> {
                                 padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
                                 child:
                                 Center(child:FloatingActionButton(
-                                  heroTag: "done-btn",
+                                  heroTag: "done-btn2",
                                   onPressed: () {
                                     setState(() {
                                       // result = codeController.text;
@@ -203,7 +204,10 @@ class _LoginState extends State<Login> {
                                 style: TextButton.styleFrom(
                                   textStyle: const TextStyle(fontSize: 20),
                                 ),
-                                onPressed: () {},
+                                onPressed: () {
+                                  Navigator.of(context).push(
+                                      MaterialPageRoute(builder: (context)=>const Register(),));
+                                },
                                 child: const Text('Signup'),
                               ),
                             ],
