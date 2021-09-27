@@ -73,7 +73,7 @@ class Game {
   String? _name;
   String? _handle;
   String? _url;
-  String? _price;
+  /*String? _price;
   String? _priceCa;
   String? _priceUk;
   String? _priceAu;
@@ -137,13 +137,13 @@ class Game {
   String? _msrpText;
   String? _priceText;
   Images? _images;
-  String? _descriptionPreview;
+  String? _descriptionPreview;*/
 
   String? get id => _id;
   String? get name => _name;
   String? get handle => _handle;
   String? get url => _url;
-  String? get price => _price;
+  /*String? get price => _price;
   String? get priceCa => _priceCa;
   String? get priceUk => _priceUk;
   String? get priceAu => _priceAu;
@@ -207,14 +207,14 @@ class Game {
   String? get msrpText => _msrpText;
   String? get priceText => _priceText;
   Images? get images => _images;
-  String? get descriptionPreview => _descriptionPreview;
+  String? get descriptionPreview => _descriptionPreview;*/
 
   Game({
     String? id,
     String? name,
     String? handle,
     String? url,
-    String? price,
+    /*String? price,
     String? priceCa,
     String? priceUk,
     String? priceAu,
@@ -278,12 +278,12 @@ class Game {
     String? msrpText,
     String? priceText,
     Images? images,
-    String? descriptionPreview}){
+    String? descriptionPreview*/}){
     _id = id;
     _name = name;
     _handle = handle;
     _url = url;
-    _price = price;
+    /*_price = price;
     _priceCa = priceCa;
     _priceUk = priceUk;
     _priceAu = priceAu;
@@ -347,7 +347,7 @@ class Game {
     _msrpText = msrpText;
     _priceText = priceText;
     _images = images;
-    _descriptionPreview = descriptionPreview;
+    _descriptionPreview = descriptionPreview;*/
   }
 
   Game.fromJson(dynamic json) {
@@ -355,7 +355,7 @@ class Game {
     _name = json['name'];
     _handle = json['handle'];
     _url = json['url'];
-    _price = json['price'];
+    /*_price = json['price'];
     _priceCa = json['price_ca'];
     _priceUk = json['price_uk'];
     _priceAu = json['price_au'];
@@ -380,9 +380,9 @@ class Game {
     _matchesSpecs = json['matches_specs'];
     if (json['specs'] != null) {
       _specs = [];
-      /*json['specs'].forEach((v) {
+      *//*json['specs'].forEach((v) {
         _specs?.add(dynamic.fromJson(v));
-      });*/
+      });*//*
     }
     if (json['mechanics'] != null) {
       _mechanics = [];
@@ -398,15 +398,15 @@ class Game {
     }
     if (json['related_to'] != null) {
       _relatedTo = [];
-      /*json['related_to'].forEach((v) {
+      *//*json['related_to'].forEach((v) {
         _relatedTo?.add(dynamic.fromJson(v));
-      });*/
+      });*//*
     }
     if (json['developers'] != null) {
       _developers = [];
-      /*json['developers'].forEach((v) {
+      *//*json['developers'].forEach((v) {
         _developers?.add(dynamic.fromJson(v));
-      });*/
+      });*//*
     }
     _artists = json['artists'] != null ? json['artists'].cast<String>() : [];
     if (json['designers'] != null) {
@@ -425,9 +425,9 @@ class Game {
     _primaryDesigner = json['primary_designer'] != null ? PrimaryDesigner.fromJson(json['primaryDesigner']) : null;
     if (json['names'] != null) {
       _names = [];
-      /*json['names'].forEach((v) {
+      *//*json['names'].forEach((v) {
         _names?.add(dynamic.fromJson(v));
-      });*/
+      });*//*
     }
     _tags = json['tags'] != null ? json['tags'].cast<String>() : [];
     _publisher = json['publisher'];
@@ -469,7 +469,7 @@ class Game {
     _msrpText = json['msrp_text'];
     _priceText = json['price_text'];
     _images = json['images'] != null ? Images.fromJson(json['images']) : null;
-    _descriptionPreview = json['description_preview'];
+    _descriptionPreview = json['description_preview'];*/
   }
 
   Map<String, dynamic> toJson() {
@@ -478,7 +478,7 @@ class Game {
     map['name'] = _name;
     map['handle'] = _handle;
     map['url'] = _url;
-    map['price'] = _price;
+    /*map['price'] = _price;
     map['price_ca'] = _priceCa;
     map['price_uk'] = _priceUk;
     map['price_au'] = _priceAu;
@@ -568,7 +568,7 @@ class Game {
     if (_images != null) {
       map['images'] = _images?.toJson();
     }
-    map['description_preview'] = _descriptionPreview;
+    map['description_preview'] = _descriptionPreview;*/
     return map;
   }
 
