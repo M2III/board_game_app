@@ -1,5 +1,5 @@
-import 'package:board_game_app/assets/widgets/customtextfield_widget.dart';
-import 'package:board_game_app/pages/login_screen.dart';
+import '../widgets/customtextfield_widget.dart';
+import '../pages/login_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';

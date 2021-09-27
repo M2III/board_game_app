@@ -1,6 +1,6 @@
-import 'package:board_game_app/assets/widgets/customtextfield_widget.dart';
-import 'package:board_game_app/assets/widgets/descriptioncard_widget.dart';
-import 'package:board_game_app/shared/menu_bottom.dart';
+import '../widgets/customtextfield_widget.dart';
+import '../widgets/descriptioncard_widget.dart';
+import 'package:board_game_app/widgets/menu_bottom.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

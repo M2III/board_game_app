@@ -1,5 +1,5 @@
 
-import 'package:board_game_app/shared/menu_bottom.dart';
+import 'package:board_game_app/widgets/menu_bottom.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
