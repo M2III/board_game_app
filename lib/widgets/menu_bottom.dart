@@ -23,30 +23,30 @@ class MenuBottom extends StatelessWidget {
       onTap: (int index){
         switch (index){
           case 0:
-            Navigator.push(context, MaterialPageRoute(
-                builder: (context) =>
-                 const HomeScreen())
+            Navigator.push(
+              context,
+              PageRouteBuilder(pageBuilder: (_, __, ___) => const HomeScreen()),
             );
             _selectedIndex = index;
-            break;
+          break;
           case 1:
-            Navigator.push(context, MaterialPageRoute(
-                builder: (context) =>
-                    const CollectionsScreen())
+            Navigator.push(
+              context,
+              PageRouteBuilder(pageBuilder: (_, __, ___) => const CollectionsScreen()),
             );
             _selectedIndex = index;
             break;
           case 2:
-            Navigator.push(context, MaterialPageRoute(
-                builder: (context) =>
-                    const WishListScreen())
+            Navigator.push(
+              context,
+              PageRouteBuilder(pageBuilder: (_, __, ___) => const WishListScreen()),
             );
             _selectedIndex = index;
             break;
           case 3:
-            Navigator.push(context, MaterialPageRoute(
-                builder: (context) =>
-                    const SettingsScreen())
+            Navigator.push(
+              context,
+              PageRouteBuilder(pageBuilder: (_, __, ___) => const SettingsScreen()),
             );
             _selectedIndex = index;
             break;
