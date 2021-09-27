@@ -76,7 +76,7 @@ class _ApiSearchState extends State<ApiSearch> {
         },
       );
     } else {
-      return Center(
+      return const Center(
         child : CircularProgressIndicator(),
       );
     }
