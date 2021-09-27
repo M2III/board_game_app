@@ -1,5 +1,8 @@
-import 'package:board_game_app/pages/auth_screen.dart';
-import 'package:firebase_core/firebase_core.dart';
+import 'package:board_game_app/pages/collections_screen.dart';
+import 'package:board_game_app/pages/home_screen.dart';
+import 'package:board_game_app/pages/settings_screen.dart';
+import 'package:board_game_app/pages/wishlist_screen.dart';
+import 'package:board_game_app/services/api_search.dart';
 import 'package:flutter/material.dart';
 
 

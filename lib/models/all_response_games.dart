@@ -2,21 +2,21 @@ import 'game.dart';
 
 
 
-class All_response_games {
+class AllResponseGames {
   Count? _count;
   List<Game>? _results;
 
   Count? get count => _count;
   List<Game>? get results => _results ?? [];
 
-  All_response_games({
+  AllResponseGames({
     Count? count,
     List<Game>? results}){
     _count = count;
     _results = results;
   }
 
-  All_response_games.fromJson(dynamic json) {
+  AllResponseGames.fromJson(dynamic json) {
     _count = json['count'] != null ? Count.fromJson(json['count']) : null;
     if (json['results'] != null) {
       _results = [];
