@@ -1,9 +1,4 @@
-
-
-
-
-
-import 'package:board_game_app/game.dart';
+import 'game.dart';
 
 
 
