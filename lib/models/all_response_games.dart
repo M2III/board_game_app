@@ -3,21 +3,21 @@ import 'game.dart';
 
 
 class AllResponseGames {
-  Count? _count;
+  /*int? _count;*/
   List<Game>? _results;
 
-  Count? get count => _count;
+  /*int? get count => _count;*/
   List<Game>? get results => _results ?? [];
 
   AllResponseGames({
-    Count? count,
+    /*int? count,*/
     List<Game>? results}){
-    _count = count;
+    /*_count = count;*/
     _results = results;
   }
 
   AllResponseGames.fromJson(dynamic json) {
-    _count = json['count'] != null ? Count.fromJson(json['count']) : null;
+    /*_count = json['count'] != null ? json['count'] : null;*/
     if (json['results'] != null) {
       _results = [];
       json['results'].forEach((v) {
@@ -28,9 +28,9 @@ class AllResponseGames {
 
   Map<String, Game> toJson() {
     var map = <String, Game>{};
-    if (_count != null) {
-      map['count'] = _count?.toJson() as Game;
-    }
+/*    if (_count != null) {
+      map['count'] = _count as Game;
+    }*/
     if (_results != null) {
       map['results'] = _results?.map((v) => v.toJson()) as Game ;
     }
@@ -41,6 +41,7 @@ class AllResponseGames {
 
 
 
+/*
 class Count {
   int? _count;
 
@@ -65,4 +66,4 @@ class Count {
     return map;
   }
 
-}
+}*/

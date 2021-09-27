@@ -29,18 +29,22 @@ class _ApiSearchState extends State<ApiSearch> {
     Map<String, String> queryParams = {
       'name': widget.gameName,
       'pretty': 'true',
+      'exact' : 'true',
       'client_id' : 'JLBr5npPhV'
     };
 
     String queryString = Uri(queryParameters: queryParams).query;
 
-    var uri = Uri.parse(endpointUrl + '?' + queryString); // result - https://api.boardgameatlas.com/api/search?name=Catan&pretty=true&client_id=JLBr5npPhV
+    var uri = Uri.parse(endpointUrl + '?' + queryString); // result - https://api.boardgameatlas.com/api/search?name=Catan&pretty=true&exact=true&client_id=JLBr5npPhV
     var responseFromApi = await http.get(uri);
-    debugPrint(responseFromApi.body.replaceAll('�', ''));
+    //debugPrint(responseFromApi.body.replaceAll('�', ''));
     if(responseFromApi.statusCode == 200){
+
       setState(() {
-        _response = responseFromApi.body;
+        _response = responseFromApi.body.replaceAll('�', '');
+        //debugPrint(_response);
         AllResponseGames resp = AllResponseGames.fromJson(jsonDecode(_response));
+        debugPrint("toto : " + resp.results.toString());
         _games = resp.results!;
       });
     }
