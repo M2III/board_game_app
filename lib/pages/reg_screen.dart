@@ -8,7 +8,7 @@ class RegScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GlobalKey<FormState> _key=GlobalKey();
+    // GlobalKey<FormState> _key=GlobalKey();
     TextEditingController _emailController = TextEditingController();
     TextEditingController _passwordController = TextEditingController();
     TextEditingController _passwordVerifController = TextEditingController();
@@ -134,12 +134,12 @@ class RegScreen extends StatelessWidget {
                           .size
                           .width, //width of button
                       child: ElevatedButton(onPressed: () async {
-                        var result = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                        await FirebaseAuth.instance.createUserWithEmailAndPassword(
                             email: _emailController.text, password: _passwordController.text);
                         Navigator.of(context).push(
                             MaterialPageRoute(builder: (context)=>const HomeScreen(),));
                       },style: styleRegister,
-                      child: Text("Register")),
+                      child: const Text("Register")),
                     ),
                     ),
                   ],

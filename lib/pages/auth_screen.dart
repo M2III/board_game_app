@@ -9,7 +9,7 @@ class AuthScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    GlobalKey<FormState> _key=GlobalKey();
+    // GlobalKey<FormState> _key=GlobalKey();
     TextEditingController _emailController = TextEditingController();
     TextEditingController _passwordController = TextEditingController();
     return Scaffold(
@@ -90,11 +90,11 @@ class AuthScreen extends StatelessWidget {
                                   .size
                                   .width, //width of button
                               child: ElevatedButton(onPressed: () async {
-                                var result = await FirebaseAuth.instance.signInWithEmailAndPassword(
+                                await FirebaseAuth.instance.signInWithEmailAndPassword(
                                     email: _emailController.text, password: _passwordController.text);
                                 Navigator.of(context).push(
                                     MaterialPageRoute(builder: (context)=>const HomeScreen(),));
-                              }, child: Text("Login")),
+                              }, child: const Text("Login")),
                             ),
                             ),
                           ],
