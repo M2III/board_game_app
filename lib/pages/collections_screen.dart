@@ -1,8 +1,9 @@
-import '../widgets/customtextfield_widget.dart';
-import '../widgets/descriptioncard_widget.dart';
 import 'package:board_game_app/widgets/menu_bottom.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../widgets/customtextfield_widget.dart';
+import '../widgets/descriptioncard_widget.dart';
 
 class CollectionsScreen extends StatelessWidget {
   const CollectionsScreen({Key? key}) : super(key: key);

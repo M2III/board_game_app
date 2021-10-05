@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "92903967124",
+    "project_id": "boardgameapp-99a3e",
+    "storage_bucket": "boardgameapp-99a3e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:92903967124:android:7259e0372a58c82249e781",
+        "android_client_info": {
+          "package_name": "com.m2iii.board_game_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "92903967124-40fcc90dhornrio3m4jjmt4tdkfi3fn0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBC-lecdfqRUkLHeL_zbbps7EmOxWMAFGg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "92903967124-40fcc90dhornrio3m4jjmt4tdkfi3fn0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
