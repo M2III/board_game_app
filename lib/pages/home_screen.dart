@@ -17,7 +17,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    //int _selectedIndex = 0;
 
     return MaterialApp(
       home: Scaffold(
@@ -37,24 +36,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       MaterialPageRoute(builder: (context)=> ApiSearch(gameName: inputValue),));
           },
             ),
-                /*ElevatedButton(onPressed: () async {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context)=> ApiSearch(gameName: inputValue),));
-              }, child: const Text("Search Game"))*/
               ],
             ),
           ),
-/*            child: Container(
-                padding: const EdgeInsets.all(24),
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(20)),
-                  color: Colors.white70,
-                ),
-                child: ElevatedButton(onPressed: () async {
-                  Navigator.of(context).push(
-                      MaterialPageRoute(builder: (context)=>const ApiSearch(gameName: 'Catan'),));
-                }, child: const Text("Search Catan"))
-            )*/
         ),
       ),
     );

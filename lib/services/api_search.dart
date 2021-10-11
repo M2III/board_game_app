@@ -37,12 +37,10 @@ class _ApiSearchState extends State<ApiSearch> {
 
     var uri = Uri.parse(endpointUrl + '?' + queryString); // result - https://api.boardgameatlas.com/api/search?name=Catan&pretty=true&exact=true&client_id=JLBr5npPhV
     var responseFromApi = await http.get(uri);
-    //debugPrint(responseFromApi.body.replaceAll('�', ''));
     if(responseFromApi.statusCode == 200){
 
       setState(() {
         _response = responseFromApi.body.replaceAll('�', '');
-        //debugPrint(_response);
         AllResponseGames resp = AllResponseGames.fromJson(jsonDecode(_response));
         _games = resp.results!;
       });
@@ -55,27 +53,17 @@ class _ApiSearchState extends State<ApiSearch> {
   Widget build(BuildContext context) {
     return  Scaffold(
       body: _getBody(),
-
-/*      floatingActionButton: FloatingActionButton(
-        onPressed:getGames,
-        child: const Text('GetAll'),
-      ),*/
     );
   }
 
   Widget _getBody(){
     if(_games.isNotEmpty){
       return ListView.separated(
-        separatorBuilder: (BuildContext context, int index) => const Divider() ,
+        separatorBuilder: (BuildContext context, int index) => const Divider(),
         itemCount: _games.length,
         itemBuilder: (context, index){
           return ListTile(
             title: Text(_games[index].name ?? 'vide'),
-            /*leading: Image.network(_games[index].image ?? ""),*/
-            /*onTap: (){
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => CharacterScreen2(character: _characters[index],)));
-            },*/
           );
         },
       );
