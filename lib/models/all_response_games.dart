@@ -18,9 +18,9 @@ class AllResponseGames {
 
   AllResponseGames.fromJson(dynamic json) {
     /*_count = json['count'] != null ? json['count'] : null;*/
-    if (json['results'] != null) {
+    if (json['games'] != null) {
       _results = [];
-      json['results'].forEach((v) {
+      json['games'].forEach((v) {
         _results?.add(Game.fromJson(v));
       });
     }
