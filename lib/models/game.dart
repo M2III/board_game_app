@@ -73,6 +73,7 @@ class Game {
   String? _name;
   String? _handle;
   String? _url;
+  String? _imageUrl;
   /*String? _price;
   String? _priceCa;
   String? _priceUk;
@@ -89,7 +90,6 @@ class Game {
   String? _commentary;
   String? _faq;
   String? _thumbUrl;
-  String? _imageUrl;
   dynamic _matchesSpecs;
   List<dynamic>? _specs;
   List<Mechanics>? _mechanics;
@@ -143,6 +143,7 @@ class Game {
   String? get name => _name;
   String? get handle => _handle;
   String? get url => _url;
+  String? get imageUrl => _imageUrl;
   /*String? get price => _price;
   String? get priceCa => _priceCa;
   String? get priceUk => _priceUk;
@@ -159,7 +160,6 @@ class Game {
   String? get commentary => _commentary;
   String? get faq => _faq;
   String? get thumbUrl => _thumbUrl;
-  String? get imageUrl => _imageUrl;
   dynamic get matchesSpecs => _matchesSpecs;
   List<dynamic>? get specs => _specs;
   List<Mechanics>? get mechanics => _mechanics;
@@ -214,6 +214,7 @@ class Game {
     String? name,
     String? handle,
     String? url,
+    String? imageUrl,
     /*String? price,
     String? priceCa,
     String? priceUk,
@@ -230,7 +231,6 @@ class Game {
     String? commentary,
     String? faq,
     String? thumbUrl,
-    String? imageUrl,
     dynamic matchesSpecs,
     List<dynamic>? specs,
     List<Mechanics>? mechanics,
@@ -283,6 +283,7 @@ class Game {
     _name = name;
     _handle = handle;
     _url = url;
+    _imageUrl = imageUrl;
     /*_price = price;
     _priceCa = priceCa;
     _priceUk = priceUk;
@@ -299,7 +300,6 @@ class Game {
     _commentary = commentary;
     _faq = faq;
     _thumbUrl = thumbUrl;
-    _imageUrl = imageUrl;
     _matchesSpecs = matchesSpecs;
     _specs = specs;
     _mechanics = mechanics;
@@ -355,6 +355,7 @@ class Game {
     _name = json['name'];
     _handle = json['handle'];
     _url = json['url'];
+    _imageUrl = json['image_url'];
     /*_price = json['price'];
     _priceCa = json['price_ca'];
     _priceUk = json['price_uk'];
@@ -376,7 +377,6 @@ class Game {
     _commentary = json['commentary'];
     _faq = json['faq'];
     _thumbUrl = json['thumb_url'];
-    _imageUrl = json['image_url'];
     _matchesSpecs = json['matches_specs'];
     if (json['specs'] != null) {
       _specs = [];
@@ -478,6 +478,7 @@ class Game {
     map['name'] = _name;
     map['handle'] = _handle;
     map['url'] = _url;
+    map['image_url'] = _imageUrl;
     /*map['price'] = _price;
     map['price_ca'] = _priceCa;
     map['price_uk'] = _priceUk;
@@ -496,7 +497,6 @@ class Game {
     map['commentary'] = _commentary;
     map['faq'] = _faq;
     map['thumb_url'] = _thumbUrl;
-    map['image_url'] = _imageUrl;
     map['matches_specs'] = _matchesSpecs;
     if (_specs != null) {
       map['specs'] = _specs?.map((v) => v.toJson()).toList();
