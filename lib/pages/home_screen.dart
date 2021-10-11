@@ -13,6 +13,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   TextEditingController emailController = TextEditingController();
+  String inputValue = "";
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,25 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         bottomNavigationBar: const MenuBottom(),
         body: Center(
-            child: Container(
+          child: Container(
+            child: Column(
+              children: <Widget>[
+                TextField(
+                onSubmitted: (String value) async {
+                  inputValue = value;
+                  debugPrint(inputValue);
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context)=> ApiSearch(gameName: inputValue),));
+          },
+            ),
+                /*ElevatedButton(onPressed: () async {
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context)=> ApiSearch(gameName: inputValue),));
+              }, child: const Text("Search Game"))*/
+              ],
+            ),
+          ),
+/*            child: Container(
                 padding: const EdgeInsets.all(24),
                 decoration: const BoxDecoration(
                   borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -35,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Navigator.of(context).push(
                       MaterialPageRoute(builder: (context)=>const ApiSearch(gameName: 'Catan'),));
                 }, child: const Text("Search Catan"))
-            )
+            )*/
         ),
       ),
     );

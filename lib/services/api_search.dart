@@ -44,7 +44,6 @@ class _ApiSearchState extends State<ApiSearch> {
         _response = responseFromApi.body.replaceAll('�', '');
         //debugPrint(_response);
         AllResponseGames resp = AllResponseGames.fromJson(jsonDecode(_response));
-        debugPrint("toto : " + resp.results.toString());
         _games = resp.results!;
       });
     }
@@ -56,10 +55,11 @@ class _ApiSearchState extends State<ApiSearch> {
   Widget build(BuildContext context) {
     return  Scaffold(
       body: _getBody(),
-      floatingActionButton: FloatingActionButton(
+
+/*      floatingActionButton: FloatingActionButton(
         onPressed:getGames,
         child: const Text('GetAll'),
-      ),
+      ),*/
     );
   }
 
@@ -80,6 +80,7 @@ class _ApiSearchState extends State<ApiSearch> {
         },
       );
     } else {
+      getGames();
       return const Center(
         child : CircularProgressIndicator(),
       );
