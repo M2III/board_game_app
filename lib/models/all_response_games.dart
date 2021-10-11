@@ -2,25 +2,25 @@ import 'game.dart';
 
 
 
-class All_response_games {
-  Count? _count;
+class AllResponseGames {
+  /*int? _count;*/
   List<Game>? _results;
 
-  Count? get count => _count;
+  /*int? get count => _count;*/
   List<Game>? get results => _results ?? [];
 
-  All_response_games({
-    Count? count,
+  AllResponseGames({
+    /*int? count,*/
     List<Game>? results}){
-    _count = count;
+    /*_count = count;*/
     _results = results;
   }
 
-  All_response_games.fromJson(dynamic json) {
-    _count = json['count'] != null ? Count.fromJson(json['count']) : null;
-    if (json['results'] != null) {
+  AllResponseGames.fromJson(dynamic json) {
+    /*_count = json['count'] != null ? json['count'] : null;*/
+    if (json['games'] != null) {
       _results = [];
-      json['results'].forEach((v) {
+      json['games'].forEach((v) {
         _results?.add(Game.fromJson(v));
       });
     }
@@ -28,9 +28,9 @@ class All_response_games {
 
   Map<String, Game> toJson() {
     var map = <String, Game>{};
-    if (_count != null) {
-      map['count'] = _count?.toJson() as Game;
-    }
+/*    if (_count != null) {
+      map['count'] = _count as Game;
+    }*/
     if (_results != null) {
       map['results'] = _results?.map((v) => v.toJson()) as Game ;
     }
@@ -41,6 +41,7 @@ class All_response_games {
 
 
 
+/*
 class Count {
   int? _count;
 
@@ -65,4 +66,4 @@ class Count {
     return map;
   }
 
-}
+}*/

@@ -73,7 +73,7 @@ class Game {
   String? _name;
   String? _handle;
   String? _url;
-  String? _price;
+  /*String? _price;
   String? _priceCa;
   String? _priceUk;
   String? _priceAu;
@@ -90,7 +90,7 @@ class Game {
   String? _faq;
   String? _thumbUrl;
   String? _imageUrl;
-  dynamic? _matchesSpecs;
+  dynamic _matchesSpecs;
   List<dynamic>? _specs;
   List<Mechanics>? _mechanics;
   List<Categories>? _categories;
@@ -99,8 +99,8 @@ class Game {
   List<String>? _artists;
   List<Designers>? _designers;
   List<Publishers>? _publishers;
-  Primary_publisher? _primaryPublisher;
-  Primary_designer? _primaryDesigner;
+  PrimaryPublisher? _primaryPublisher;
+  PrimaryDesigner? _primaryDesigner;
   List<dynamic>? _names;
   List<String>? _tags;
   String? _publisher;
@@ -115,7 +115,7 @@ class Game {
   double? _sizeHeight;
   int? _sizeDepth;
   String? _sizeUnits;
-  List<Historical_low_prices>? _historicalLowPrices;
+  List<HistoricalLowPrices>? _historicalLowPrices;
   bool? _active;
   int? _numUserComplexityVotes;
   int? _averageLearningComplexity;
@@ -137,13 +137,13 @@ class Game {
   String? _msrpText;
   String? _priceText;
   Images? _images;
-  String? _descriptionPreview;
+  String? _descriptionPreview;*/
 
   String? get id => _id;
   String? get name => _name;
   String? get handle => _handle;
   String? get url => _url;
-  String? get price => _price;
+  /*String? get price => _price;
   String? get priceCa => _priceCa;
   String? get priceUk => _priceUk;
   String? get priceAu => _priceAu;
@@ -160,7 +160,7 @@ class Game {
   String? get faq => _faq;
   String? get thumbUrl => _thumbUrl;
   String? get imageUrl => _imageUrl;
-  dynamic? get matchesSpecs => _matchesSpecs;
+  dynamic get matchesSpecs => _matchesSpecs;
   List<dynamic>? get specs => _specs;
   List<Mechanics>? get mechanics => _mechanics;
   List<Categories>? get categories => _categories;
@@ -169,8 +169,8 @@ class Game {
   List<String>? get artists => _artists;
   List<Designers>? get designers => _designers;
   List<Publishers>? get publishers => _publishers;
-  Primary_publisher? get primaryPublisher => _primaryPublisher;
-  Primary_designer? get primaryDesigner => _primaryDesigner;
+  PrimaryPublisher? get primaryPublisher => _primaryPublisher;
+  PrimaryDesigner? get primaryDesigner => _primaryDesigner;
   List<dynamic>? get names => _names;
   List<String>? get tags => _tags;
   String? get publisher => _publisher;
@@ -185,7 +185,7 @@ class Game {
   double? get sizeHeight => _sizeHeight;
   int? get sizeDepth => _sizeDepth;
   String? get sizeUnits => _sizeUnits;
-  List<Historical_low_prices>? get historicalLowPrices => _historicalLowPrices;
+  List<HistoricalLowPrices>? get historicalLowPrices => _historicalLowPrices;
   bool? get active => _active;
   int? get numUserComplexityVotes => _numUserComplexityVotes;
   int? get averageLearningComplexity => _averageLearningComplexity;
@@ -207,14 +207,14 @@ class Game {
   String? get msrpText => _msrpText;
   String? get priceText => _priceText;
   Images? get images => _images;
-  String? get descriptionPreview => _descriptionPreview;
+  String? get descriptionPreview => _descriptionPreview;*/
 
   Game({
     String? id,
     String? name,
     String? handle,
     String? url,
-    String? price,
+    /*String? price,
     String? priceCa,
     String? priceUk,
     String? priceAu,
@@ -231,7 +231,7 @@ class Game {
     String? faq,
     String? thumbUrl,
     String? imageUrl,
-    dynamic? matchesSpecs,
+    dynamic matchesSpecs,
     List<dynamic>? specs,
     List<Mechanics>? mechanics,
     List<Categories>? categories,
@@ -240,8 +240,8 @@ class Game {
     List<String>? artists,
     List<Designers>? designers,
     List<Publishers>? publishers,
-    Primary_publisher? primaryPublisher,
-    Primary_designer? primaryDesigner,
+    PrimaryPublisher? primaryPublisher,
+    PrimaryDesigner? primaryDesigner,
     List<dynamic>? names,
     List<String>? tags,
     String? publisher,
@@ -256,7 +256,7 @@ class Game {
     double? sizeHeight,
     int? sizeDepth,
     String? sizeUnits,
-    List<Historical_low_prices>? historicalLowPrices,
+    List<HistoricalLowPrices>? historicalLowPrices,
     bool? active,
     int? numUserComplexityVotes,
     int? averageLearningComplexity,
@@ -278,12 +278,12 @@ class Game {
     String? msrpText,
     String? priceText,
     Images? images,
-    String? descriptionPreview}){
+    String? descriptionPreview*/}){
     _id = id;
     _name = name;
     _handle = handle;
     _url = url;
-    _price = price;
+    /*_price = price;
     _priceCa = priceCa;
     _priceUk = priceUk;
     _priceAu = priceAu;
@@ -347,7 +347,7 @@ class Game {
     _msrpText = msrpText;
     _priceText = priceText;
     _images = images;
-    _descriptionPreview = descriptionPreview;
+    _descriptionPreview = descriptionPreview;*/
   }
 
   Game.fromJson(dynamic json) {
@@ -355,7 +355,7 @@ class Game {
     _name = json['name'];
     _handle = json['handle'];
     _url = json['url'];
-    _price = json['price'];
+    /*_price = json['price'];
     _priceCa = json['price_ca'];
     _priceUk = json['price_uk'];
     _priceAu = json['price_au'];
@@ -380,9 +380,9 @@ class Game {
     _matchesSpecs = json['matches_specs'];
     if (json['specs'] != null) {
       _specs = [];
-      /*json['specs'].forEach((v) {
+      *//*json['specs'].forEach((v) {
         _specs?.add(dynamic.fromJson(v));
-      });*/
+      });*//*
     }
     if (json['mechanics'] != null) {
       _mechanics = [];
@@ -398,15 +398,15 @@ class Game {
     }
     if (json['related_to'] != null) {
       _relatedTo = [];
-      /*json['related_to'].forEach((v) {
+      *//*json['related_to'].forEach((v) {
         _relatedTo?.add(dynamic.fromJson(v));
-      });*/
+      });*//*
     }
     if (json['developers'] != null) {
       _developers = [];
-      /*json['developers'].forEach((v) {
+      *//*json['developers'].forEach((v) {
         _developers?.add(dynamic.fromJson(v));
-      });*/
+      });*//*
     }
     _artists = json['artists'] != null ? json['artists'].cast<String>() : [];
     if (json['designers'] != null) {
@@ -421,13 +421,13 @@ class Game {
         _publishers?.add(Publishers.fromJson(v));
       });
     }
-    _primaryPublisher = json['primary_publisher'] != null ? Primary_publisher.fromJson(json['primaryPublisher']) : null;
-    _primaryDesigner = json['primary_designer'] != null ? Primary_designer.fromJson(json['primaryDesigner']) : null;
+    _primaryPublisher = json['primary_publisher'] != null ? PrimaryPublisher.fromJson(json['primaryPublisher']) : null;
+    _primaryDesigner = json['primary_designer'] != null ? PrimaryDesigner.fromJson(json['primaryDesigner']) : null;
     if (json['names'] != null) {
       _names = [];
-      /*json['names'].forEach((v) {
+      *//*json['names'].forEach((v) {
         _names?.add(dynamic.fromJson(v));
-      });*/
+      });*//*
     }
     _tags = json['tags'] != null ? json['tags'].cast<String>() : [];
     _publisher = json['publisher'];
@@ -445,7 +445,7 @@ class Game {
     if (json['historical_low_prices'] != null) {
       _historicalLowPrices = [];
       json['historical_low_prices'].forEach((v) {
-        _historicalLowPrices?.add(Historical_low_prices.fromJson(v));
+        _historicalLowPrices?.add(HistoricalLowPrices.fromJson(v));
       });
     }
     _active = json['active'];
@@ -469,7 +469,7 @@ class Game {
     _msrpText = json['msrp_text'];
     _priceText = json['price_text'];
     _images = json['images'] != null ? Images.fromJson(json['images']) : null;
-    _descriptionPreview = json['description_preview'];
+    _descriptionPreview = json['description_preview'];*/
   }
 
   Map<String, dynamic> toJson() {
@@ -478,7 +478,7 @@ class Game {
     map['name'] = _name;
     map['handle'] = _handle;
     map['url'] = _url;
-    map['price'] = _price;
+    /*map['price'] = _price;
     map['price_ca'] = _priceCa;
     map['price_uk'] = _priceUk;
     map['price_au'] = _priceAu;
@@ -568,7 +568,7 @@ class Game {
     if (_images != null) {
       map['images'] = _images?.toJson();
     }
-    map['description_preview'] = _descriptionPreview;
+    map['description_preview'] = _descriptionPreview;*/
     return map;
   }
 
@@ -631,7 +631,7 @@ class Images {
 /// price : 59.95
 /// isLow : true
 
-class Historical_low_prices {
+class HistoricalLowPrices {
   String? _country;
   Date? _date;
   double? _price;
@@ -642,7 +642,7 @@ class Historical_low_prices {
   double? get price => _price;
   bool? get isLow => _isLow;
 
-  Historical_low_prices({
+  HistoricalLowPrices({
     String? country,
     Date? date,
     double? price,
@@ -653,7 +653,7 @@ class Historical_low_prices {
     _isLow = isLow;
   }
 
-  Historical_low_prices.fromJson(dynamic json) {
+  HistoricalLowPrices.fromJson(dynamic json) {
     _country = json['country'];
     _date = json['date'] != null ? Date.fromJson(json['date']) : null;
     _price = json['price'];
@@ -708,7 +708,7 @@ class Date {
 /// name : "Klaus Teuber"
 /// url : "https://www.boardgameatlas.com/designer/LCjyh7WnHd/klaus-teuber"
 
-class Primary_designer {
+class PrimaryDesigner {
   String? _id;
   String? _name;
   String? _url;
@@ -717,7 +717,7 @@ class Primary_designer {
   String? get name => _name;
   String? get url => _url;
 
-  Primary_designer({
+  PrimaryDesigner({
     String? id,
     String? name,
     String? url}){
@@ -726,7 +726,7 @@ class Primary_designer {
     _url = url;
   }
 
-  Primary_designer.fromJson(dynamic json) {
+  PrimaryDesigner.fromJson(dynamic json) {
     _id = json['id'];
     _name = json['name'];
     _url = json['url'];
@@ -746,7 +746,7 @@ class Primary_designer {
 /// name : "KOSMOS"
 /// url : "https://www.boardgameatlas.com/publisher/RY4XltbNAz/kosmos"
 
-class Primary_publisher {
+class PrimaryPublisher {
   String? _id;
   String? _name;
   String? _url;
@@ -755,7 +755,7 @@ class Primary_publisher {
   String? get name => _name;
   String? get url => _url;
 
-  Primary_publisher({
+  PrimaryPublisher({
     String? id,
     String? name,
     String? url}){
@@ -764,7 +764,7 @@ class Primary_publisher {
     _url = url;
   }
 
-  Primary_publisher.fromJson(dynamic json) {
+  PrimaryPublisher.fromJson(dynamic json) {
     _id = json['id'];
     _name = json['name'];
     _url = json['url'];

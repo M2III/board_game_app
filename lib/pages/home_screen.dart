@@ -1,4 +1,6 @@
+import 'package:board_game_app/services/api_search.dart';
 import 'package:board_game_app/widgets/menu_bottom.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +20,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: const Text('Home')),
+        appBar: AppBar(
+          title: const Text('Home'),
+        ),
         bottomNavigationBar: const MenuBottom(),
         body: Center(
             child: Container(
@@ -27,22 +31,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                   color: Colors.white70,
                 ),
-                child: const Text('Home',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 22,
-                        shadows: [
-                          Shadow(
-                            offset: Offset(1.0,1.0),
-                            blurRadius: 2.0,
-                            color: Colors.grey,
-                          )
-                        ]
-                    )
-                )
+                child: ElevatedButton(onPressed: () async {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context)=>const ApiSearch(gameName: 'Catan'),));
+                }, child: const Text("Search Catan"))
             )
         ),
       ),
     );
   }
+
 }
+
+
+
