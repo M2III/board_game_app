@@ -74,7 +74,7 @@ class Game {
   String? _handle;
   String? _url;
   String? _imageUrl;
-  double? _averageUserRating;
+  num? _averageUserRating;
   String? _publisher;
   int? _yearPublished;
   String? _description;
@@ -146,7 +146,7 @@ class Game {
   String? get url => _url;
   String? get imageUrl => _imageUrl;
   String? get publisher => _publisher;
-  double? get averageUserRating => _averageUserRating;
+  num? get averageUserRating => _averageUserRating;
   int? get yearPublished => _yearPublished;
   String? get description => _description;
   int? get minPlayers => _minPlayers;
@@ -219,7 +219,7 @@ class Game {
     String? url,
     String? imageUrl,
     String? publisher,
-    double? averageUserRating,
+    num? averageUserRating,
     int? yearPublished,
     String? description,
     int? minPlayers,
