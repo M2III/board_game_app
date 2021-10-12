@@ -27,7 +27,8 @@ class DescriptionCardWidget extends StatelessWidget {
                   children: [
 
                     Text(game.name != null ? game.name! : "info non disponible"),
-                    Text(game.publisher != null ? game.publisher! : "info non disponible"),
+                    _getNumberPlayer(),
+
                   ],
                 ),
               ),
@@ -37,7 +38,7 @@ class DescriptionCardWidget extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text(game.averageUserRating != null ? game.averageUserRating.toString() : "info non disponible"),
+                    Text(game.averageUserRating != null ? game.averageUserRating!.toStringAsFixed(1): "info non disponible"),
                     Text(game.yearPublished != null ? game.yearPublished.toString() : "info non disponible"),
                   ],
                 ),
@@ -49,4 +50,16 @@ class DescriptionCardWidget extends StatelessWidget {
       );
 
 
-  }}
+
+
+  }
+
+  Widget _getNumberPlayer(){
+    if( game.minPlayers != null && game.maxPlayers != null){
+      return Text(game.minPlayers.toString() + " - " + game.maxPlayers.toString() + " players");
+    }else{
+      return Text("Information non disponible");
+    }
+  }
+
+}

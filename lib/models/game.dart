@@ -78,6 +78,8 @@ class Game {
   String? _publisher;
   int? _yearPublished;
   String? _description;
+  int? _minPlayers;
+  int? _maxPlayers;
   /*String? _price;
   String? _priceCa;
   String? _priceUk;
@@ -85,8 +87,7 @@ class Game {
   int? _msrp;
   List<Msrps>? _msrps;
   String? _discount;
-  int? _minPlayers;
-  int? _maxPlayers;
+
   int? _minPlaytime;
   int? _maxPlaytime;
   int? _minAge;
@@ -148,6 +149,8 @@ class Game {
   double? get averageUserRating => _averageUserRating;
   int? get yearPublished => _yearPublished;
   String? get description => _description;
+  int? get minPlayers => _minPlayers;
+  int? get maxPlayers => _maxPlayers;
   /*String? get price => _price;
   String? get priceCa => _priceCa;
   String? get priceUk => _priceUk;
@@ -155,8 +158,7 @@ class Game {
   int? get msrp => _msrp;
   List<Msrps>? get msrps => _msrps;
   String? get discount => _discount;
-  int? get minPlayers => _minPlayers;
-  int? get maxPlayers => _maxPlayers;
+
   int? get minPlaytime => _minPlaytime;
   int? get maxPlaytime => _maxPlaytime;
   int? get minAge => _minAge;
@@ -220,6 +222,8 @@ class Game {
     double? averageUserRating,
     int? yearPublished,
     String? description,
+    int? minPlayers,
+    int? maxPlayers,
     /*String? price,
     String? priceCa,
     String? priceUk,
@@ -227,8 +231,7 @@ class Game {
     int? msrp,
     List<Msrps>? msrps,
     String? discount,
-    int? minPlayers,
-    int? maxPlayers,
+
     int? minPlaytime,
     int? maxPlaytime,
     int? minAge,
@@ -292,6 +295,8 @@ class Game {
     _publisher = publisher;
     _yearPublished = yearPublished;
     _description = description;
+    _minPlayers = minPlayers;
+    _maxPlayers = maxPlayers;
     /*_price = price;
     _priceCa = priceCa;
     _priceUk = priceUk;
@@ -299,8 +304,7 @@ class Game {
     _msrp = msrp;
     _msrps = msrps;
     _discount = discount;
-    _minPlayers = minPlayers;
-    _maxPlayers = maxPlayers;
+
     _minPlaytime = minPlaytime;
     _maxPlaytime = maxPlaytime;
     _minAge = minAge;
@@ -368,6 +372,8 @@ class Game {
     _averageUserRating = json['average_user_rating'];
     _yearPublished = json['year_published'];
     _description = json['description'];
+    _minPlayers = json['min_players'];
+    _maxPlayers = json['max_players'];
     /*_price = json['price'];
     _priceCa = json['price_ca'];
     _priceUk = json['price_uk'];
@@ -380,8 +386,7 @@ class Game {
       });
     }
     _discount = json['discount'];
-    _minPlayers = json['min_players'];
-    _maxPlayers = json['max_players'];
+
     _minPlaytime = json['min_playtime'];
     _maxPlaytime = json['max_playtime'];
     _minAge = json['min_age'];
@@ -495,6 +500,8 @@ class Game {
     map['publisher'] = _publisher;
     map['average_user_rating'] = _averageUserRating;
     map['year_published'] = _yearPublished;
+    map['min_players'] = _minPlayers;
+    map['max_players'] = _maxPlayers;
     /*map['price'] = _price;
     map['price_ca'] = _priceCa;
     map['price_uk'] = _priceUk;
@@ -504,8 +511,7 @@ class Game {
       map['msrps'] = _msrps?.map((v) => v.toJson()).toList();
     }
     map['discount'] = _discount;
-    map['min_players'] = _minPlayers;
-    map['max_players'] = _maxPlayers;
+
     map['min_playtime'] = _minPlaytime;
     map['max_playtime'] = _maxPlaytime;
     map['min_age'] = _minAge;
