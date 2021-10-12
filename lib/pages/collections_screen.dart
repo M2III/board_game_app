@@ -38,7 +38,7 @@ class CollectionsScreen extends StatelessWidget {
                         const SizedBox(height: 50),
                         CustTextField(textController: textController, hintText: hintText, hintStyle: hintStyle, labelStyle: labelStyle, fillColor: fillColor, borderSide: borderSide, focusedBorderRadius: focusedBorderRadius, borderRadius: borderRadius),
                         const SizedBox(height: 25),
-                        const DescriptionCardWidget(),
+                        //DescriptionCardWidget(game: null,),
                       ],
                     ),
                   )
