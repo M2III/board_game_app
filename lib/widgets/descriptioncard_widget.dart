@@ -58,7 +58,7 @@ class DescriptionCardWidget extends StatelessWidget {
     if( game.minPlayers != null && game.maxPlayers != null){
       return Text(game.minPlayers.toString() + " - " + game.maxPlayers.toString() + " players");
     }else{
-      return Text("Information non disponible");
+      return const Text("Information non disponible");
     }
   }
 
