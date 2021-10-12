@@ -1,6 +1,5 @@
 import 'package:board_game_app/services/api_search.dart';
 import 'package:board_game_app/widgets/menu_bottom.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
