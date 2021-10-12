@@ -26,7 +26,7 @@ class SettingsScreen extends StatelessWidget {
                         fontSize: 22,
                         shadows: [
                           Shadow(
-                            offset: Offset(1.0,1.0),
+                            offset: Offset(1.0, 1.0),
                             blurRadius: 2.0,
                             color: Colors.grey,
                           )
