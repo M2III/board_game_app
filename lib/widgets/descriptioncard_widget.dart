@@ -1,9 +1,12 @@
 
+import 'package:board_game_app/models/game.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DescriptionCardWidget extends StatelessWidget {
-  const DescriptionCardWidget({Key? key}) : super(key: key);
+  const DescriptionCardWidget({Key? key, required this.game}) : super(key: key);
+
+  final Game game;
 
   @override
   Widget build(BuildContext context) {
@@ -15,15 +18,17 @@ class DescriptionCardWidget extends StatelessWidget {
           child:  Row(
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
-              Image.network("https://images.unsplash.com/photo-1593642532744-d377ab507dc8?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1169&q=80"),
+              Image.network(game.imageUrl != null ? game.imageUrl! : "image non disponible"),
               Flexible(
                 fit: FlexFit.tight,
                 flex: 1,
                 child:Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: const [
-                    Text('How are you 1'),
-                    Text('How are you 2'),
+                  children: [
+
+                    Text(game.name != null ? game.name! : "info non disponible"),
+                    _getNumberPlayer(),
+
                   ],
                 ),
               ),
@@ -32,9 +37,9 @@ class DescriptionCardWidget extends StatelessWidget {
                 flex: 1,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: const [
-                    Text('How are you 3'),
-                    Text('How are you 4'),
+                  children: [
+                    Text(game.averageUserRating != null ? game.averageUserRating!.toStringAsFixed(1): "info non disponible"),
+                    Text(game.yearPublished != null ? game.yearPublished.toString() : "info non disponible"),
                   ],
                 ),
               ),
@@ -45,4 +50,16 @@ class DescriptionCardWidget extends StatelessWidget {
       );
 
 
-  }}
+
+
+  }
+
+  Widget _getNumberPlayer(){
+    if( game.minPlayers != null && game.maxPlayers != null){
+      return Text(game.minPlayers.toString() + " - " + game.maxPlayers.toString() + " players");
+    }else{
+      return Text("Information non disponible");
+    }
+  }
+
+}

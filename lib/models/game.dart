@@ -73,6 +73,13 @@ class Game {
   String? _name;
   String? _handle;
   String? _url;
+  String? _imageUrl;
+  num? _averageUserRating;
+  String? _publisher;
+  int? _yearPublished;
+  String? _description;
+  int? _minPlayers;
+  int? _maxPlayers;
   /*String? _price;
   String? _priceCa;
   String? _priceUk;
@@ -80,16 +87,14 @@ class Game {
   int? _msrp;
   List<Msrps>? _msrps;
   String? _discount;
-  int? _minPlayers;
-  int? _maxPlayers;
+
   int? _minPlaytime;
   int? _maxPlaytime;
   int? _minAge;
-  String? _description;
+
   String? _commentary;
   String? _faq;
   String? _thumbUrl;
-  String? _imageUrl;
   dynamic _matchesSpecs;
   List<dynamic>? _specs;
   List<Mechanics>? _mechanics;
@@ -97,19 +102,16 @@ class Game {
   List<dynamic>? _relatedTo;
   List<dynamic>? _developers;
   List<String>? _artists;
-  List<Designers>? _designers;
   List<Publishers>? _publishers;
   PrimaryPublisher? _primaryPublisher;
   PrimaryDesigner? _primaryDesigner;
   List<dynamic>? _names;
   List<String>? _tags;
-  String? _publisher;
   String? _rulesUrl;
   int? _amazonRank;
   String? _officialUrl;
   int? _commentCount;
   int? _numUserRatings;
-  double? _averageUserRating;
   int? _weightAmount;
   String? _weightUnits;
   double? _sizeHeight;
@@ -133,7 +135,6 @@ class Game {
   int? _trendingRank;
   int? _listingClicks;
   bool? _isHistoricalLow;
-  int? _yearPublished;
   String? _msrpText;
   String? _priceText;
   Images? _images;
@@ -143,6 +144,13 @@ class Game {
   String? get name => _name;
   String? get handle => _handle;
   String? get url => _url;
+  String? get imageUrl => _imageUrl;
+  String? get publisher => _publisher;
+  num? get averageUserRating => _averageUserRating;
+  int? get yearPublished => _yearPublished;
+  String? get description => _description;
+  int? get minPlayers => _minPlayers;
+  int? get maxPlayers => _maxPlayers;
   /*String? get price => _price;
   String? get priceCa => _priceCa;
   String? get priceUk => _priceUk;
@@ -150,16 +158,14 @@ class Game {
   int? get msrp => _msrp;
   List<Msrps>? get msrps => _msrps;
   String? get discount => _discount;
-  int? get minPlayers => _minPlayers;
-  int? get maxPlayers => _maxPlayers;
+
   int? get minPlaytime => _minPlaytime;
   int? get maxPlaytime => _maxPlaytime;
   int? get minAge => _minAge;
-  String? get description => _description;
+
   String? get commentary => _commentary;
   String? get faq => _faq;
   String? get thumbUrl => _thumbUrl;
-  String? get imageUrl => _imageUrl;
   dynamic get matchesSpecs => _matchesSpecs;
   List<dynamic>? get specs => _specs;
   List<Mechanics>? get mechanics => _mechanics;
@@ -173,13 +179,11 @@ class Game {
   PrimaryDesigner? get primaryDesigner => _primaryDesigner;
   List<dynamic>? get names => _names;
   List<String>? get tags => _tags;
-  String? get publisher => _publisher;
   String? get rulesUrl => _rulesUrl;
   int? get amazonRank => _amazonRank;
   String? get officialUrl => _officialUrl;
   int? get commentCount => _commentCount;
   int? get numUserRatings => _numUserRatings;
-  double? get averageUserRating => _averageUserRating;
   int? get weightAmount => _weightAmount;
   String? get weightUnits => _weightUnits;
   double? get sizeHeight => _sizeHeight;
@@ -203,7 +207,6 @@ class Game {
   int? get trendingRank => _trendingRank;
   int? get listingClicks => _listingClicks;
   bool? get isHistoricalLow => _isHistoricalLow;
-  int? get yearPublished => _yearPublished;
   String? get msrpText => _msrpText;
   String? get priceText => _priceText;
   Images? get images => _images;
@@ -214,6 +217,13 @@ class Game {
     String? name,
     String? handle,
     String? url,
+    String? imageUrl,
+    String? publisher,
+    num? averageUserRating,
+    int? yearPublished,
+    String? description,
+    int? minPlayers,
+    int? maxPlayers,
     /*String? price,
     String? priceCa,
     String? priceUk,
@@ -221,16 +231,14 @@ class Game {
     int? msrp,
     List<Msrps>? msrps,
     String? discount,
-    int? minPlayers,
-    int? maxPlayers,
+
     int? minPlaytime,
     int? maxPlaytime,
     int? minAge,
-    String? description,
+
     String? commentary,
     String? faq,
     String? thumbUrl,
-    String? imageUrl,
     dynamic matchesSpecs,
     List<dynamic>? specs,
     List<Mechanics>? mechanics,
@@ -244,13 +252,13 @@ class Game {
     PrimaryDesigner? primaryDesigner,
     List<dynamic>? names,
     List<String>? tags,
-    String? publisher,
+
     String? rulesUrl,
     int? amazonRank,
     String? officialUrl,
     int? commentCount,
     int? numUserRatings,
-    double? averageUserRating,
+
     int? weightAmount,
     String? weightUnits,
     double? sizeHeight,
@@ -274,7 +282,7 @@ class Game {
     int? trendingRank,
     int? listingClicks,
     bool? isHistoricalLow,
-    int? yearPublished,
+
     String? msrpText,
     String? priceText,
     Images? images,
@@ -283,6 +291,12 @@ class Game {
     _name = name;
     _handle = handle;
     _url = url;
+    _imageUrl = imageUrl;
+    _publisher = publisher;
+    _yearPublished = yearPublished;
+    _description = description;
+    _minPlayers = minPlayers;
+    _maxPlayers = maxPlayers;
     /*_price = price;
     _priceCa = priceCa;
     _priceUk = priceUk;
@@ -290,16 +304,14 @@ class Game {
     _msrp = msrp;
     _msrps = msrps;
     _discount = discount;
-    _minPlayers = minPlayers;
-    _maxPlayers = maxPlayers;
+
     _minPlaytime = minPlaytime;
     _maxPlaytime = maxPlaytime;
     _minAge = minAge;
-    _description = description;
+
     _commentary = commentary;
     _faq = faq;
     _thumbUrl = thumbUrl;
-    _imageUrl = imageUrl;
     _matchesSpecs = matchesSpecs;
     _specs = specs;
     _mechanics = mechanics;
@@ -313,7 +325,7 @@ class Game {
     _primaryDesigner = primaryDesigner;
     _names = names;
     _tags = tags;
-    _publisher = publisher;
+
     _rulesUrl = rulesUrl;
     _amazonRank = amazonRank;
     _officialUrl = officialUrl;
@@ -343,7 +355,7 @@ class Game {
     _trendingRank = trendingRank;
     _listingClicks = listingClicks;
     _isHistoricalLow = isHistoricalLow;
-    _yearPublished = yearPublished;
+
     _msrpText = msrpText;
     _priceText = priceText;
     _images = images;
@@ -355,6 +367,13 @@ class Game {
     _name = json['name'];
     _handle = json['handle'];
     _url = json['url'];
+    _imageUrl = json['image_url'];
+    _publisher = json['publisher'];
+    _averageUserRating = json['average_user_rating'];
+    _yearPublished = json['year_published'];
+    _description = json['description'];
+    _minPlayers = json['min_players'];
+    _maxPlayers = json['max_players'];
     /*_price = json['price'];
     _priceCa = json['price_ca'];
     _priceUk = json['price_uk'];
@@ -367,16 +386,14 @@ class Game {
       });
     }
     _discount = json['discount'];
-    _minPlayers = json['min_players'];
-    _maxPlayers = json['max_players'];
+
     _minPlaytime = json['min_playtime'];
     _maxPlaytime = json['max_playtime'];
     _minAge = json['min_age'];
-    _description = json['description'];
+
     _commentary = json['commentary'];
     _faq = json['faq'];
     _thumbUrl = json['thumb_url'];
-    _imageUrl = json['image_url'];
     _matchesSpecs = json['matches_specs'];
     if (json['specs'] != null) {
       _specs = [];
@@ -430,13 +447,13 @@ class Game {
       });*//*
     }
     _tags = json['tags'] != null ? json['tags'].cast<String>() : [];
-    _publisher = json['publisher'];
+
     _rulesUrl = json['rules_url'];
     _amazonRank = json['amazon_rank'];
     _officialUrl = json['official_url'];
     _commentCount = json['comment_count'];
     _numUserRatings = json['num_user_ratings'];
-    _averageUserRating = json['average_user_rating'];
+
     _weightAmount = json['weight_amount'];
     _weightUnits = json['weight_units'];
     _sizeHeight = json['size_height'];
@@ -465,7 +482,7 @@ class Game {
     _trendingRank = json['trending_rank'];
     _listingClicks = json['listing_clicks'];
     _isHistoricalLow = json['is_historical_low'];
-    _yearPublished = json['year_published'];
+
     _msrpText = json['msrp_text'];
     _priceText = json['price_text'];
     _images = json['images'] != null ? Images.fromJson(json['images']) : null;
@@ -478,6 +495,13 @@ class Game {
     map['name'] = _name;
     map['handle'] = _handle;
     map['url'] = _url;
+    map['image_url'] = _imageUrl;
+    map['description'] = _description;
+    map['publisher'] = _publisher;
+    map['average_user_rating'] = _averageUserRating;
+    map['year_published'] = _yearPublished;
+    map['min_players'] = _minPlayers;
+    map['max_players'] = _maxPlayers;
     /*map['price'] = _price;
     map['price_ca'] = _priceCa;
     map['price_uk'] = _priceUk;
@@ -487,16 +511,14 @@ class Game {
       map['msrps'] = _msrps?.map((v) => v.toJson()).toList();
     }
     map['discount'] = _discount;
-    map['min_players'] = _minPlayers;
-    map['max_players'] = _maxPlayers;
+
     map['min_playtime'] = _minPlaytime;
     map['max_playtime'] = _maxPlaytime;
     map['min_age'] = _minAge;
-    map['description'] = _description;
+
     map['commentary'] = _commentary;
     map['faq'] = _faq;
     map['thumb_url'] = _thumbUrl;
-    map['image_url'] = _imageUrl;
     map['matches_specs'] = _matchesSpecs;
     if (_specs != null) {
       map['specs'] = _specs?.map((v) => v.toJson()).toList();
@@ -530,13 +552,13 @@ class Game {
       map['names'] = _names?.map((v) => v.toJson()).toList();
     }
     map['tags'] = _tags;
-    map['publisher'] = _publisher;
+
     map['rules_url'] = _rulesUrl;
     map['amazon_rank'] = _amazonRank;
     map['official_url'] = _officialUrl;
     map['comment_count'] = _commentCount;
     map['num_user_ratings'] = _numUserRatings;
-    map['average_user_rating'] = _averageUserRating;
+
     map['weight_amount'] = _weightAmount;
     map['weight_units'] = _weightUnits;
     map['size_height'] = _sizeHeight;
@@ -562,7 +584,7 @@ class Game {
     map['trending_rank'] = _trendingRank;
     map['listing_clicks'] = _listingClicks;
     map['is_historical_low'] = _isHistoricalLow;
-    map['year_published'] = _yearPublished;
+
     map['msrp_text'] = _msrpText;
     map['price_text'] = _priceText;
     if (_images != null) {
