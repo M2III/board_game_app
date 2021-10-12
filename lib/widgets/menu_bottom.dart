@@ -86,7 +86,7 @@ class MenuBottom extends StatelessWidget {
           return Wrap(
             children: <Widget>[
               ListTile(
-                leading: Icon(Icons.face),
+                leading: const Icon(Icons.face),
                 title: Text(FirebaseAuth.instance.currentUser!.email!,
                     style: TextStyle(
                         color: Colors.blue[500],
