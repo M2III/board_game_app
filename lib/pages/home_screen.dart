@@ -12,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   TextEditingController emailController = TextEditingController();
-  String inputValue = "";
+  String inputValue = "@!";
 
   @override
   Widget build(BuildContext context) {
@@ -30,15 +30,21 @@ class _HomeScreenState extends State<HomeScreen> {
               onSubmitted: (String value) async {
                 inputValue = value;
                 debugPrint(inputValue);
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context)=> ApiSearch(gameName: inputValue),));
+                search(value);
           },
-          ),
+
+          ),Text(inputValue),ApiSearch(gameName: inputValue),
             ],
           ),
         ),
       ),
     );
+  }
+  search(value){
+    setState(() {
+      debugPrint("setstate");
+      inputValue=value;
+    });
   }
 
 }

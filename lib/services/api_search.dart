@@ -25,26 +25,30 @@ class _ApiSearchState extends State<ApiSearch> {
   List<Game> _games = [];
 
   Future<void> getGames() async{
+    if("@!"!=widget.gameName){
+      debugPrint("appel");
+      debugPrint(widget.gameName);
+      var endpointUrl = 'https://api.boardgameatlas.com/api/search';
+      Map<String, String> queryParams = {
+        'name': widget.gameName,
+        'pretty': 'true',
+        'exact' : 'true',
+        'client_id' : 'JLBr5npPhV'
+      };
 
-    var endpointUrl = 'https://api.boardgameatlas.com/api/search';
-    Map<String, String> queryParams = {
-      'name': widget.gameName,
-      'pretty': 'true',
-      'exact' : 'true',
-      'client_id' : 'JLBr5npPhV'
-    };
+      String queryString = Uri(queryParameters: queryParams).query;
 
-    String queryString = Uri(queryParameters: queryParams).query;
+      var uri = Uri.parse(endpointUrl + '?' + queryString); // result - https://api.boardgameatlas.com/api/search?name=Catan&pretty=true&exact=true&client_id=JLBr5npPhV
+      var responseFromApi = await http.get(uri);
+      if(responseFromApi.statusCode == 200){
 
-    var uri = Uri.parse(endpointUrl + '?' + queryString); // result - https://api.boardgameatlas.com/api/search?name=Catan&pretty=true&exact=true&client_id=JLBr5npPhV
-    var responseFromApi = await http.get(uri);
-    if(responseFromApi.statusCode == 200){
+        setState(() {
+          _response = responseFromApi.body.replaceAll('�', '');
+          AllResponseGames resp = AllResponseGames.fromJson(jsonDecode(_response));
+          _games = resp.results!;
+        });
+    }
 
-      setState(() {
-        _response = responseFromApi.body.replaceAll('�', '');
-        AllResponseGames resp = AllResponseGames.fromJson(jsonDecode(_response));
-        _games = resp.results!;
-      });
     }
 
 
@@ -52,19 +56,21 @@ class _ApiSearchState extends State<ApiSearch> {
 
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      body: _getBody(),
-    );
+    return _getBody();
+
   }
 
   Widget _getBody(){
     if(_games.isNotEmpty){
-      return ListView.separated(
+      return Expanded(child: ListView.separated(
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
         separatorBuilder: (BuildContext context, int index) => const Divider(),
         itemCount: _games.length,
         itemBuilder: (context, index){
           return DescriptionCardWidget(game: _games[index]);
         },
+      ),
       );
     } else {
       getGames();
