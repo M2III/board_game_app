@@ -33,7 +33,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 search(value);
           },
 
-          ),Text(inputValue),ApiSearch(gameName: inputValue),
+          )
+              ,Text(inputValue)
+              , ApiSearch(gameName: inputValue)
             ],
           ),
         ),
