@@ -12,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   TextEditingController emailController = TextEditingController();
-  String inputValue = "@!";
+  String inputValue = "";
 
   @override
   Widget build(BuildContext context) {
@@ -25,28 +25,13 @@ class _HomeScreenState extends State<HomeScreen> {
         bottomNavigationBar: const MenuBottom(),
         body: Center(
           child: Column(
-            children: <Widget>[
-              TextField(
-              onSubmitted: (String value) async {
-                inputValue = value;
-                debugPrint(inputValue);
-                search(value);
-          },
-
-          )
-              ,Text(inputValue)
-              , ApiSearch(gameName: inputValue)
+            children: const <Widget>[
+          ApiSearch(),
             ],
           ),
         ),
       ),
     );
-  }
-  search(value){
-    setState(() {
-      debugPrint("setstate");
-      inputValue=value;
-    });
   }
 
 }
