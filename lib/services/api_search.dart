@@ -39,7 +39,6 @@ class _ApiSearchState extends State<ApiSearch> {
       if(responseFromApi.statusCode == 200){
         setState(() {
           _response = responseFromApi.body.replaceAll('�', '');
-          print(json.decode(_response));
           if (json.decode(_response).toString()=="{games: [], count: 0}") {
             message = "Nothing match with your search";
           } else {
