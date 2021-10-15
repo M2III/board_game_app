@@ -1,5 +1,7 @@
 
 import 'package:board_game_app/models/game.dart';
+import 'package:board_game_app/pages/collections_screen.dart';
+import 'package:board_game_app/pages/product_detail.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +12,11 @@ class DescriptionCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Card(
+    return  InkWell(
+      onTap: () { Navigator.of(context).push(
+          MaterialPageRoute(builder: (context)=> ProductDetail(game: game,),));},
+      child: Card(
+
         child:  Container(
           padding: const EdgeInsets.all(10.0),
           width: 700,
@@ -47,12 +53,10 @@ class DescriptionCardWidget extends StatelessWidget {
             ],
           ),
         ),
-      );
+      ) ,
+    );
 
-
-
-
-  }
+        }
 
   Widget _getNumberPlayer(){
     if( game.minPlayers != null && game.maxPlayers != null){
