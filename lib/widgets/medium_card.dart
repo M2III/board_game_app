@@ -2,7 +2,7 @@ import 'package:board_game_app/models/game.dart';
 import 'package:board_game_app/widgets/to_html.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-
+import 'package:board_game_app/utils/constants.dart' as constants;
 class MediumCard extends StatefulWidget {
   final Game game;
 
@@ -69,7 +69,7 @@ class _MediumCardState extends State<MediumCard> {
           widget.game.maxPlayers.toString() +
           " players");
     } else {
-      return const Text("Information non disponible");
+      return const Text(constants.infoNotAvailable);
     }
   }
 
@@ -81,7 +81,7 @@ class _MediumCardState extends State<MediumCard> {
           Image.network(
             widget.game.imageUrl != null
                 ? widget.game.imageUrl!
-                : "image non disponible",
+                : constants.infoNotAvailable,
             width: 200,
             height: 200,
           ),
@@ -109,7 +109,7 @@ class _MediumCardState extends State<MediumCard> {
           children: [
             Text(widget.game.name != null
                 ? widget.game.name!
-                : "info non disponible"),
+                : constants.infoNotAvailable),
             _getNumberPlayer(),
           ],
         ),
@@ -122,10 +122,10 @@ class _MediumCardState extends State<MediumCard> {
             //Text(widget.game.description!),
             Text(widget.game.averageUserRating != null
                 ? widget.game.averageUserRating!.toStringAsFixed(1)
-                : "info non disponible"),
+                : constants.infoNotAvailable),
             Text(widget.game.yearPublished != null
                 ? widget.game.yearPublished.toString()
-                : "info non disponible"),
+                : constants.infoNotAvailable),
           ],
         ),
       ),
@@ -141,7 +141,7 @@ class _MediumCardState extends State<MediumCard> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
               Text(
-                "Description",
+                constants.gameDescription,
                 style: TextStyle(color: Colors.yellow),
               ),
             ],
