@@ -26,6 +26,7 @@ class _MediumCardState extends State<MediumCard> {
       body: _getCard(),
       extendBody: true,
       persistentFooterButtons: [
+        /*Dans l'idée en fonction de si ce jeux est ou non dans la collectionon mettra ajouter ou supprimer ;)  */
         FloatingActionButton(
           backgroundColor: const Color(0xFF6200EE),
           onPressed: () => print("toto"),
