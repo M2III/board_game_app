@@ -25,6 +25,9 @@ class RegScreen extends StatelessWidget {
       borderRadius: BorderRadius.circular(25.7),
     ) );
 
+    bool _obscureText = true;
+
+
     return Scaffold(
       backgroundColor: Colors.grey,
       body:Center(
@@ -78,26 +81,27 @@ class RegScreen extends StatelessWidget {
                               child:
                               TextFormField(
                                   controller: _passwordController,
+                                  obscureText: _obscureText,
                                   decoration: const InputDecoration(
-                                    contentPadding: EdgeInsets.only(top: 20), // add padding to adjust text
-                                    isDense: true,
-                                    hintText: "Password",
-                                    prefixIcon: Padding(
-                                      padding: EdgeInsets.only(top: 15), // add padding to adjust icon
-                                      child: Icon(Icons.password),
+                                      contentPadding: EdgeInsets.only(top: 20), // add padding to adjust text
+                                      isDense: true,
+                                      hintText: "Password",
+                                      prefixIcon: Padding(
+                                        padding: EdgeInsets.only(top: 15), // add padding to adjust icon
+                                        child: Icon( IconData(0xe3ae, fontFamily: 'MaterialIcons')),
+                                      ),
                                     ),
-                                  ),
-                                  validator: FieldValidator.password(
-                                      minLength: 8,
-                                      shouldContainNumber: true,
-                                      shouldContainCapitalLetter: true,
-                                      shouldContainSmallLetter: true,
-                                      shouldContainSpecialChars: true,
-                                      errorMessage: "Password must match the required format",
-                                      onNumberNotPresent: () { return "Password must contain number"; },
-                                      onSpecialCharsNotPresent: () { return "Password must contain special characters"; },
-                                      onCapitalLetterNotPresent: () { return "Password must contain capital letters"; }
-                                  ),
+                                    validator: FieldValidator.password(
+                                        minLength: 8,
+                                        shouldContainNumber: true,
+                                        shouldContainCapitalLetter: true,
+                                        shouldContainSmallLetter: true,
+                                        shouldContainSpecialChars: true,
+                                        errorMessage: "Password must match the required format",
+                                        onNumberNotPresent: () { return "Password must contain number"; },
+                                        onSpecialCharsNotPresent: () { return "Password must contain special characters"; },
+                                        onCapitalLetterNotPresent: () { return "Password must contain capital letters"; }
+                                    ),
                               )
                           ),
                           const SizedBox(height: 15),
@@ -116,11 +120,11 @@ class RegScreen extends StatelessWidget {
                                   hintText: "Confirm Password",
                                   prefixIcon: Padding(
                                     padding: EdgeInsets.only(top: 15), // add padding to adjust icon
-                                    child: Icon(Icons.password),
+                                    child: Icon( IconData(0xe3ae, fontFamily: 'MaterialIcons')),
                                   ),
                                 ),
                                 validator: FieldValidator.equalTo(_passwordController, message: "Password Mismatch"),
-
+                                obscureText: _obscureText,
                               )
                           ),
                           const SizedBox(height: 20),

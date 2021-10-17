@@ -5,10 +5,23 @@ import 'package:flutter/material.dart';
 import 'package:the_validator/the_validator.dart';
 
 
-class AuthScreen extends StatelessWidget {
+class AuthScreen extends StatefulWidget {
   AuthScreen({Key? key}) : super(key: key);
+
+  @override
+  State<AuthScreen> createState() => _AuthScreenState();
+}
+
+class _AuthScreenState extends State<AuthScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  bool _obscureText = true;
+
+  void _toggle() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,6 +71,7 @@ class AuthScreen extends StatelessWidget {
                                 validator: FieldValidator.email(),
                             ),
                           ),
+
                           const SizedBox(height: 15),
                           SizedBox(
                             width: MediaQuery
@@ -65,23 +79,39 @@ class AuthScreen extends StatelessWidget {
                                 .size
                                 .width,
                             child:
-                            TextFormField(
-                              controller: _passwordController,
-                              validator: (value){
-                                if (value == null || value.isEmpty) {
-                                  return 'Please enter some text';
-                                }
-                              },
-                              decoration: const InputDecoration(
-                                contentPadding: EdgeInsets.only(top: 20), // add padding to adjust text
-                                isDense: true,
-                                hintText: "Password",
-                                prefixIcon: Padding(
-                                  padding: EdgeInsets.only(top: 15), // add padding to adjust icon
-                                  child: Icon(Icons.password),
+                            Stack(
+                              alignment: Alignment.centerRight,
+                              children: <Widget>[
+                                TextFormField(
+                                  controller: _passwordController,
+                                  validator: (value){
+                                    if (value == null || value.isEmpty) {
+                                      return 'Please enter some text';
+                                    }
+                                  },
+                                  decoration: const InputDecoration(
+                                    contentPadding: EdgeInsets.only(top: 20), // add padding to adjust text
+                                    isDense: true,
+                                    hintText: "Password",
+                                    prefixIcon: Padding(
+                                      padding: EdgeInsets.only(top: 15), // add padding to adjust icon
+                                      child: Icon( IconData(0xe3ae, fontFamily: 'MaterialIcons')),
+                                    ),
+                                  ),
+                                  onSaved: (value) => _passwordController = value as TextEditingController,
+                                  obscureText: _obscureText,
                                 ),
-                              ),
+                                IconButton(
+                                  padding: const EdgeInsets.only(top: 15),
+                                  icon: _obscureText? const Icon(Icons.visibility_off_sharp, size: 18.0):const Icon(Icons.visibility_sharp, size: 18.0,),
+                                  onPressed: () {
+                                    _toggle();
+                                  },
+                                ),
+                              ],
                             ),
+
+
                           ),
                           const SizedBox(height: 20),
                           Row(
@@ -145,5 +175,5 @@ class AuthScreen extends StatelessWidget {
 
     );
   }
-  }
+}
 
