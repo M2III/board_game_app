@@ -102,13 +102,9 @@ class AuthScreen extends StatelessWidget {
                                       Navigator.of(context).push(
                                           MaterialPageRoute(builder: (context)=>const HomeScreen(),));
                                     }on FirebaseAuthException catch (e) {
-                                      if(e.toString().startsWith("[firebase"
-                                          "_auth/user-not-found] There is no user record corresponding to this identifier. The user may have been deleted.")){
                                         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                                           content: Text("There is no user record corresponding to this identifier"),
                                         ));
-                                      }
-
                                     }
                                   }
 
