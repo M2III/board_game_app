@@ -134,7 +134,7 @@ class MenuBottom extends StatelessWidget {
                         onPressed: () => {
                           signOut(),
                           Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const AuthScreen(),
+                            builder: (context) =>  const AuthScreen(),
                           ))
                         },
                         child: const Text('OK'),
