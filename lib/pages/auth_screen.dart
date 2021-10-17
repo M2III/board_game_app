@@ -101,7 +101,7 @@ class AuthScreen extends StatelessWidget {
                                           email: _emailController.text, password: _passwordController.text);
                                       Navigator.of(context).push(
                                           MaterialPageRoute(builder: (context)=>const HomeScreen(),));
-                                    }on FirebaseAuthException catch (e) {
+                                    }on FirebaseAuthException {
                                         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                                           content: Text("There is no user record corresponding to this identifier"),
                                         ));
