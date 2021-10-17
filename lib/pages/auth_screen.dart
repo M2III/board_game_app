@@ -6,7 +6,7 @@ import 'package:the_validator/the_validator.dart';
 
 
 class AuthScreen extends StatefulWidget {
-  AuthScreen({Key? key}) : super(key: key);
+  const AuthScreen({Key? key}) : super(key: key);
 
   @override
   State<AuthScreen> createState() => _AuthScreenState();
