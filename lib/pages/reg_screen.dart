@@ -2,18 +2,19 @@ import 'package:board_game_app/pages/auth_screen.dart';
 import 'package:board_game_app/pages/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:the_validator/the_validator.dart';
+
 
 class RegScreen extends StatelessWidget {
   RegScreen({Key? key}) : super(key: key);
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
 
   @override
   Widget build(BuildContext context) {
     // GlobalKey<FormState> _key=GlobalKey();
     TextEditingController _emailController = TextEditingController();
     TextEditingController _passwordController = TextEditingController();
-    TextEditingController _passwordVerifController = TextEditingController();
+    TextEditingController _confirmPasswordController = TextEditingController();
 
     const Color color = Color.fromRGBO(255, 255, 255, 1.0);
 
@@ -64,12 +65,8 @@ class RegScreen extends StatelessWidget {
                                       child: Icon(Icons.email),
                                     ),
                                   ),
-                                  validator:(value){
-                                    if(value==null || value.isEmpty){
-                                      return "ERREUR";
-                                    }
-                                    return null;
-                                  }
+                                  validator: FieldValidator.email(),
+
                               )
                           ),
                           const SizedBox(height: 15),
@@ -90,12 +87,17 @@ class RegScreen extends StatelessWidget {
                                       child: Icon(Icons.password),
                                     ),
                                   ),
-                                  validator:(value){
-                                    if(value==null || value.isEmpty){
-                                      return "ERREUR";
-                                    }
-                                    return null;
-                                  }
+                                  validator: FieldValidator.password(
+                                      minLength: 8,
+                                      shouldContainNumber: true,
+                                      shouldContainCapitalLetter: true,
+                                      shouldContainSmallLetter: true,
+                                      shouldContainSpecialChars: true,
+                                      errorMessage: "Password must match the required format",
+                                      onNumberNotPresent: () { return "Password must contain number"; },
+                                      onSpecialCharsNotPresent: () { return "Password must contain special characters"; },
+                                      onCapitalLetterNotPresent: () { return "Password must contain capital letters"; }
+                                  ),
                               )
                           ),
                           const SizedBox(height: 15),
@@ -105,25 +107,20 @@ class RegScreen extends StatelessWidget {
                                   .size
                                   .width,
                               child:
+                              // To validate confirm password field
                               TextFormField(
-                                  controller: _passwordVerifController,
-                                  decoration: const InputDecoration(
-                                    contentPadding: EdgeInsets.only(top: 20), // add padding to adjust text
-                                    isDense: true,
-                                    hintText: "Confirm Password",
-                                    prefixIcon: Padding(
-                                      padding: EdgeInsets.only(top: 15), // add padding to adjust icon
-                                      child: Icon(Icons.password),
-                                    ),
+                                controller: _confirmPasswordController,
+                                decoration: const InputDecoration(
+                                  contentPadding: EdgeInsets.only(top: 20), // add padding to adjust text
+                                  isDense: true,
+                                  hintText: "Confirm Password",
+                                  prefixIcon: Padding(
+                                    padding: EdgeInsets.only(top: 15), // add padding to adjust icon
+                                    child: Icon(Icons.password),
                                   ),
-                                  validator:(value){
-                                    if(value==null || value.isEmpty){
-                                      return "ERREUR";
-                                    }else if(value != _passwordController.text){
-                                      return "ERREUR";
-                                    }
-                                    return null;
-                                  }
+                                ),
+                                validator: FieldValidator.equalTo(_passwordController, message: "Password Mismatch"),
+
                               )
                           ),
                           const SizedBox(height: 20),
@@ -137,12 +134,16 @@ class RegScreen extends StatelessWidget {
                                     .of(context)
                                     .size
                                     .width, //width of button
-                                child: ElevatedButton(onPressed: () async {
-                                  await FirebaseAuth.instance.createUserWithEmailAndPassword(
-                                      email: _emailController.text, password: _passwordController.text);
-                                  Navigator.of(context).push(
-                                      MaterialPageRoute(builder: (context)=>const HomeScreen(),));
-                                },style: styleRegister,
+                                child: ElevatedButton(
+                                    onPressed: () async {
+                                      if (_formKey.currentState!.validate()) {
+                                        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                                            email: _emailController.text, password: _passwordController.text);
+                                        Navigator.of(context).push(
+                                            MaterialPageRoute(builder: (context)=>const HomeScreen(),));
+                                      }
+                                    }
+                                    ,style: styleRegister,
                                     child: const Text("Register")),
                               ),
                               ),

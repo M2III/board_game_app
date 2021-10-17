@@ -2,6 +2,8 @@ import 'package:board_game_app/pages/home_screen.dart';
 import 'package:board_game_app/pages/reg_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:the_validator/the_validator.dart';
+
 
 class AuthScreen extends StatelessWidget {
   AuthScreen({Key? key}) : super(key: key);
@@ -53,12 +55,7 @@ class AuthScreen extends StatelessWidget {
                                     child: Icon(Icons.email),
                                   ),
                                 ),
-                                validator:(value){
-                                  if(value==null || value.isEmpty){
-                                    return "ERREUR";
-                                  }
-                                  return null;
-                                }
+                                validator: FieldValidator.email(),
                             ),
                           ),
                           const SizedBox(height: 15),
@@ -70,6 +67,11 @@ class AuthScreen extends StatelessWidget {
                             child:
                             TextFormField(
                               controller: _passwordController,
+                              validator: (value){
+                                if (value == null || value.isEmpty) {
+                                  return 'Please enter some text';
+                                }
+                              },
                               decoration: const InputDecoration(
                                 contentPadding: EdgeInsets.only(top: 20), // add padding to adjust text
                                 isDense: true,
@@ -93,10 +95,23 @@ class AuthScreen extends StatelessWidget {
                                     .size
                                     .width, //width of button
                                 child: ElevatedButton(onPressed: () async {
-                                  await FirebaseAuth.instance.signInWithEmailAndPassword(
-                                      email: _emailController.text, password: _passwordController.text);
-                                  Navigator.of(context).push(
-                                      MaterialPageRoute(builder: (context)=>const HomeScreen(),));
+                                  if (_formKey.currentState!.validate()) {
+                                    try{
+                                      await FirebaseAuth.instance.signInWithEmailAndPassword(
+                                          email: _emailController.text, password: _passwordController.text);
+                                      Navigator.of(context).push(
+                                          MaterialPageRoute(builder: (context)=>const HomeScreen(),));
+                                    }on FirebaseAuthException catch (e) {
+                                      if(e.toString().startsWith("[firebase"
+                                          "_auth/user-not-found] There is no user record corresponding to this identifier. The user may have been deleted.")){
+                                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                                          content: Text("There is no user record corresponding to this identifier"),
+                                        ));
+                                      }
+
+                                    }
+                                  }
+
                                 }, child: const Text("Login")),
                               ),
                               ),
