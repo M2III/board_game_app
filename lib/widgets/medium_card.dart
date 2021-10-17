@@ -64,8 +64,8 @@ class _MediumCardState extends State<MediumCard> {
         ],
       ),
       RatingBar.builder(
-        initialRating: 3,
-        minRating: 1,
+        initialRating: 3, /* Pour l'initial rating on ajoutera un fetch pour recuperer la note mise par l'user */
+        minRating: 0.5,
         direction: Axis.horizontal,
         allowHalfRating: true,
         itemCount: 5,
