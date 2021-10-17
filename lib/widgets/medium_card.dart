@@ -29,7 +29,30 @@ class _MediumCardState extends State<MediumCard> {
         /*Dans l'idée en fonction de si ce jeux est ou non dans la collectionon mettra ajouter ou supprimer ;)  */
         FloatingActionButton(
           backgroundColor: const Color(0xFF6200EE),
-          onPressed: () => print("toto"),
+          onPressed: () => showDialog<String>(
+            context: context,
+            builder: (BuildContext context) => AlertDialog(
+              title: const Text('Game Add to your collection'),
+              content: const Text(
+                  'You can cancel the addition by clicking on cancel otherwise click on ok'),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () => {
+                    Navigator.pop(context, 'Cancel'),
+                    print("cancel"),
+                  },
+                  child: const Text('Cancel'),
+                ),
+                TextButton(
+                  onPressed: () => {
+                    Navigator.pop(context, 'OK'),
+                    print("Ok"),
+                  },
+                  child: const Text('OK'),
+                ),
+              ],
+            ),
+          ),
           child: const Icon(
             Icons.add,
             color: Colors.blue,
@@ -65,12 +88,13 @@ class _MediumCardState extends State<MediumCard> {
         ],
       ),
       RatingBar.builder(
-        initialRating: 3, /* Pour l'initial rating on ajoutera un fetch pour recuperer la note mise par l'user */
+        initialRating: 3,
+        /* Pour l'initial rating on ajoutera un fetch pour recuperer la note mise par l'user */
         minRating: 0.5,
         direction: Axis.horizontal,
         allowHalfRating: true,
         itemCount: 5,
-        itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+        itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
         itemBuilder: (context, _) => const Icon(
           Icons.star,
           color: Colors.amber,
@@ -117,7 +141,8 @@ class _MediumCardState extends State<MediumCard> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
               Text(
-                "Description",style: TextStyle(color: Colors.yellow),
+                "Description",
+                style: TextStyle(color: Colors.yellow),
               ),
             ],
           )),
