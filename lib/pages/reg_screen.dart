@@ -8,13 +8,14 @@ import 'package:the_validator/the_validator.dart';
 class RegScreen extends StatelessWidget {
   RegScreen({Key? key}) : super(key: key);
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     // GlobalKey<FormState> _key=GlobalKey();
-    TextEditingController _emailController = TextEditingController();
-    TextEditingController _passwordController = TextEditingController();
-    TextEditingController _confirmPasswordController = TextEditingController();
+
 
     const Color color = Color.fromRGBO(255, 255, 255, 1.0);
 
@@ -81,6 +82,7 @@ class RegScreen extends StatelessWidget {
                               child:
                               TextFormField(
                                   controller: _passwordController,
+                                  autofocus: false,
                                   obscureText: _obscureText,
                                   decoration: const InputDecoration(
                                       contentPadding: EdgeInsets.only(top: 20), // add padding to adjust text
@@ -124,6 +126,7 @@ class RegScreen extends StatelessWidget {
                                   ),
                                 ),
                                 validator: FieldValidator.equalTo(_passwordController, message: "Password Mismatch"),
+                                autofocus: false,
                                 obscureText: _obscureText,
                               )
                           ),
