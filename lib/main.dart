@@ -17,7 +17,7 @@ class Main extends StatelessWidget {
     // TODO: implement build
     return MaterialApp(
       theme: ThemeData(primarySwatch: Colors.blueGrey),
-      home: const AuthScreen(),
+      home: AuthScreen(),
     );
   }
 }
