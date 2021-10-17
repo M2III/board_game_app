@@ -173,7 +173,7 @@ class RegScreen extends StatelessWidget {
                                   ),
                                   onPressed: () {
                                     Navigator.of(context).push(
-                                      MaterialPageRoute(builder: (context)=> AuthScreen()),);
+                                      MaterialPageRoute(builder: (context)=> const AuthScreen()),);
                                   },
                                   style: styleLogin,
                                 ),

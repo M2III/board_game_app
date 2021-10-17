@@ -9,8 +9,8 @@ void main() {
   testWidgets('AuthScreen on Start', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(
-        MaterialApp(
-          home:  AuthScreen(),
+      const MaterialApp(
+          home: AuthScreen(),
       ),
     );
 
