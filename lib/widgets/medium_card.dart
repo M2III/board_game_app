@@ -51,7 +51,7 @@ class _MediumCardState extends State<MediumCard> {
   }
 
   _getCard() {
-    return Column(mainAxisSize: MainAxisSize.max, children: <Widget>[
+    return Column(mainAxisSize: MainAxisSize.max, children:  <Widget>[
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -71,7 +71,7 @@ class _MediumCardState extends State<MediumCard> {
         direction: Axis.horizontal,
         allowHalfRating: true,
         itemCount: 5,
-        itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
+        itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
         itemBuilder: (context, _) => const Icon(
           Icons.star,
           color: Colors.amber,
@@ -106,9 +106,16 @@ class _MediumCardState extends State<MediumCard> {
           ],
         ),
       ),
-      Expanded(
+    Expanded(
+    flex: 1,
+    child:  SingleChildScrollView(
+    scrollDirection: Axis.vertical,//.horizontal
+    child:
+    ToHtml(html: widget.game.description!),
+    ),),
+      /*Expanded(
         child: ToHtml(html: widget.game.description!),
-      )
+      )*/
     ]);
   }
 }
