@@ -3,7 +3,6 @@ import 'package:board_game_app/widgets/to_html.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
-
 class MediumCard extends StatefulWidget {
   final Game game;
 
@@ -51,11 +50,10 @@ class _MediumCardState extends State<MediumCard> {
   }
 
   _getCard() {
-    return Column(mainAxisSize: MainAxisSize.max, children:  <Widget>[
+    return Column(mainAxisSize: MainAxisSize.max, children: <Widget>[
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-
           Image.network(
             widget.game.imageUrl != null
                 ? widget.game.imageUrl!
@@ -106,13 +104,29 @@ class _MediumCardState extends State<MediumCard> {
           ],
         ),
       ),
-    Expanded(
-    flex: 1,
-    child:  SingleChildScrollView(
-    scrollDirection: Axis.vertical,//.horizontal
-    child:
-    ToHtml(html: widget.game.description!),
-    ),),
+      Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: Colors.blue,
+            ),
+            color: Colors.blueGrey,
+            borderRadius: BorderRadius.circular(10.0),
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: const [
+              Text(
+                "Description",style: TextStyle(color: Colors.yellow),
+              ),
+            ],
+          )),
+      Expanded(
+        flex: 1,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical, //.horizontal
+          child: ToHtml(html: widget.game.description!),
+        ),
+      ),
       /*Expanded(
         child: ToHtml(html: widget.game.description!),
       )*/
