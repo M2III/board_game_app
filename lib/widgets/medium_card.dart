@@ -22,43 +22,27 @@ class _MediumCardState extends State<MediumCard> {
           widget.game.name!,
         ),
         centerTitle: true,
+        actions: <Widget>[
+          PopupMenuButton(
+              itemBuilder: (context) => [
+                PopupMenuItem(
+                  child: TextButton( onPressed: () => print("I wish "+widget.game.name!) , child: const Text("I wish"),),
+                  value: 1,
+                ),
+                PopupMenuItem(
+                  child: TextButton( onPressed: () => print("I played at "+widget.game.name!), child: const Text("I played"),),
+                  value: 2,
+                ),
+                PopupMenuItem(
+                  child: TextButton( onPressed: () => print("I wish "+widget.game.name!), child: const Text("I have"),),
+                  value: 3,
+                ),
+              ]
+          )
+        ],
       ),
       body: _getCard(),
       extendBody: true,
-      persistentFooterButtons: [
-        /*Dans l'idée en fonction de si ce jeux est ou non dans la collectionon mettra ajouter ou supprimer ;)  */
-        FloatingActionButton(
-          backgroundColor: const Color(0xFF6200EE),
-          onPressed: () => showDialog<String>(
-            context: context,
-            builder: (BuildContext context) => AlertDialog(
-              title: const Text('Game Add to your collection'),
-              content: const Text(
-                  'You can cancel the addition by clicking on cancel otherwise click on ok'),
-              actions: <Widget>[
-                TextButton(
-                  onPressed: () => {
-                    Navigator.pop(context, 'Cancel'),
-                    print("cancel"),
-                  },
-                  child: const Text('Cancel'),
-                ),
-                TextButton(
-                  onPressed: () => {
-                    Navigator.pop(context, 'OK'),
-                    print("Ok"),
-                  },
-                  child: const Text('OK'),
-                ),
-              ],
-            ),
-          ),
-          child: const Icon(
-            Icons.add,
-            color: Colors.blue,
-          ),
-        ),
-      ],
     );
   }
 
@@ -85,6 +69,7 @@ class _MediumCardState extends State<MediumCard> {
             width: 200,
             height: 200,
           ),
+
         ],
       ),
       RatingBar.builder(
