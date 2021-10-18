@@ -25,15 +25,8 @@ class _HomeScreenState extends State<HomeScreen> {
         bottomNavigationBar: const MenuBottom(),
         body: Center(
           child: Column(
-            children: <Widget>[
-              TextField(
-              onSubmitted: (String value) async {
-                inputValue = value;
-                debugPrint(inputValue);
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context)=> ApiSearch(gameName: inputValue),));
-          },
-          ),
+            children: const <Widget>[
+          ApiSearch(),
             ],
           ),
         ),
