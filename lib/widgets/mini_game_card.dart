@@ -4,7 +4,7 @@ import '../models/game.dart';
 class MiniGameCard extends StatelessWidget {
   final Game _game;
 
-  MiniGameCard(this._game);
+  const MiniGameCard(this._game, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
