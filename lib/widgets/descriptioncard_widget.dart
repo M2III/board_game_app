@@ -1,7 +1,4 @@
-
 import 'package:board_game_app/models/game.dart';
-import 'package:board_game_app/pages/collections_screen.dart';
-import 'package:board_game_app/pages/product_detail.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -16,10 +13,6 @@ class DescriptionCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return  InkWell(
       onTap: () {
-        /**
-         * Navigator.of(context).push(
-          MaterialPageRoute(builder: (context)=> ProductDetail(game: game,),));
-         **/
         Navigator.push(
           context,
           PageRouteBuilder(pageBuilder: (_, __, ___) => MediumCard(game: game)),
