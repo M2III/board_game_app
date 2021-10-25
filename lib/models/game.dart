@@ -80,6 +80,7 @@ class Game {
   String? _description;
   int? _minPlayers;
   int? _maxPlayers;
+  String? _thumbUrl;
   /*String? _price;
   String? _priceCa;
   String? _priceUk;
@@ -94,7 +95,7 @@ class Game {
 
   String? _commentary;
   String? _faq;
-  String? _thumbUrl;
+
   dynamic _matchesSpecs;
   List<dynamic>? _specs;
   List<Mechanics>? _mechanics;
@@ -151,6 +152,7 @@ class Game {
   String? get description => _description;
   int? get minPlayers => _minPlayers;
   int? get maxPlayers => _maxPlayers;
+  String? get thumbUrl => _thumbUrl;
   /*String? get price => _price;
   String? get priceCa => _priceCa;
   String? get priceUk => _priceUk;
@@ -165,7 +167,7 @@ class Game {
 
   String? get commentary => _commentary;
   String? get faq => _faq;
-  String? get thumbUrl => _thumbUrl;
+
   dynamic get matchesSpecs => _matchesSpecs;
   List<dynamic>? get specs => _specs;
   List<Mechanics>? get mechanics => _mechanics;
@@ -224,6 +226,7 @@ class Game {
     String? description,
     int? minPlayers,
     int? maxPlayers,
+    String? thumbUrl,
     /*String? price,
     String? priceCa,
     String? priceUk,
@@ -238,7 +241,7 @@ class Game {
 
     String? commentary,
     String? faq,
-    String? thumbUrl,
+
     dynamic matchesSpecs,
     List<dynamic>? specs,
     List<Mechanics>? mechanics,
@@ -286,7 +289,8 @@ class Game {
     String? msrpText,
     String? priceText,
     Images? images,
-    String? descriptionPreview*/}){
+    String? descriptionPreview*/
+  }) {
     _id = id;
     _name = name;
     _handle = handle;
@@ -297,6 +301,7 @@ class Game {
     _description = description;
     _minPlayers = minPlayers;
     _maxPlayers = maxPlayers;
+    _thumbUrl = thumbUrl;
     /*_price = price;
     _priceCa = priceCa;
     _priceUk = priceUk;
@@ -311,7 +316,6 @@ class Game {
 
     _commentary = commentary;
     _faq = faq;
-    _thumbUrl = thumbUrl;
     _matchesSpecs = matchesSpecs;
     _specs = specs;
     _mechanics = mechanics;
@@ -374,6 +378,7 @@ class Game {
     _description = json['description'];
     _minPlayers = json['min_players'];
     _maxPlayers = json['max_players'];
+    _thumbUrl = json['thumb_url'];
     /*_price = json['price'];
     _priceCa = json['price_ca'];
     _priceUk = json['price_uk'];
@@ -393,13 +398,12 @@ class Game {
 
     _commentary = json['commentary'];
     _faq = json['faq'];
-    _thumbUrl = json['thumb_url'];
     _matchesSpecs = json['matches_specs'];
     if (json['specs'] != null) {
       _specs = [];
-      *//*json['specs'].forEach((v) {
+      */ /*json['specs'].forEach((v) {
         _specs?.add(dynamic.fromJson(v));
-      });*//*
+      });*/ /*
     }
     if (json['mechanics'] != null) {
       _mechanics = [];
@@ -415,15 +419,15 @@ class Game {
     }
     if (json['related_to'] != null) {
       _relatedTo = [];
-      *//*json['related_to'].forEach((v) {
+      */ /*json['related_to'].forEach((v) {
         _relatedTo?.add(dynamic.fromJson(v));
-      });*//*
+      });*/ /*
     }
     if (json['developers'] != null) {
       _developers = [];
-      *//*json['developers'].forEach((v) {
+      */ /*json['developers'].forEach((v) {
         _developers?.add(dynamic.fromJson(v));
-      });*//*
+      });*/ /*
     }
     _artists = json['artists'] != null ? json['artists'].cast<String>() : [];
     if (json['designers'] != null) {
@@ -442,9 +446,9 @@ class Game {
     _primaryDesigner = json['primary_designer'] != null ? PrimaryDesigner.fromJson(json['primaryDesigner']) : null;
     if (json['names'] != null) {
       _names = [];
-      *//*json['names'].forEach((v) {
+      */ /*json['names'].forEach((v) {
         _names?.add(dynamic.fromJson(v));
-      });*//*
+      });*/ /*
     }
     _tags = json['tags'] != null ? json['tags'].cast<String>() : [];
 
@@ -502,6 +506,7 @@ class Game {
     map['year_published'] = _yearPublished;
     map['min_players'] = _minPlayers;
     map['max_players'] = _maxPlayers;
+    map['thumb_url'] = _thumbUrl;
     /*map['price'] = _price;
     map['price_ca'] = _priceCa;
     map['price_uk'] = _priceUk;
@@ -518,7 +523,6 @@ class Game {
 
     map['commentary'] = _commentary;
     map['faq'] = _faq;
-    map['thumb_url'] = _thumbUrl;
     map['matches_specs'] = _matchesSpecs;
     if (_specs != null) {
       map['specs'] = _specs?.map((v) => v.toJson()).toList();
@@ -594,6 +598,10 @@ class Game {
     return map;
   }
 
+  @override
+  String toString() {
+    return 'Game{_id: $_id, _name: $_name, _handle: $_handle, _url: $_url, _imageUrl: $_imageUrl, _averageUserRating: $_averageUserRating, _publisher: $_publisher, _yearPublished: $_yearPublished, _description: $_description, _minPlayers: $_minPlayers, _maxPlayers: $_maxPlayers, _thumbUrl: $_thumbUrl}';
+  }
 }
 
 /// thumb : "https://d2k4q26owzy373.cloudfront.net/40x40/games/uploaded/1629324722072.jpg"
@@ -615,12 +623,12 @@ class Images {
   String? get large => _large;
   String? get original => _original;
 
-  Images({
-    String? thumb,
-    String? small,
-    String? medium,
-    String? large,
-    String? original}){
+  Images(
+      {String? thumb,
+      String? small,
+      String? medium,
+      String? large,
+      String? original}) {
     _thumb = thumb;
     _small = small;
     _medium = medium;
@@ -645,7 +653,6 @@ class Images {
     map['original'] = _original;
     return map;
   }
-
 }
 
 /// country : "AU"
@@ -664,11 +671,8 @@ class HistoricalLowPrices {
   double? get price => _price;
   bool? get isLow => _isLow;
 
-  HistoricalLowPrices({
-    String? country,
-    Date? date,
-    double? price,
-    bool? isLow}){
+  HistoricalLowPrices(
+      {String? country, Date? date, double? price, bool? isLow}) {
     _country = country;
     _date = date;
     _price = price;
@@ -692,7 +696,6 @@ class HistoricalLowPrices {
     map['isLow'] = _isLow;
     return map;
   }
-
 }
 
 /// __type : "Date"
@@ -705,9 +708,7 @@ class Date {
   String? get type => _type;
   String? get iso => _iso;
 
-  Date({
-    String? type,
-    String? iso}){
+  Date({String? type, String? iso}) {
     _type = type;
     _iso = iso;
   }
@@ -723,7 +724,6 @@ class Date {
     map['iso'] = _iso;
     return map;
   }
-
 }
 
 /// id : "LCjyh7WnHd"
@@ -739,10 +739,7 @@ class PrimaryDesigner {
   String? get name => _name;
   String? get url => _url;
 
-  PrimaryDesigner({
-    String? id,
-    String? name,
-    String? url}){
+  PrimaryDesigner({String? id, String? name, String? url}) {
     _id = id;
     _name = name;
     _url = url;
@@ -761,7 +758,6 @@ class PrimaryDesigner {
     map['url'] = _url;
     return map;
   }
-
 }
 
 /// id : "RY4XltbNAz"
@@ -777,10 +773,7 @@ class PrimaryPublisher {
   String? get name => _name;
   String? get url => _url;
 
-  PrimaryPublisher({
-    String? id,
-    String? name,
-    String? url}){
+  PrimaryPublisher({String? id, String? name, String? url}) {
     _id = id;
     _name = name;
     _url = url;
@@ -799,7 +792,6 @@ class PrimaryPublisher {
     map['url'] = _url;
     return map;
   }
-
 }
 
 /// id : "RY4XltbNAz"
@@ -809,8 +801,7 @@ class Publishers {
 
   String? get id => _id;
 
-  Publishers({
-    String? id}){
+  Publishers({String? id}) {
     _id = id;
   }
 
@@ -823,7 +814,6 @@ class Publishers {
     map['id'] = _id;
     return map;
   }
-
 }
 
 /// id : "LCjyh7WnHd"
@@ -833,8 +823,7 @@ class Designers {
 
   String? get id => _id;
 
-  Designers({
-    String? id}){
+  Designers({String? id}) {
     _id = id;
   }
 
@@ -847,7 +836,6 @@ class Designers {
     map['id'] = _id;
     return map;
   }
-
 }
 
 /// id : "mavSOM8vjH"
@@ -857,8 +845,7 @@ class Categories {
 
   String? get id => _id;
 
-  Categories({
-    String? id}){
+  Categories({String? id}) {
     _id = id;
   }
 
@@ -871,7 +858,6 @@ class Categories {
     map['id'] = _id;
     return map;
   }
-
 }
 
 /// id : "R0bGq4cAl4"
@@ -881,8 +867,7 @@ class Mechanics {
 
   String? get id => _id;
 
-  Mechanics({
-    String? id}){
+  Mechanics({String? id}) {
     _id = id;
   }
 
@@ -895,7 +880,6 @@ class Mechanics {
     map['id'] = _id;
     return map;
   }
-
 }
 
 /// country : "CA"
@@ -908,9 +892,7 @@ class Msrps {
   String? get country => _country;
   int? get price => _price;
 
-  Msrps({
-    String? country,
-    int? price}){
+  Msrps({String? country, int? price}) {
     _country = country;
     _price = price;
   }
@@ -926,5 +908,4 @@ class Msrps {
     map['price'] = _price;
     return map;
   }
-
 }

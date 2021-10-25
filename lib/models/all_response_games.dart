@@ -1,7 +1,5 @@
 import 'game.dart';
 
-
-
 class AllResponseGames {
   /*int? _count;*/
   List<Game>? _results;
@@ -9,9 +7,10 @@ class AllResponseGames {
   /*int? get count => _count;*/
   List<Game>? get results => _results ?? [];
 
-  AllResponseGames({
-    /*int? count,*/
-    List<Game>? results}){
+  AllResponseGames(
+      {
+      /*int? count,*/
+      List<Game>? results}) {
     /*_count = count;*/
     _results = results;
   }
@@ -32,14 +31,16 @@ class AllResponseGames {
       map['count'] = _count as Game;
     }*/
     if (_results != null) {
-      map['results'] = _results?.map((v) => v.toJson()) as Game ;
+      map['results'] = _results?.map((v) => v.toJson()) as Game;
     }
     return map;
   }
 
+  @override
+  String toString() {
+    return 'AllResponseGames{_results: $_results}';
+  }
 }
-
-
 
 /*
 class Count {
