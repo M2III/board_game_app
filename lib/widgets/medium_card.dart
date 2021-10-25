@@ -106,7 +106,7 @@ class _MediumCardState extends State<MediumCard> {
           color: Colors.amber,
         ),
         onRatingUpdate: (rating) {
-          print(rating);
+          // print(rating);
         },
       ),
       Center(
@@ -167,13 +167,13 @@ class _MediumCardState extends State<MediumCard> {
   _updateCollection(value){
     switch(value){
       case 1:
-        print("I wish "+widget.game.name!);
+        // print("I wish "+widget.game.name!);
         break;
       case 2:
-        print("I played at "+widget.game.name!);
+        // print("I played at "+widget.game.name!);
         break;
       case 3:
-        print("I owned at "+widget.game.name!);
+        // print("I owned at "+widget.game.name!);
         break;
       default:
         break;
