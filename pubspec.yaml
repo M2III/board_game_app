@@ -41,6 +41,11 @@ dependencies:
   firebase_core: ^1.7.0
   # Firestore
   cloud_firestore: ^2.5.3
+
+  # Rating Stars
+  flutter_rating_bar: ^4.0.0
+  # Parse Html for game description
+  flutter_html: ^2.1.5
   # For crash analyze
   # firebase_crashlytics: "^0.4.0+1"
   the_validator: ^2.0.0
