@@ -131,7 +131,7 @@ class _AuthScreenState extends State<AuthScreen> {
                                             password: _passwordController.text);
                                     Navigator.of(context)
                                         .push(MaterialPageRoute(
-                                      builder: (context) => HomeScreen(),
+                                      builder: (context) => const HomeScreen(),
                                     ));
                                   } on FirebaseAuthException {
                                     ScaffoldMessenger.of(context)
