@@ -1,5 +1,6 @@
 import 'package:board_game_app/services/api_search.dart';
 import 'package:board_game_app/widgets/menu_bottom.dart';
+import 'package:board_game_app/widgets/starred_mini_games_container.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -26,15 +26,14 @@ class _HomeScreenState extends State<HomeScreen> {
         body: Center(
           child: Column(
             children: const <Widget>[
-          ApiSearch(),
+              ApiSearch(),
+              StarredMiniGamesContainer(
+                  StarredMiniGamesContainer.bestKickstarters),
+              StarredMiniGamesContainer(StarredMiniGamesContainer.bestRated),
             ],
           ),
         ),
       ),
     );
   }
-
 }
-
-
-
