@@ -1,8 +1,8 @@
 import 'package:board_game_app/models/game.dart';
+import 'package:board_game_app/utils/constants.dart' as constants;
 import 'package:board_game_app/widgets/to_html.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:board_game_app/utils/constants.dart' as constants;
 class MediumCard extends StatefulWidget {
   final Game game;
 
@@ -24,17 +24,38 @@ class _MediumCardState extends State<MediumCard> {
         centerTitle: true,
         actions: <Widget>[
           PopupMenuButton(
+              onSelected: (value) {
+                _updateCollection(value);
+              },
               itemBuilder: (context) => [
-                PopupMenuItem(
-                  child: TextButton( onPressed: () => print("I wish "+widget.game.name!) , child: const Text("I wish"),),
+                 PopupMenuItem(
+                  child: Row(
+                    mainAxisAlignment : MainAxisAlignment.spaceBetween,
+                    children: const <Widget>[
+                      Icon(Icons.favorite,semanticLabel: "Wished",color: Colors.blueGrey),
+                      Text('Wished'),
+                    ],
+                  ),
                   value: 1,
                 ),
                 PopupMenuItem(
-                  child: TextButton( onPressed: () => print("I played at "+widget.game.name!), child: const Text("I played"),),
+                  child: Row(
+                    mainAxisAlignment : MainAxisAlignment.spaceAround,
+                    children: const <Widget>[
+                      Icon(Icons.casino_outlined,semanticLabel: "Played",color: Colors.blueGrey),
+                      Text('Played'),
+                    ],
+                  ),
                   value: 2,
                 ),
-                PopupMenuItem(
-                  child: TextButton( onPressed: () => print("I wish "+widget.game.name!), child: const Text("I have"),),
+                 PopupMenuItem(
+                  child: Row(
+                    mainAxisAlignment : MainAxisAlignment.spaceEvenly,
+                    children: const <Widget>[
+                      Icon(Icons.view_column_outlined,semanticLabel: "Owned",color: Colors.blueGrey),
+                      Text('Owned'),
+                    ],
+                  ),
                   value: 3,
                 ),
               ]
@@ -142,5 +163,20 @@ class _MediumCardState extends State<MediumCard> {
         child: ToHtml(html: widget.game.description!),
       )*/
     ]);
+  }
+  _updateCollection(value){
+    switch(value){
+      case 1:
+        print("I wish "+widget.game.name!);
+        break;
+      case 2:
+        print("I played at "+widget.game.name!);
+        break;
+      case 3:
+        print("I owned at "+widget.game.name!);
+        break;
+      default:
+        break;
+    }
   }
 }
