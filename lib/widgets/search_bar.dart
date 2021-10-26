@@ -1,3 +1,4 @@
+import 'package:board_game_app/pages/search_result_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -16,11 +17,14 @@ class _SearchBarState extends State<SearchBar> {
       return;
     }
 
-    // Navigator.push(
-    //   context,
-    //   PageRouteBuilder(
-    //       pageBuilder: (_, __, ___) => GameScreen(game: _games.results![i])),
-    // );
+    Navigator.push(
+      context,
+      PageRouteBuilder(
+        pageBuilder: (_, __, ___) => SearchResultScreen(
+          inputSearch: _textController.text,
+        ),
+      ),
+    );
   }
 
   @override
@@ -33,7 +37,6 @@ class _SearchBarState extends State<SearchBar> {
         ),
         child: Column(
           children: [
-            const SizedBox(height: 50),
             getSearchField(),
             const SizedBox(height: 25),
             //DescriptionCardWidget(game: null,),
@@ -57,7 +60,7 @@ class _SearchBarState extends State<SearchBar> {
             fontStyle: FontStyle.normal),
         filled: true,
         fillColor: const Color.fromRGBO(255, 255, 255, 1),
-        prefixIcon: const Icon(Icons.email),
+        prefixIcon: const Icon(Icons.search),
         focusedBorder: OutlineInputBorder(
           borderSide: const BorderSide(
             color: Colors.transparent,

@@ -9,12 +9,13 @@ class CollectionsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       home: Scaffold(
-        body: Scaffold(
-          body: SearchBar(),
+        appBar: AppBar(
+          title: const Text("Your boardgames collection"),
         ),
-        bottomNavigationBar: MenuBottom(),
+        body: const SearchBar(),
+        bottomNavigationBar: const MenuBottom(),
       ),
     );
   }

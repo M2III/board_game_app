@@ -1,5 +1,6 @@
 import 'package:board_game_app/models/all_response_games.dart';
 import 'package:board_game_app/services/api_service.dart';
+import 'package:board_game_app/widgets/medium_game_card.dart';
 import 'package:flutter/material.dart';
 
 class SearchResultScreen extends StatefulWidget {
@@ -13,11 +14,17 @@ class SearchResultScreen extends StatefulWidget {
 }
 
 class _SearchResultScreenState extends State<SearchResultScreen> {
-  late AllResponseGames _games;
+  AllResponseGames _games = AllResponseGames();
 
   @override
   void initState() {
-    ApiService.searchGamesByInput(widget.inputSearch);
+    ApiService.searchGamesByInput(widget.inputSearch).then((gameListResponse) {
+      setState(() {
+        _games = gameListResponse;
+      });
+    });
+
+    super.initState();
   }
 
   @override
@@ -31,24 +38,20 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
   }
 
   Widget _getBody() {
-    if (_games.isNotEmpty) {
-      return Expanded(
-        child: ListView.separated(
-          scrollDirection: Axis.vertical,
-          shrinkWrap: true,
-          separatorBuilder: (BuildContext context, int index) =>
-              const Divider(),
-          itemCount: _games.length,
-          itemBuilder: (context, index) {
-            return MediumGameCard(game: _games[index]);
-          },
-        ),
+    if (_games.results!.isNotEmpty) {
+      return ListView.separated(
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
+        separatorBuilder: (BuildContext context, int index) => const Divider(),
+        itemCount: _games.results!.length,
+        itemBuilder: (context, index) {
+          return MediumGameCard(game: _games.results![index]);
+        },
       );
     } else {
-      //getGames();
-      return Center(
-        child: Text(message,
-            style: const TextStyle(
+      return const Center(
+        child: Text("No results",
+            style: TextStyle(
                 color: Colors.amber,
                 fontSize: 20.0,
                 fontWeight: FontWeight.w900)),
