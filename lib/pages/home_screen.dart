@@ -23,15 +23,18 @@ class _HomeScreenState extends State<HomeScreen> {
           title: const Text('BoardgameApp'),
         ),
         bottomNavigationBar: const MenuBottom(),
-        body: Center(
-          child: Column(
-            children: const <Widget>[
-              SearchBar(),
-              MiniGameListContainer(MiniGameListContainer.bestKickstarters),
-              MiniGameListContainer(MiniGameListContainer.bestRated),
-            ],
-          ),
-        ),
+        body: _getBody()
+      ),
+    );
+  }
+  _getBody(){
+    return SingleChildScrollView(
+      child: Column(
+        children: const <Widget>[
+          SearchBar(),
+          MiniGameListContainer(MiniGameListContainer.bestKickstarters),
+          MiniGameListContainer(MiniGameListContainer.bestRated),
+        ],
       ),
     );
   }
