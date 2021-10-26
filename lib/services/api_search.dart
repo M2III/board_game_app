@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:board_game_app/models/all_response_games.dart';
 import 'package:board_game_app/models/game.dart';
+import 'package:board_game_app/utils/text_constants.dart';
 import 'package:board_game_app/widgets/medium_game_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +28,7 @@ class _ApiSearchState extends State<ApiSearch> {
         'name': inputValue,
         'pretty': 'true',
         'exact': 'true',
-        'client_id': 'JLBr5npPhV'
+        'client_id': TextConstants.clientId
       };
 
       String queryString = Uri(queryParameters: queryParams).query;

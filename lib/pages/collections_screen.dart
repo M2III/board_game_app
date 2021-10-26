@@ -11,7 +11,9 @@ class CollectionsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body: Scaffold(body: SearchBar()),
+        body: Scaffold(
+          body: SearchBar(),
+        ),
         bottomNavigationBar: const MenuBottom(),
       ),
     );

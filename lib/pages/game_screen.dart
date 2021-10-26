@@ -1,5 +1,5 @@
 import 'package:board_game_app/models/game.dart';
-import 'package:board_game_app/utils/constants.dart' as constants;
+import 'package:board_game_app/utils/text_constants.dart';
 import 'package:board_game_app/widgets/to_html.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -77,7 +77,7 @@ class _GameScreenState extends State<GameScreen> {
           widget.game.maxPlayers.toString() +
           " players");
     } else {
-      return const Text(constants.infoNotAvailable);
+      return const Text(TextConstants.infoNotAvailable);
     }
   }
 
@@ -89,7 +89,7 @@ class _GameScreenState extends State<GameScreen> {
           Image.network(
             widget.game.imageUrl != null
                 ? widget.game.imageUrl!
-                : constants.infoNotAvailable,
+                : TextConstants.infoNotAvailable,
             width: 200,
             height: 200,
           ),
@@ -117,7 +117,7 @@ class _GameScreenState extends State<GameScreen> {
           children: [
             Text(widget.game.name != null
                 ? widget.game.name!
-                : constants.infoNotAvailable),
+                : TextConstants.infoNotAvailable),
             _getNumberPlayer(),
           ],
         ),
@@ -130,10 +130,10 @@ class _GameScreenState extends State<GameScreen> {
             //Text(widget.game.description!),
             Text(widget.game.averageUserRating != null
                 ? widget.game.averageUserRating!.toStringAsFixed(1)
-                : constants.infoNotAvailable),
+                : TextConstants.infoNotAvailable),
             Text(widget.game.yearPublished != null
                 ? widget.game.yearPublished.toString()
-                : constants.infoNotAvailable),
+                : TextConstants.infoNotAvailable),
           ],
         ),
       ),
@@ -149,7 +149,7 @@ class _GameScreenState extends State<GameScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: const [
               Text(
-                constants.gameDescription,
+                TextConstants.gameDescription,
                 style: TextStyle(color: Colors.yellow),
               ),
             ],
