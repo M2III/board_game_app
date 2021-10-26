@@ -19,7 +19,7 @@ class _ApiSearchState extends State<ApiSearch> {
   String _response = 'Vide';
   List<Game> _games = [];
   String inputValue = "";
-  String message = "You can seach All you need here";
+  String message = "You can search All you need here";
 
   Future<void> getGames() async {
     if (inputValue.isNotEmpty) {

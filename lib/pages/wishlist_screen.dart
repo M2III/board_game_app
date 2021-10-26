@@ -1,5 +1,5 @@
-
 import 'package:board_game_app/widgets/menu_bottom.dart';
+import 'package:board_game_app/widgets/search_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -11,32 +11,12 @@ class WishListScreen extends StatelessWidget {
     //int _selectedIndex = 0;
 
     return MaterialApp(
-    home: Scaffold(
-      appBar: AppBar(title: const Text('WishListScreen')),
-      bottomNavigationBar: const MenuBottom(),
-      body: Center(
-          child: Container(
-              padding: const EdgeInsets.all(24),
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(Radius.circular(20)),
-                color: Colors.white70,
-              ),
-              child: const Text('WishListScreen',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 22,
-                      shadows: [
-                        Shadow(
-                          offset: Offset(1.0,1.0),
-                          blurRadius: 2.0,
-                          color: Colors.grey,
-                        )
-                      ]
-                  )
-              )
-          )
-      ),
-    ),
-  );
+      home: Scaffold(
+          appBar: AppBar(title: const Text('Your wishlist')),
+          bottomNavigationBar: const MenuBottom(),
+          body: Column(
+            children: const [SearchBar()],
+          )),
+    );
   }
 }
