@@ -5,8 +5,8 @@ class MiniGameListContainer extends StatelessWidget {
   final String _starBlockCategory;
 
   // Available starred categories
-  static const String bestRated = "Best rated games";
-  static const String bestKickstarters = "Popular on Kickstarter";
+  static const String bestRated = "Best 10 rated games";
+  static const String bestKickstarters = "10 Popular on Kickstarter";
 
   const MiniGameListContainer(this._starBlockCategory, {Key? key})
       : super(key: key);
