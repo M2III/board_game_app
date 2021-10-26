@@ -1,4 +1,5 @@
 import 'package:board_game_app/data/models/game.dart';
+import 'package:board_game_app/utils/text_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -28,15 +29,16 @@ class MediumGameCard extends StatelessWidget {
             children: <Widget>[
               Image.network(game.imageUrl != null
                   ? game.imageUrl!
-                  : "image non disponible"),
+                  : TextConstants.infoNotAvailable),
               Flexible(
                 fit: FlexFit.tight,
                 flex: 1,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text(
-                        game.name != null ? game.name! : "info non disponible"),
+                    Text(game.name != null
+                        ? game.name!
+                        : TextConstants.infoNotAvailable),
                     _getNumberPlayer(),
                   ],
                 ),
@@ -49,10 +51,10 @@ class MediumGameCard extends StatelessWidget {
                   children: [
                     Text(game.averageUserRating != null
                         ? game.averageUserRating!.toStringAsFixed(1)
-                        : "info non disponible"),
+                        : TextConstants.infoNotAvailable),
                     Text(game.yearPublished != null
                         ? game.yearPublished.toString()
-                        : "info non disponible"),
+                        : TextConstants.infoNotAvailable),
                   ],
                 ),
               ),

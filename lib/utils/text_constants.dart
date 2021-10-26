@@ -5,4 +5,5 @@ class TextConstants {
 
 // BoardGamesAtlas API Auth
   static const clientId = 'JLBr5npPhV';
+  static const baseUrl ='https://api.boardgameatlas.com/api/search';
 }
