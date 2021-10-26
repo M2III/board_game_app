@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:board_game_app/models/all_response_games.dart';
 import 'package:board_game_app/models/game.dart';
-import 'package:board_game_app/widgets/descriptioncard_widget.dart';
+import 'package:board_game_app/widgets/medium_game_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -83,7 +83,7 @@ class _ApiSearchState extends State<ApiSearch> {
               const Divider(),
           itemCount: _games.length,
           itemBuilder: (context, index) {
-            return DescriptionCardWidget(game: _games[index]);
+            return MediumGameCard(game: _games[index]);
           },
         ),
       );

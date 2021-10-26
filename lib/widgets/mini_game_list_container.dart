@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import '../widgets/mini_game_list.dart';
 
-class StarredMiniGamesContainer extends StatelessWidget {
+class MiniGameListContainer extends StatelessWidget {
   final String _starBlockCategory;
 
   // Available starred categories
   static const String bestRated = "Best rated games";
   static const String bestKickstarters = "Popular on Kickstarter";
 
-  const StarredMiniGamesContainer(this._starBlockCategory, {Key? key})
+  const MiniGameListContainer(this._starBlockCategory, {Key? key})
       : super(key: key);
 
   @override

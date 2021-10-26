@@ -1,9 +1,9 @@
 import 'package:board_game_app/models/all_response_games.dart';
 import 'package:board_game_app/services/api_service.dart';
 import 'package:board_game_app/widgets/mini_game_card.dart';
-import 'package:board_game_app/widgets/starred_mini_games_container.dart';
+import 'package:board_game_app/widgets/mini_game_list_container.dart';
 import 'package:flutter/material.dart';
-import 'medium_card.dart';
+import '../pages/game_screen.dart';
 
 class MiniGameList extends StatefulWidget {
   final String _starBlockCategory;
@@ -19,7 +19,7 @@ class _MiniGameListState extends State<MiniGameList> {
 
   @override
   void initState() {
-    if (widget._starBlockCategory == StarredMiniGamesContainer.bestRated) {
+    if (widget._starBlockCategory == MiniGameListContainer.bestRated) {
       ApiService.getGamesOrderByRank().then((response) {
         setState(() {
           _games = response;
@@ -55,7 +55,7 @@ class _MiniGameListState extends State<MiniGameList> {
                           context,
                           PageRouteBuilder(
                               pageBuilder: (_, __, ___) =>
-                                  MediumCard(game: _games.results![_index])),
+                                  GameScreen(game: _games.results![_index])),
                         );
                       },
                       child: Card(

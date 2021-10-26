@@ -3,16 +3,17 @@ import 'package:board_game_app/utils/constants.dart' as constants;
 import 'package:board_game_app/widgets/to_html.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-class MediumCard extends StatefulWidget {
+
+class GameScreen extends StatefulWidget {
   final Game game;
 
-  const MediumCard({Key? key, required this.game}) : super(key: key);
+  const GameScreen({Key? key, required this.game}) : super(key: key);
 
   @override
-  _MediumCardState createState() => _MediumCardState();
+  _GameScreenState createState() => _GameScreenState();
 }
 
-class _MediumCardState extends State<MediumCard> {
+class _GameScreenState extends State<GameScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,38 +29,40 @@ class _MediumCardState extends State<MediumCard> {
                 _updateCollection(value);
               },
               itemBuilder: (context) => [
-                 PopupMenuItem(
-                  child: Row(
-                    mainAxisAlignment : MainAxisAlignment.spaceBetween,
-                    children: const <Widget>[
-                      Icon(Icons.favorite,semanticLabel: "Wished",color: Colors.blueGrey),
-                      Text('Wished'),
-                    ],
-                  ),
-                  value: 1,
-                ),
-                PopupMenuItem(
-                  child: Row(
-                    mainAxisAlignment : MainAxisAlignment.spaceAround,
-                    children: const <Widget>[
-                      Icon(Icons.casino_outlined,semanticLabel: "Played",color: Colors.blueGrey),
-                      Text('Played'),
-                    ],
-                  ),
-                  value: 2,
-                ),
-                 PopupMenuItem(
-                  child: Row(
-                    mainAxisAlignment : MainAxisAlignment.spaceEvenly,
-                    children: const <Widget>[
-                      Icon(Icons.view_column_outlined,semanticLabel: "Owned",color: Colors.blueGrey),
-                      Text('Owned'),
-                    ],
-                  ),
-                  value: 3,
-                ),
-              ]
-          )
+                    PopupMenuItem(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const <Widget>[
+                          Icon(Icons.favorite,
+                              semanticLabel: "Wished", color: Colors.blueGrey),
+                          Text('Wished'),
+                        ],
+                      ),
+                      value: 1,
+                    ),
+                    PopupMenuItem(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: const <Widget>[
+                          Icon(Icons.casino_outlined,
+                              semanticLabel: "Played", color: Colors.blueGrey),
+                          Text('Played'),
+                        ],
+                      ),
+                      value: 2,
+                    ),
+                    PopupMenuItem(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: const <Widget>[
+                          Icon(Icons.view_column_outlined,
+                              semanticLabel: "Owned", color: Colors.blueGrey),
+                          Text('Owned'),
+                        ],
+                      ),
+                      value: 3,
+                    ),
+                  ])
         ],
       ),
       body: _getCard(),
@@ -90,7 +93,6 @@ class _MediumCardState extends State<MediumCard> {
             width: 200,
             height: 200,
           ),
-
         ],
       ),
       RatingBar.builder(
@@ -164,8 +166,9 @@ class _MediumCardState extends State<MediumCard> {
       )*/
     ]);
   }
-  _updateCollection(value){
-    switch(value){
+
+  _updateCollection(value) {
+    switch (value) {
       case 1:
         // print("I wish "+widget.game.name!);
         break;
