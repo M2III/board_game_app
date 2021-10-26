@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SearchBar extends StatelessWidget {
-  TextEditingController textController = TextEditingController();
+  static final TextEditingController textController = TextEditingController();
+
+  const SearchBar({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
