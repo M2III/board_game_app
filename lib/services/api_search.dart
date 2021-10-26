@@ -23,7 +23,7 @@ class _ApiSearchState extends State<ApiSearch> {
 
   Future<void> getGames() async {
     if (inputValue.isNotEmpty) {
-      var endpointUrl = 'https://api.boardgameatlas.com/api/search';
+      var endpointUrl = TextConstants.baseUrl;
       Map<String, String> queryParams = {
         'name': inputValue,
         'pretty': 'true',

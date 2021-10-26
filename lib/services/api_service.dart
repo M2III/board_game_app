@@ -7,7 +7,7 @@ import 'package:http/http.dart' as http;
 class ApiService {
   static Future<AllResponseGames> getGamesOrderByRank() async {
     var uri = Uri.parse(
-        'https://api.boardgameatlas.com/api/search?order_by=rank&limit=10&client_id=${TextConstants.clientId}');
+        '${TextConstants.baseUrl}?order_by=rank&limit=10&client_id=${TextConstants.clientId}');
     var responseFromApi = await http.get(uri);
     var formattedResponse = responseFromApi.body.replaceAll('�', '');
     var games = AllResponseGames.fromJson(jsonDecode(formattedResponse));
@@ -17,7 +17,7 @@ class ApiService {
   static Future<AllResponseGames>
       getPopularKickstartersOrderByTrendingRank() async {
     var uri = Uri.parse(
-        'https://api.boardgameatlas.com/api/search?kickstarter=true&limit=10&client_id=${TextConstants.clientId}&order_by=trending_rank');
+        '${TextConstants.baseUrl}?kickstarter=true&limit=10&client_id=${TextConstants.clientId}&order_by=trending_rank');
     var responseFromApi = await http.get(uri);
     var formattedResponse = responseFromApi.body.replaceAll('�', '');
     var games = AllResponseGames.fromJson(jsonDecode(formattedResponse));
@@ -25,7 +25,7 @@ class ApiService {
   }
 
   static Future<AllResponseGames> searchGamesByInput(String input) async {
-    var endpointUrl = 'https://api.boardgameatlas.com/api/search';
+    var endpointUrl = TextConstants.baseUrl;
     Map<String, String> queryParams = {
       'name': input,
       'pretty': 'true',
