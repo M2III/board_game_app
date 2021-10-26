@@ -9,12 +9,12 @@ class CollectionsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: Scaffold(
         body: Scaffold(
           body: SearchBar(),
         ),
-        bottomNavigationBar: const MenuBottom(),
+        bottomNavigationBar: MenuBottom(),
       ),
     );
   }
