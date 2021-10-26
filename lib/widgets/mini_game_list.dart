@@ -7,6 +7,7 @@ import '../pages/game_screen.dart';
 
 class MiniGameList extends StatefulWidget {
   final String _starBlockCategory;
+
   const MiniGameList(this._starBlockCategory, {Key? key}) : super(key: key);
 
   @override
@@ -38,10 +39,10 @@ class _MiniGameListState extends State<MiniGameList> {
 
   @override
   Widget build(BuildContext context) {
-    return _games.results!.isNotEmpty
+    return (_games.results!.isNotEmpty || _games.results == null)
         ? Center(
             child: SizedBox(
-              height: 200, // card height
+              height: 180, // card height
               child: PageView.builder(
                 itemCount: _games.results!.length,
                 controller: PageController(viewportFraction: 0.7),
@@ -55,16 +56,10 @@ class _MiniGameListState extends State<MiniGameList> {
                           context,
                           PageRouteBuilder(
                               pageBuilder: (_, __, ___) =>
-                                  GameScreen(game: _games.results![_index])),
+                                  GameScreen(game: _games.results![i])),
                         );
                       },
-                      child: Card(
-                        elevation: 6,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                        child: Center(
-                            child: MiniGameCard(_games.results![_index])),
-                      ),
+                      child: MiniGameCard(_games.results![i]),
                     ),
                   );
                 },
