@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'mini_game_list.dart';
+import 'miniGameList/mini_game_list.dart';
 
 class MiniGameListContainer extends StatelessWidget {
   final String _starBlockCategory;

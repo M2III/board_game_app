@@ -1,10 +1,10 @@
 import 'package:board_game_app/data/models/all_response_games.dart';
 import 'package:board_game_app/pages/game_screen.dart';
-import 'package:board_game_app/services/api_service.dart';
+import 'package:board_game_app/resources/widgets/miniGameList/mini_game_list_bloc.dart';
 import 'package:flutter/material.dart';
 
-import 'mini_game_card.dart';
-import 'mini_game_list_container.dart';
+import '../mini_game_card.dart';
+import '../mini_game_list_container.dart';
 
 class MiniGameList extends StatefulWidget {
   final String _starBlockCategory;
@@ -22,13 +22,15 @@ class _MiniGameListState extends State<MiniGameList> {
   @override
   void initState() {
     if (widget._starBlockCategory == MiniGameListContainer.bestRated) {
-      ApiService.getGamesOrderByRank().then((response) {
+      miniGameListBloc.getGamesOrderByRank().then((response) {
         setState(() {
           _games = response;
         });
       });
     } else {
-      ApiService.getPopularKickstartersOrderByTrendingRank().then((response) {
+      miniGameListBloc
+          .getPopularKickstartersOrderByTrendingRank()
+          .then((response) {
         setState(() {
           _games = response;
         });
