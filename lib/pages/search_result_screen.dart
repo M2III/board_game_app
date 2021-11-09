@@ -1,4 +1,4 @@
-import 'package:board_game_app/models/all_response_games.dart';
+import 'package:board_game_app/data/models/all_response_games.dart';
 import 'package:board_game_app/services/api_service.dart';
 import 'package:board_game_app/widgets/medium_game_card.dart';
 import 'package:flutter/material.dart';
