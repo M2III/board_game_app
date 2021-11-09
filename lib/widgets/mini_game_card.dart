@@ -1,5 +1,5 @@
+import 'package:board_game_app/data/models/game.dart';
 import 'package:flutter/material.dart';
-import '../models/game.dart';
 
 class MiniGameCard extends StatelessWidget {
   final Game _game;
