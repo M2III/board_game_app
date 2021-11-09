@@ -1,6 +1,7 @@
 import 'package:board_game_app/data/models/all_response_games.dart';
 import 'package:board_game_app/services/api_service.dart';
 import 'package:board_game_app/widgets/medium_game_card.dart';
+import 'package:board_game_app/widgets/menu_bottom.dart';
 import 'package:flutter/material.dart';
 
 class SearchResultScreen extends StatefulWidget {
@@ -33,6 +34,7 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
       appBar: AppBar(
         title: const Text('Search results'),
       ),
+      bottomNavigationBar: const MenuBottom(),
       body: _getBody(),
     );
   }
