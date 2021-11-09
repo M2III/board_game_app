@@ -1,7 +1,7 @@
 import 'package:board_game_app/data/models/game.dart';
-import 'package:board_game_app/utils/text_constants.dart';
-import 'package:board_game_app/widgets/menu_bottom.dart';
-import 'package:board_game_app/widgets/to_html.dart';
+import 'package:board_game_app/resources/utils/text_constants.dart';
+import 'package:board_game_app/resources/widgets/menu_bottom.dart';
+import 'package:board_game_app/resources/widgets/to_html.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 

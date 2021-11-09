@@ -1,4 +1,4 @@
-import 'package:board_game_app/widgets/menu_bottom.dart';
+import 'package:board_game_app/resources/widgets/menu_bottom.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -22,19 +22,13 @@ class SettingsScreen extends StatelessWidget {
                 ),
                 child: const Text('SettingsScreen',
                     textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 22,
-                        shadows: [
-                          Shadow(
-                            offset: Offset(1.0, 1.0),
-                            blurRadius: 2.0,
-                            color: Colors.grey,
-                          )
-                        ]
-                    )
-                )
-            )
-        ),
+                    style: TextStyle(fontSize: 22, shadows: [
+                      Shadow(
+                        offset: Offset(1.0, 1.0),
+                        blurRadius: 2.0,
+                        color: Colors.grey,
+                      )
+                    ])))),
       ),
     );
   }

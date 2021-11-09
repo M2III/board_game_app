@@ -1,6 +1,6 @@
-import 'package:board_game_app/widgets/menu_bottom.dart';
-import 'package:board_game_app/widgets/mini_game_list_container.dart';
-import 'package:board_game_app/widgets/search_bar.dart';
+import 'package:board_game_app/resources/widgets/menu_bottom.dart';
+import 'package:board_game_app/resources/widgets/mini_game_list_container.dart';
+import 'package:board_game_app/resources/widgets/search_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -19,15 +19,15 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text('BoardgameApp'),
-        ),
-        bottomNavigationBar: const MenuBottom(),
-        body: _getBody()
-      ),
+          appBar: AppBar(
+            title: const Text('BoardgameApp'),
+          ),
+          bottomNavigationBar: const MenuBottom(),
+          body: _getBody()),
     );
   }
-  _getBody(){
+
+  _getBody() {
     return SingleChildScrollView(
       child: Column(
         children: const <Widget>[

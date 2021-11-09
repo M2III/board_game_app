@@ -1,9 +1,10 @@
 import 'package:board_game_app/data/models/all_response_games.dart';
+import 'package:board_game_app/pages/game_screen.dart';
 import 'package:board_game_app/services/api_service.dart';
-import 'package:board_game_app/widgets/mini_game_card.dart';
-import 'package:board_game_app/widgets/mini_game_list_container.dart';
 import 'package:flutter/material.dart';
-import '../pages/game_screen.dart';
+
+import 'mini_game_card.dart';
+import 'mini_game_list_container.dart';
 
 class MiniGameList extends StatefulWidget {
   final String _starBlockCategory;
