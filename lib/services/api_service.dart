@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:board_game_app/models/all_response_games.dart';
+import 'package:board_game_app/data/models/all_response_games.dart';
 import 'package:board_game_app/utils/text_constants.dart';
 import 'package:http/http.dart' as http;
 
