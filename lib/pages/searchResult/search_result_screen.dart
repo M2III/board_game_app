@@ -2,7 +2,7 @@ import 'package:board_game_app/data/models/all_response_games.dart';
 import 'package:board_game_app/pages/searchResult/search_result_bloc.dart';
 import 'package:board_game_app/resources/widgets/medium_game_card.dart';
 import 'package:board_game_app/resources/widgets/menu_bottom.dart';
-import 'package:board_game_app/services/api_service.dart';import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 class SearchResultScreen extends StatefulWidget {
   final String inputSearch;
@@ -19,7 +19,7 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
 
   @override
   void initState() {
-    var search = searchResultBloc.searchGamesByInput(widget.inputSearch).then((gameListResponse) {
+    searchResultBloc.searchGamesByInput(widget.inputSearch).then((gameListResponse) {
       setState(() {
         _games = gameListResponse;
       });

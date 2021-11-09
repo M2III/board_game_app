@@ -1,4 +1,5 @@
-import 'package:board_game_app/pages/search_result_screen.dart';
+
+import 'package:board_game_app/pages/searchResult/search_result_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
