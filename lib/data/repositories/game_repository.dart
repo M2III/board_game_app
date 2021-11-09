@@ -1,8 +1,6 @@
-import 'dart:convert';
-
 import 'package:board_game_app/data/models/all_response_games.dart';
-import 'package:board_game_app/utils/text_constants.dart';
-import 'package:http/http.dart' as http;
+import 'package:board_game_app/data/providers/remote/game_api_provider.dart';
+
 
 class GameRepository{
   static final GameRepository _singleton=
@@ -13,11 +11,17 @@ class GameRepository{
 
 
   Future<AllResponseGames> getGamesOrderByRank() async {
-    var uri = Uri.parse(
-        'https://api.boardgameatlas.com/api/search?order_by=rank&limit=10&client_id=${TextConstants.clientId}');
-    var responseFromApi = await http.get(uri);
-    var formattedResponse = responseFromApi.body.replaceAll('�', '');
-    var games = AllResponseGames.fromJson(jsonDecode(formattedResponse));
-    return games;
+    return GameApiProvider().getGamesOrderByRank();
   }
+
+  Future<AllResponseGames>
+  getPopularKickstartersOrderByTrendingRank() async {
+    
+    return GameApiProvider().getPopularKickstartersOrderByTrendingRank();
+  }
+
+  Future<AllResponseGames> searchGamesByInput(String input) async {
+    return GameApiProvider().searchGamesByInput(input);
+  }
+  
 }
