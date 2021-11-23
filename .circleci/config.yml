@@ -26,6 +26,9 @@ jobs:
           paths:
             - .dart_tool
       - run:
+          command: flutter packages pub run build_runner build
+          name: Build Runner
+      - run:
           command: flutter analyze
           name: Analyze code
     working_directory: ~/repo
