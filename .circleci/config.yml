@@ -50,6 +50,9 @@ jobs:
           paths:
             - .dart_tool
       - run:
+          command: flutter packages pub run build_runner build
+          name: Build Runner
+      - run:
           command: flutter test
           name: Run tests
     working_directory: ~/repo
