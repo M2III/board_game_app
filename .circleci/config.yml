@@ -37,13 +37,13 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - dart-dependencies-{{ checksum "pubspec.yml" }}
+            - dart-dependencies-{{ checksum "pubspec.yaml" }}
             - dart-dependencies-
       - run:
           command: flutter pub get
           name: Install Dependencies
       - save_cache:
-          key: dart-dependencies-{{ checksum "pubspec.yml" }}
+          key: dart-dependencies-{{ checksum "pubspec.yaml" }}
           paths:
             - .dart_tool
       - run:
