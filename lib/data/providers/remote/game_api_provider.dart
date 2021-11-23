@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:board_game_app/data/models/all_response_games.dart';
+import 'package:board_game_app/data/providers/local/collection_hive_provider.dart';
 import 'package:board_game_app/resources/utils/text_constants.dart';
 import 'package:http/http.dart' as http;
 
@@ -8,7 +9,11 @@ class GameApiProvider {
   static final GameApiProvider _singleton = GameApiProvider._internal();
 
   factory GameApiProvider() => _singleton;
-  GameApiProvider._internal();
+  GameApiProvider._internal(){
+    if(_collectionHiveProvider==null){
+      CollectionHiveProvider.create().then((provider) => _collectionHiveProvider=provider);
+    }
+  }
 
   Future<AllResponseGames> getGamesOrderByRank() async {
     var uri = Uri.parse(
@@ -18,6 +23,8 @@ class GameApiProvider {
     var games = AllResponseGames.fromJson(jsonDecode(formattedResponse));
     return games;
   }
+
+  CollectionHiveProvider?_collectionHiveProvider;
 
   Future<AllResponseGames> getPopularKickstartersOrderByTrendingRank() async {
     var uri = Uri.parse(
