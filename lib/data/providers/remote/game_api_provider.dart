@@ -11,7 +11,7 @@ class GameApiProvider {
   factory GameApiProvider() => _singleton;
   GameApiProvider._internal(){
     if(_collectionHiveProvider==null){
-      CollectionHiveProvider.create().then((provider) => _collectionHiveProvider=provider);
+      //CollectionHiveProvider.create().then((provider) => _collectionHiveProvider=provider);
     }
   }
 

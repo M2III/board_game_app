@@ -4,8 +4,8 @@ import 'package:board_game_app/data/repositories/game_repository.dart';
 class MiniGameListBloc {
   final _gameRepository = GameRepository();
 
-  Future<AllResponseGames> getPopularKickstartersOrderByTrendingRank() async {
-    await _gameRepository.insertATest();
+  Future<AllResponseGames> getPopularKickstartersOrderByTrendingRank()  {
+     _gameRepository.insertATest();
     return _gameRepository.getPopularKickstartersOrderByTrendingRank();
   }
 

@@ -11,7 +11,7 @@ class CollectionHiveProvider extends BaseHiveProvider<Collections,CollectionHive
 
   static Future<CollectionHiveProvider> create() async{
     final component = CollectionHiveProvider();
-    //Hive.registerAdapter<Collections>(CollectionsAdapter());
+    Hive.registerAdapter<Collections>(CollectionsAdapter());
     _box = await Hive.openBox('Collections');
     return component;
   }
