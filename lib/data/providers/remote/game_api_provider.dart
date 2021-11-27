@@ -9,11 +9,7 @@ class GameApiProvider {
   static final GameApiProvider _singleton = GameApiProvider._internal();
 
   factory GameApiProvider() => _singleton;
-  GameApiProvider._internal(){
-    if(_collectionHiveProvider==null){
-      //CollectionHiveProvider.create().then((provider) => _collectionHiveProvider=provider);
-    }
-  }
+  GameApiProvider._internal();
 
   Future<AllResponseGames> getGamesOrderByRank() async {
     var uri = Uri.parse(

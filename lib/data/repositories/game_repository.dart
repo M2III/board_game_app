@@ -15,11 +15,15 @@ class GameRepository {
   CollectionHiveProvider? _testCollectionHiveProvide;
 
   Future insertATest() async {
-    return _testCollectionHiveProvide?.add("premier_test", Collections(idGame: '1', id: '2'));
+    return _testCollectionHiveProvide?.add("premier_test", Collections(idGame: '123', id: '2422'));
   }
 
   List<Collections>? getAll() {
     return _testCollectionHiveProvide?.getAll();
+  }
+
+  Collections? get(String key) {
+    return _testCollectionHiveProvide?.get(key);
   }
 
 
