@@ -1,5 +1,5 @@
 import 'package:board_game_app/data/models/collections.dart';
-import 'package:board_game_app/data/providers/local/base_hive_provider.dart';
+import 'package:board_game_app/data/providers/local/database/base_hive_provider.dart';
 import 'package:hive/hive.dart';
 
 class CollectionHiveProvider extends BaseHiveProvider<Collections,CollectionHiveProvider>{
@@ -11,7 +11,7 @@ class CollectionHiveProvider extends BaseHiveProvider<Collections,CollectionHive
 
   static Future<CollectionHiveProvider> create() async{
     final component = CollectionHiveProvider();
-    Hive.registerAdapter<Collections>(CollectionsAdapter());
+    //Hive.registerAdapter<Collections>(CollectionsAdapter());
     _box = await Hive.openBox('Collections');
     return component;
   }
@@ -35,10 +35,10 @@ class CollectionHiveProvider extends BaseHiveProvider<Collections,CollectionHive
   Collections? get(String id) => _box!.get(id);
 
   @override
-  List<Collections> getAll() =>List<Collections>.from(_box!.values.toSet());
+  List<Collections> getAll() =>List<Collections>.from(_box!.values.toList());
 
   @override
-  Map getMap() => _box!.toMap();
+  Map<dynamic, dynamic> getMap() => _box!.toMap();
 
 
 
