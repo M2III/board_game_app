@@ -1,5 +1,5 @@
 import 'package:board_game_app/data/models/game.dart';
-import 'package:board_game_app/pages/game_screen.dart';
+import 'package:board_game_app/pages/DetailGame/details_game_screen.dart';
 import 'package:board_game_app/resources/utils/text_constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +15,7 @@ class MediumGameCard extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          PageRouteBuilder(pageBuilder: (_, __, ___) => GameScreen(game: game)),
+          PageRouteBuilder(pageBuilder: (_, __, ___) => DetailGameScreen(game: game)),
         );
       },
       child: Card(
