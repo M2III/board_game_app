@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:board_game_app/data/models/all_response_games.dart';
-import 'package:board_game_app/data/providers/local/database/collection_hive_provider.dart';
 import 'package:board_game_app/resources/utils/text_constants.dart';
 import 'package:http/http.dart' as http;
 
@@ -20,7 +19,7 @@ class GameApiProvider {
     return games;
   }
 
-  CollectionHiveProvider?_collectionHiveProvider;
+  //CollectionHiveProvider?_collectionHiveProvider;
 
   Future<AllResponseGames> getPopularKickstartersOrderByTrendingRank() async {
     var uri = Uri.parse(

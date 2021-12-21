@@ -21,6 +21,6 @@ class Collections{
     required this.idGame,
     this.wish, this.played, this.have, this.rate});
 
-//flutter bpackages pub run build_runner build
+//flutter packages pub run build_runner build
 
 }
