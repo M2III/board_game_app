@@ -21,17 +21,17 @@ class DetailGameBloc {
 
   Future<void> setPlayed(String idGame,bool played) async {
     await _repository.playedGame(idGame, played);
-    debugPrint("mon played "+ _repository.getCollection("username")!.played.toString());
+    debugPrint(_repository.getCollection("username")!.idGame +" mon played "+ _repository.getCollection("username")!.played.toString());
   }
 
   Future<void> setOwned(String idGame,bool owned) async {
     await _repository.ownedGame(idGame, owned);
-    debugPrint("mon owned "+ _repository.getCollection("username")!.owned.toString());
+    debugPrint(_repository.getCollection("username")!.idGame +" mon owned "+ _repository.getCollection("username")!.owned.toString());
   }
 
-  Future<void> setRate(String idGame, double rate)  async {
+  Future<void> setRate(String idGame, double rate) async {
     await _repository.rateGame(idGame, rate);
-    debugPrint(_repository.getCollection("username")!.idGame +" mon wish "
+    debugPrint(_repository.getCollection("username")!.idGame +" mon rating "
         + _repository.getCollection("username")!.rate.toString());
   }
 
