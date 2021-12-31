@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:board_game_app/data/models/collections.dart';
 import 'package:board_game_app/data/repositories/game_repository.dart';
 import 'package:flutter/cupertino.dart';
@@ -25,6 +27,12 @@ class DetailGameBloc {
   Future<void> setOwned(String idGame,bool owned) async {
     await _repository.ownedGame(idGame, owned);
     debugPrint("mon owned "+ _repository.getCollection("username")!.owned.toString());
+  }
+
+  Future<void> setRate(String idGame, double rate)  async {
+    await _repository.rateGame(idGame, rate);
+    debugPrint(_repository.getCollection("username")!.idGame +" mon wish "
+        + _repository.getCollection("username")!.rate.toString());
   }
 
 }

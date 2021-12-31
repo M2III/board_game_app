@@ -75,6 +75,7 @@ class _GameCardScreenState extends State<DetailGameScreen> {
         ),
         onRatingUpdate: (rating) {
           // print(rating);
+          detailGameBloc.setRate(widget.game.id!, rating);
         },
       ),
       Center(
@@ -183,10 +184,10 @@ class _GameCardScreenState extends State<DetailGameScreen> {
         detailGameBloc.setWished(widget.game.id!, (detailGameBloc.showGameDetails("username")?.wish==false? true : false));
         break;
       case 2:
-        detailGameBloc.setPlayed(widget.game.id!, detailGameBloc.showGameDetails("username")?.played==false ? true : false);
+        detailGameBloc.setPlayed(widget.game.id!, (detailGameBloc.showGameDetails("username")?.played==false ? true : false));
         break;
       case 3:
-        detailGameBloc.setOwned(widget.game.id!, detailGameBloc.showGameDetails("username")?.owned==false ? true : false);
+        detailGameBloc.setOwned(widget.game.id!, (detailGameBloc.showGameDetails("username")?.owned==false ? true : false));
         break;
       default:
         break;

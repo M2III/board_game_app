@@ -30,6 +30,10 @@ class GameRepository {
     return _testCollectionHiveProvide?.add("username", Collections(idGame: idGame, owned: wishCollection, id: '123'));
   }
 
+  Future rateGame(String idGame, double rate) async {
+    return _testCollectionHiveProvide?.add("username", Collections(idGame: idGame, rate: rate, id: '123'));
+  }
+
   List<Collections>? getAll() {
     return _testCollectionHiveProvide?.getAll();
   }
