@@ -18,11 +18,27 @@ class GameRepository {
     return _testCollectionHiveProvide?.add("premier_test", Collections(idGame: '123', id: '2422'));
   }
 
+  Future wishGame(String idGame,bool wishCollection) async {
+    return _testCollectionHiveProvide?.add("username", Collections(idGame: idGame, wish: wishCollection, id: '123'));
+  }
+
+  Future playedGame(String idGame,bool wishCollection) async {
+    return _testCollectionHiveProvide?.add("username", Collections(idGame: idGame, played: wishCollection, id: '123'));
+  }
+
+  Future ownedGame(String idGame,bool wishCollection) async {
+    return _testCollectionHiveProvide?.add("username", Collections(idGame: idGame, owned: wishCollection, id: '123'));
+  }
+
   List<Collections>? getAll() {
     return _testCollectionHiveProvide?.getAll();
   }
 
   Collections? get(String key) {
+    return _testCollectionHiveProvide?.get(key);
+  }
+
+  Collections? getCollection(String key) {
     return _testCollectionHiveProvide?.get(key);
   }
 

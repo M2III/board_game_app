@@ -1,5 +1,5 @@
 import 'package:board_game_app/data/models/all_response_games.dart';
-import 'package:board_game_app/pages/game_screen.dart';
+import 'package:board_game_app/pages/DetailGame/details_game_screen.dart';
 import 'package:board_game_app/resources/widgets/miniGameList/mini_game_list_bloc.dart';
 import 'package:flutter/material.dart';
 
@@ -59,7 +59,7 @@ class _MiniGameListState extends State<MiniGameList> {
                           context,
                           PageRouteBuilder(
                               pageBuilder: (_, __, ___) =>
-                                  GameScreen(game: _games.results![i])),
+                                  DetailGameScreen(game: _games.results![i])),
                         );
                       },
                       child: MiniGameCard(_games.results![i]),
