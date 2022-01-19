@@ -144,10 +144,11 @@ class _GameCardScreenState extends State<DetailGameScreen> {
             PopupMenuItem(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const <Widget>[
-                  Icon(Icons.favorite,
+                children: <Widget>[
+
+                  Icon(((detailGameBloc.showGameDetails("username")?.wish==null||detailGameBloc.showGameDetails("username")?.wish==false)?Icons.favorite_border_outlined:Icons.favorite),
                       semanticLabel: "Wished", color: Colors.blueGrey),
-                  Text('Wished'),
+                  const Text('Wished'),
                 ],
               ),
               value: 1,
@@ -155,10 +156,10 @@ class _GameCardScreenState extends State<DetailGameScreen> {
             PopupMenuItem(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: const <Widget>[
-                  Icon(Icons.casino_outlined,
+                children: <Widget>[
+                  Icon(((detailGameBloc.showGameDetails("username")?.played==null||detailGameBloc.showGameDetails("username")?.played==false)?Icons.casino_outlined:Icons.casino_rounded),
                       semanticLabel: "Played", color: Colors.blueGrey),
-                  Text('Played'),
+                  const Text('Played'),
                 ],
               ),
               value: 2,
@@ -166,10 +167,10 @@ class _GameCardScreenState extends State<DetailGameScreen> {
             PopupMenuItem(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const <Widget>[
-                  Icon(Icons.view_column_outlined,
+                children:  <Widget>[
+                  Icon(((detailGameBloc.showGameDetails("username")?.owned==null||detailGameBloc.showGameDetails("username")?.owned==false)?Icons.view_column_outlined:Icons.view_column),
                       semanticLabel: "Owned", color: Colors.blueGrey),
-                  Text('Owned'),
+                  const Text('Owned'),
                 ],
               ),
               value: 3,
