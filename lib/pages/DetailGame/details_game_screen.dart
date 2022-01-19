@@ -21,19 +21,19 @@ class _GameCardScreenState extends State<DetailGameScreen> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-      return Scaffold(
-        appBar: AppBar(
-            backgroundColor: const Color(0xFF6200EE),
-            title: Text(
-              widget.game.name!,
-            ),
-            centerTitle: true,
-            actions: _actionOnTheCollection()
-        ),
-        bottomNavigationBar: const MenuBottom(),
-        body: _getCard(),
-        extendBody: true,
-      );
+    return Scaffold(
+      appBar: AppBar(
+          backgroundColor: const Color(0xFF6200EE),
+          title: Text(
+            widget.game.name!,
+          ),
+          centerTitle: true,
+          actions: _actionOnTheCollection()
+      ),
+      bottomNavigationBar: const MenuBottom(),
+      body: _getCard(),
+      extendBody: true,
+    );
   }
 
   Widget _getNumberPlayer() {
@@ -177,19 +177,27 @@ class _GameCardScreenState extends State<DetailGameScreen> {
           ])
     ];
   }
+  subUpdateCollection(value){
+    if(value==null){
+      return true;
+    }else{
+      return !value;
+    }
+  }
   _updateCollection(value) {
     switch (value) {
       case 1:
         //debugPrint(detailGameBloc.showGameDetails("username")!.wish.toString());
-        detailGameBloc.setWished(widget.game.id!, (detailGameBloc.showGameDetails("username")?.wish==false? true : false));
+        detailGameBloc.setWished(widget.game.id!, subUpdateCollection(detailGameBloc.showGameDetails("username")?.wish));
         break;
       case 2:
-        detailGameBloc.setPlayed(widget.game.id!, (detailGameBloc.showGameDetails("username")?.played==false ? true : false));
+      //debugPrint(detailGameBloc.showGameDetails("username")!.owned.toString());
+        detailGameBloc.setPlayed(widget.game.id!, subUpdateCollection(detailGameBloc.showGameDetails("username")?.played));
         break;
       case 3:
-        detailGameBloc.setOwned(widget.game.id!, (detailGameBloc.showGameDetails("username")?.owned==false ? true : false));
+        detailGameBloc.setOwned(widget.game.id!, subUpdateCollection(detailGameBloc.showGameDetails("username")?.owned));
         break;
-      default:
+      default://revoir cette partie et mettre ce qui est à case 3 dans default et supprimer le case 3
         break;
     }
   }
