@@ -22,16 +22,16 @@ class GameRepository {
     return _testCollectionHiveProvide?.add("username", Collections(idGame: idGame, wish: wishCollection, id: '123'));
   }
 
-  Future playedGame(String idGame,bool wishCollection) async {
-    return _testCollectionHiveProvide?.add("username", Collections(idGame: idGame, played: wishCollection, id: '123'));
+  Future playedGame(String idGame,bool playedCollection) async {
+    return _testCollectionHiveProvide?.add("username", Collections(idGame: idGame, played: playedCollection, id: '123'));
   }
 
-  Future ownedGame(String idGame,bool wishCollection) async {
-    return _testCollectionHiveProvide?.add("username", Collections(idGame: idGame, owned: wishCollection, id: '123'));
+  Future ownedGame(String idGame,bool ownedCollection) async {
+    return _testCollectionHiveProvide?.add("username", Collections(idGame: idGame, owned: ownedCollection, id: '1234'));
   }
 
   Future rateGame(String idGame, double rate) async {
-    return _testCollectionHiveProvide?.add("username", Collections(idGame: idGame, rate: rate, id: '123'));
+    return _testCollectionHiveProvide?.add("username", Collections(idGame: idGame, rate: rate, id: '1235'));
   }
 
   List<Collections>? getAll() {

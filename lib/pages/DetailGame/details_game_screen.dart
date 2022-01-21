@@ -61,9 +61,9 @@ class _GameCardScreenState extends State<DetailGameScreen> {
           ),
         ],
       ),
+
       RatingBar.builder(
-        initialRating: 3,
-        /* Pour l'initial rating on ajoutera un fetch pour recuperer la note mise par l'user */
+        initialRating: (detailGameBloc.showGameDetails("username")?.rate==null) ? widget.game.averageUserRating!.toDouble():detailGameBloc.showGameDetails("username")!.rate!,
         minRating: 0.5,
         direction: Axis.horizontal,
         allowHalfRating: true,
@@ -138,9 +138,12 @@ class _GameCardScreenState extends State<DetailGameScreen> {
     return <Widget>[
       PopupMenuButton(
           onSelected: (value) {
+            debugPrint("debug value");
+            debugPrint(value.toString());
             _updateCollection(value);
           },
           itemBuilder: (context) => [
+
             PopupMenuItem(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -188,17 +191,13 @@ class _GameCardScreenState extends State<DetailGameScreen> {
   _updateCollection(value) {
     switch (value) {
       case 1:
-        //debugPrint(detailGameBloc.showGameDetails("username")!.wish.toString());
-        detailGameBloc.setWished(widget.game.id!, subUpdateCollection(detailGameBloc.showGameDetails("username")?.wish));
+        detailGameBloc.setWished(widget.game.id!, subUpdateCollection(detailGameBloc.showGameDetails("username")!.wish));
         break;
       case 2:
-      //debugPrint(detailGameBloc.showGameDetails("username")!.owned.toString());
-        detailGameBloc.setPlayed(widget.game.id!, subUpdateCollection(detailGameBloc.showGameDetails("username")?.played));
+        detailGameBloc.setPlayed(widget.game.id!, subUpdateCollection(detailGameBloc.showGameDetails("username")!.played));
         break;
-      case 3:
-        detailGameBloc.setOwned(widget.game.id!, subUpdateCollection(detailGameBloc.showGameDetails("username")?.owned));
-        break;
-      default://revoir cette partie et mettre ce qui est à case 3 dans default et supprimer le case 3
+      default:
+        detailGameBloc.setOwned(widget.game.id!, subUpdateCollection(detailGameBloc.showGameDetails("username")!.owned));
         break;
     }
   }
