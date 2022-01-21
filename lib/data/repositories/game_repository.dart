@@ -14,24 +14,10 @@ class GameRepository {
   }
   CollectionHiveProvider? _testCollectionHiveProvide;
 
-  Future insertATest() async {
-    return _testCollectionHiveProvide?.add("premier_test", Collections(idGame: '123', id: '2422'));
-  }
 
-  Future wishGame(String idGame,bool wishCollection) async {
-    return _testCollectionHiveProvide?.add("username", Collections(idGame: idGame, wish: wishCollection, id: '123'));
-  }
 
-  Future playedGame(String idGame,bool playedCollection) async {
-    return _testCollectionHiveProvide?.add("username", Collections(idGame: idGame, played: playedCollection, id: '123'));
-  }
-
-  Future ownedGame(String idGame,bool ownedCollection) async {
-    return _testCollectionHiveProvide?.add("username", Collections(idGame: idGame, owned: ownedCollection, id: '1234'));
-  }
-
-  Future rateGame(String idGame, double rate) async {
-    return _testCollectionHiveProvide?.add("username", Collections(idGame: idGame, rate: rate, id: '1235'));
+  Future insertACollection(String idGame,bool wishCollection, bool playedCollection, bool ownedCollection, double rateCollection) async {
+    return _testCollectionHiveProvide?.add("username", Collections(idGame: idGame, wish: wishCollection, played:playedCollection, owned: ownedCollection, rate: rateCollection,id: idGame));
   }
 
   List<Collections>? getAll() {

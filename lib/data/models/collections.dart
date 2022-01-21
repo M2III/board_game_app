@@ -8,18 +8,18 @@ class Collections{
   @HiveField(1)
   final String idGame;
   @HiveField(2)
-  bool? wish;
+  bool wish;
   @HiveField(3)
-  bool? played;
+  bool played;
   @HiveField(4)
-  bool? owned;
+  bool owned;
   @HiveField(5)
-  final double? rate;
+  final double rate;
 
   Collections({
     required this.id,
     required this.idGame,
-    this.wish, this.played, this.owned, this.rate});
+    required this.wish, required this.played, required this.owned, required this.rate});
 
 //flutter packages pub run build_runner build
 

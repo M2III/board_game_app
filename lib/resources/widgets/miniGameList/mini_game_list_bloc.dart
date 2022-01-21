@@ -6,8 +6,6 @@ class MiniGameListBloc {
   final _gameRepository = GameRepository();
 
   Future<AllResponseGames> getPopularKickstartersOrderByTrendingRank()  async {
-     await _gameRepository.insertATest();
-     //debugPrint("mon debug "+_gameRepository.get("premier_test")!.idGame);
     return await _gameRepository.getPopularKickstartersOrderByTrendingRank();
   }
 

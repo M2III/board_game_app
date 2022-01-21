@@ -63,7 +63,7 @@ class _GameCardScreenState extends State<DetailGameScreen> {
       ),
 
       RatingBar.builder(
-        initialRating: (detailGameBloc.showGameDetails("username")?.rate==null) ? widget.game.averageUserRating!.toDouble():detailGameBloc.showGameDetails("username")!.rate!,
+        initialRating: (detailGameBloc.showGameDetails("username")?.rate==null) ? widget.game.averageUserRating!.toDouble():detailGameBloc.showGameDetails("username")!.rate,
         minRating: 0.5,
         direction: Axis.horizontal,
         allowHalfRating: true,
@@ -138,8 +138,6 @@ class _GameCardScreenState extends State<DetailGameScreen> {
     return <Widget>[
       PopupMenuButton(
           onSelected: (value) {
-            debugPrint("debug value");
-            debugPrint(value.toString());
             _updateCollection(value);
           },
           itemBuilder: (context) => [
@@ -148,8 +146,9 @@ class _GameCardScreenState extends State<DetailGameScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-
-                  Icon(((detailGameBloc.showGameDetails("username")?.wish==null||detailGameBloc.showGameDetails("username")?.wish==false)?Icons.favorite_border_outlined:Icons.favorite),
+                  Icon(((detailGameBloc.showGameDetails("username")?.wish==null
+                      ||detailGameBloc.showGameDetails("username")?.wish==false)?
+                  Icons.favorite_border_outlined:Icons.favorite),
                       semanticLabel: "Wished", color: Colors.blueGrey),
                   const Text('Wished'),
                 ],
@@ -160,7 +159,9 @@ class _GameCardScreenState extends State<DetailGameScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  Icon(((detailGameBloc.showGameDetails("username")?.played==null||detailGameBloc.showGameDetails("username")?.played==false)?Icons.casino_outlined:Icons.casino_rounded),
+                  Icon(((detailGameBloc.showGameDetails("username")?.played==null
+                      ||detailGameBloc.showGameDetails("username")?.played==false)?
+                      Icons.casino_outlined:Icons.casino_rounded),
                       semanticLabel: "Played", color: Colors.blueGrey),
                   const Text('Played'),
                 ],
@@ -171,7 +172,9 @@ class _GameCardScreenState extends State<DetailGameScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children:  <Widget>[
-                  Icon(((detailGameBloc.showGameDetails("username")?.owned==null||detailGameBloc.showGameDetails("username")?.owned==false)?Icons.view_column_outlined:Icons.view_column),
+                  Icon(((detailGameBloc.showGameDetails("username")?.owned==null
+                      ||detailGameBloc.showGameDetails("username")?.owned==false)
+                      ?Icons.view_column_outlined:Icons.view_column),
                       semanticLabel: "Owned", color: Colors.blueGrey),
                   const Text('Owned'),
                 ],
