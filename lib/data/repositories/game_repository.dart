@@ -17,7 +17,7 @@ class GameRepository {
 
 
   Future insertACollection(String idGame,bool wishCollection, bool playedCollection, bool ownedCollection, double rateCollection) async {
-    return _testCollectionHiveProvide?.add("username", Collections(idGame: idGame, wish: wishCollection, played:playedCollection, owned: ownedCollection, rate: rateCollection,id: idGame));
+    return _testCollectionHiveProvide?.add(idGame, Collections(idGame: idGame, wish: wishCollection, played:playedCollection, owned: ownedCollection, rate: rateCollection,id: idGame));
   }
 
   List<Collections>? getAll() {

@@ -14,12 +14,12 @@ class Collections{
   @HiveField(4)
   bool owned;
   @HiveField(5)
-  final double rate;
+  final double? rate;
 
   Collections({
     required this.id,
     required this.idGame,
-    required this.wish, required this.played, required this.owned, required this.rate});
+    required this.wish, required this.played, required this.owned,  this.rate});
 
 //flutter packages pub run build_runner build
 
