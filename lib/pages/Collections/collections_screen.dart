@@ -33,7 +33,9 @@ class _CollectionScreenState extends State<CollectionsScreen> {
         title: const Text('Your boardgames collection'),
       ),
       bottomNavigationBar: const MenuBottom(),
-      body: _getBody(),
+      body: SingleChildScrollView(
+          child: _getBody()
+      ),
     );
   }
 
@@ -95,11 +97,11 @@ class _CollectionScreenState extends State<CollectionsScreen> {
                       isEelevated: false,
                       borderRadius: 0,
                       onSwiped: (_) {
-                        // final index = persons.indexOf(person);
-
-                        // setState(() {
-                        //   persons.removeAt(index);
-                        // });
+                        final index = _collections!.indexOf(collection);
+                        setState(() {
+                          _collections!.removeAt(index);
+                          collectionsBloc.deleteCollections(collection.idGame);
+                        });
                       },
                       backgroundBuilder: (_,
                           SwipeDirection direction,
@@ -134,9 +136,10 @@ class _CollectionScreenState extends State<CollectionsScreen> {
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: <Widget>[
-                                Image.network(collection.imageUrl.isNotEmpty
-                                    ? collection.imageUrl
-                                    : TextConstants.infoNotAvailable),
+                                Expanded(
+                                  child: Image.network(collection.imageUrl.isNotEmpty
+                                      ? collection.imageUrl
+                                      : TextConstants.infoNotAvailable)),
                                 Flexible(
                                   fit: FlexFit.tight,
                                   flex: 1,
@@ -175,12 +178,11 @@ class _CollectionScreenState extends State<CollectionsScreen> {
             )
                 .toList(),
           )
-        else
-          if (_filteredList.isEmpty && _textController.text.isNotEmpty)
+        else if (_filteredList.isEmpty && _textController.text.isNotEmpty)
             const Expanded(
-              child: Text('Aucune donnée'),
+              child: Text('No results'),
             )
-          else
+        else
             ListView(
               scrollDirection: Axis.vertical,
               shrinkWrap: true,
@@ -196,7 +198,6 @@ class _CollectionScreenState extends State<CollectionsScreen> {
                         borderRadius: 0,
                         onSwiped: (_) {
                           final index = _collections!.indexOf(collection);
-
                            setState(() {
                              _collections!.removeAt(index);
                              collectionsBloc.deleteCollections(collection.idGame);
