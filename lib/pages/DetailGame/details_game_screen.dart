@@ -1,3 +1,4 @@
+import 'package:board_game_app/data/models/all_response_games.dart';
 import 'package:board_game_app/data/models/game.dart';
 import 'package:board_game_app/resources/utils/text_constants.dart';
 import 'package:board_game_app/resources/widgets/menu_bottom.dart';
@@ -19,6 +20,21 @@ class DetailGameScreen extends StatefulWidget {
 }
 
 class _GameCardScreenState extends State<DetailGameScreen> {
+  /*AllResponseGames _games = AllResponseGames();
+
+  @override
+  void initState() {
+     detailGameBloc
+          .getGame(widget.game.id)
+          .then((response) {
+            setState(() {
+              _games = response;
+            });
+         });
+     super.initState();
+  }*/
+
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -64,7 +80,7 @@ class _GameCardScreenState extends State<DetailGameScreen> {
       ),
 
       RatingBar.builder(
-        initialRating: (detailGameBloc.showGameDetails(widget.game.id.toString())?.rate ?? widget.game.averageUserRating!.toDouble()),
+        initialRating: (detailGameBloc.getGameDetails(widget.game.id.toString())?.rate ?? widget.game.averageUserRating!.toDouble()),
         minRating: 0.5,
         direction: Axis.horizontal,
         allowHalfRating: true,
@@ -75,7 +91,13 @@ class _GameCardScreenState extends State<DetailGameScreen> {
           color: Colors.amber,
         ),
         onRatingUpdate: (rating) {
-          detailGameBloc.setRate(widget.game.id!, rating);
+          detailGameBloc.setRate(
+              widget.game.id!,
+              widget.game.name!,
+              widget.game.imageUrl!,
+              widget.game.minPlayers??1,
+              widget.game.maxPlayers??1,
+              rating);
         },
       ),
       Center(
@@ -146,8 +168,8 @@ class _GameCardScreenState extends State<DetailGameScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Icon(((detailGameBloc.showGameDetails(widget.game.id!)?.wish==null
-                      ||detailGameBloc.showGameDetails(widget.game.id!)?.wish==false)?
+                  Icon(((detailGameBloc.getGameDetails(widget.game.id!)?.wish==null
+                      ||detailGameBloc.getGameDetails(widget.game.id!)?.wish==false)?
                   Icons.favorite_border_outlined:Icons.favorite),
                       semanticLabel: "Wished", color: Colors.blueGrey),
                   const Text('Wished'),
@@ -159,8 +181,8 @@ class _GameCardScreenState extends State<DetailGameScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
-                  Icon(((detailGameBloc.showGameDetails(widget.game.id!)?.played==null
-                      ||detailGameBloc.showGameDetails(widget.game.id!)?.played==false)?
+                  Icon(((detailGameBloc.getGameDetails(widget.game.id!)?.played==null
+                      ||detailGameBloc.getGameDetails(widget.game.id!)?.played==false)?
                       Icons.casino_outlined:Icons.casino_rounded),
                       semanticLabel: "Played", color: Colors.blueGrey),
                   const Text('Played'),
@@ -172,8 +194,8 @@ class _GameCardScreenState extends State<DetailGameScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children:  <Widget>[
-                  Icon(((detailGameBloc.showGameDetails(widget.game.id!)?.owned==null
-                      ||detailGameBloc.showGameDetails(widget.game.id!)?.owned==false)
+                  Icon(((detailGameBloc.getGameDetails(widget.game.id!)?.owned==null
+                      ||detailGameBloc.getGameDetails(widget.game.id!)?.owned==false)
                       ?Icons.view_column_outlined:Icons.view_column),
                       semanticLabel: "Owned", color: Colors.blueGrey),
                   const Text('Owned'),
@@ -184,26 +206,48 @@ class _GameCardScreenState extends State<DetailGameScreen> {
           ])
     ];
   }
-  subUpdateCollection(value){
+  toggleUpdateCollection(value){
     if(value==null){
       return true;
     }
       return !value;
   }
   _updateCollection(value) {
-    var idGame = widget.game.id ?? "0";
+    debugPrint(widget.game.minPlayers.toString());
     switch (value) {
       case 1:
-        detailGameBloc.setWished(idGame, subUpdateCollection(detailGameBloc.showGameDetails(widget.game.id.toString())?.wish),
-            detailGameBloc.showGameDetails(widget.game.id.toString())?.rate ?? widget.game.averageUserRating!.toDouble());
+        detailGameBloc.setWished(
+            widget.game.id.toString(),
+            widget.game.name.toString(),
+            widget.game.imageUrl.toString(),
+            widget.game.minPlayers??1,
+            widget.game.maxPlayers??1,
+            /*_games.results!.first.name??'',
+            _games.results!.first.imageUrl??'',
+            _games.results?.first.minPlayers??0,
+            _games.results?.first.maxPlayers??0,*/
+            toggleUpdateCollection(detailGameBloc.getGameDetails(widget.game.id.toString())?.wish),
+            detailGameBloc.getGameDetails(widget.game.id.toString())?.rate ?? widget.game.averageUserRating!.toDouble());
         break;
       case 2:
-        detailGameBloc.setPlayed(idGame, subUpdateCollection(detailGameBloc.showGameDetails(widget.game.id.toString())?.played),
-            detailGameBloc.showGameDetails(widget.game.id.toString())?.rate ?? widget.game.averageUserRating!.toDouble());
+        detailGameBloc.setPlayed(
+            widget.game.id!,
+            widget.game.name!,
+            widget.game.imageUrl!,
+            widget.game.minPlayers??1,
+            widget.game.maxPlayers??1,
+            toggleUpdateCollection(detailGameBloc.getGameDetails(widget.game.id.toString())?.played),
+            detailGameBloc.getGameDetails(widget.game.id.toString())?.rate ?? widget.game.averageUserRating!.toDouble());
         break;
       default:
-        detailGameBloc.setOwned(idGame, subUpdateCollection(detailGameBloc.showGameDetails(widget.game.id.toString())?.owned),
-            detailGameBloc.showGameDetails(widget.game.id.toString())?.rate ?? widget.game.averageUserRating!.toDouble());
+        detailGameBloc.setOwned(
+            widget.game.id!,
+            widget.game.name!,
+            widget.game.imageUrl!,
+            widget.game.minPlayers??1,
+            widget.game.maxPlayers??1,
+            toggleUpdateCollection(detailGameBloc.getGameDetails(widget.game.id.toString())?.owned),
+            detailGameBloc.getGameDetails(widget.game.id.toString())?.rate ?? widget.game.averageUserRating!.toDouble());
         break;
     }
   }

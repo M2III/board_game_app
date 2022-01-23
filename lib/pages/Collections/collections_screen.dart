@@ -20,7 +20,6 @@ class CollectionsScreen extends StatefulWidget {
 }
 
 class _CollectionScreenState extends State<CollectionsScreen> {
-  final Game _game = Game();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

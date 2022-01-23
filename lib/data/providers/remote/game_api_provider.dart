@@ -46,4 +46,15 @@ class GameApiProvider {
     var games = AllResponseGames.fromJson(jsonDecode(formattedResponse));
     return games;
   }
+
+  Future<AllResponseGames> getGame(String input) async {
+    var uri = Uri.parse(
+        'https://api.boardgameatlas.com/api/search?game_id=$input&client_id=${TextConstants.clientId}');
+    var responseFromApi = await http.get(uri);
+    var formattedResponse = responseFromApi.body.replaceAll('�', '');
+    var games = AllResponseGames.fromJson(jsonDecode(formattedResponse));
+    return games;
+    // example result -https://api.boardgameatlas.com/api/search?game_id=GP7Y2xOUzj&client_id=JLBr5npPhV
+
+  }
 }

@@ -21,19 +21,19 @@ class CollectionList extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
-              /*Image.network(game.imageUrl != null
-                  ? game.imageUrl!
-                  : TextConstants.infoNotAvailable),*/
+              Image.network(collections.imageUrl != ''
+                  ? collections.imageUrl
+                  : TextConstants.infoNotAvailable),
               Flexible(
                 fit: FlexFit.tight,
                 flex: 1,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text(collections.idGame != null
-                        ? collections.idGame.toString()
+                    Text(collections.nameGame != "NULL"
+                        ? collections.nameGame
                         : TextConstants.infoNotAvailable),
-                   // _getNumberPlayer(),
+                    _getNumberPlayer(),
                   ],
                 ),
               ),
@@ -44,11 +44,11 @@ class CollectionList extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Text(collections.rate != null
-                        ? collections.rate!.toStringAsFixed(1)
-                        : TextConstants.infoNotAvailable),
-                    Text(collections.rate != null
                         ? collections.rate.toString()
                         : TextConstants.infoNotAvailable),
+                    Text(collections.played
+                        ? TextConstants.alreadyPlayed
+                        : TextConstants.neverPlayed),
                   ],
                 ),
               ),
@@ -59,14 +59,14 @@ class CollectionList extends StatelessWidget {
     );
   }
 
-  /*Widget _getNumberPlayer() {
-    if (game.minPlayers != null && game.maxPlayers != null) {
-      return Text(game.minPlayers.toString() +
+  Widget _getNumberPlayer() {
+    if (collections.idGame != null) {
+      return Text(collections.minPlayers.toString() +
           " - " +
-          game.maxPlayers.toString() +
+          collections.maxPlayers.toString() +
           " players");
     } else {
-      return const Text("Information non disponible");
+      return const Text(TextConstants.infoNotAvailable);
     }
-  }*/
+  }
 }

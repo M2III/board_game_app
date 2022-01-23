@@ -35,7 +35,7 @@ class CollectionHiveProvider extends BaseHiveProvider<Collections,CollectionHive
   Collections? get(String id) => _box!.get(id);
 
   @override
-  List<Collections> getAll() =>List<Collections>.from(_box!.values.toList());
+  List<Collections> getAll() => List<Collections>.from(_box!.values.toList());
 
   @override
   Map<dynamic, dynamic> getMap() => _box!.toMap();
