@@ -14,6 +14,10 @@ class CollectionsBloc {
     return _repository.getAll();
   }
 
+  Future<void>? deleteCollections(key) {
+    return _repository.deleteACollection(key);
+  }
+
   Future<AllResponseGames>? getCollection(String idGame) {
     return _repository.getGame(idGame);
   }

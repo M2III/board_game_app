@@ -14,8 +14,6 @@ class GameRepository {
   }
   CollectionHiveProvider? _testCollectionHiveProvide;
 
-
-
   Future insertACollection(String idGame,String nameGame, String imgUrl, int maxPlayers, int minPlayers, bool wishCollection, bool playedCollection, bool ownedCollection, double rateCollection) async {
     return _testCollectionHiveProvide?.add(idGame,
         Collections(idGame: idGame, nameGame: nameGame,
@@ -35,6 +33,10 @@ class GameRepository {
 
   Collections? getCollection(String key) {
     return _testCollectionHiveProvide?.get(key);
+  }
+
+  Future<void>? deleteACollection(String key) {
+    return _testCollectionHiveProvide?.delete(key);
   }
 
 

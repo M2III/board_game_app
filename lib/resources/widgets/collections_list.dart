@@ -30,9 +30,7 @@ class CollectionList extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text(collections.nameGame != "NULL"
-                        ? collections.nameGame
-                        : TextConstants.infoNotAvailable),
+                    Text(collections.nameGame),
                     _getNumberPlayer(),
                   ],
                 ),
@@ -60,7 +58,7 @@ class CollectionList extends StatelessWidget {
   }
 
   Widget _getNumberPlayer() {
-    if (collections.idGame != null) {
+    if (collections.idGame.isNotEmpty) {
       return Text(collections.minPlayers.toString() +
           " - " +
           collections.maxPlayers.toString() +
