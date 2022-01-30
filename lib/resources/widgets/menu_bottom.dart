@@ -1,3 +1,4 @@
+import 'package:board_game_app/pages/WishList/wishlists_screen.dart';
 import 'package:board_game_app/pages/auth_screen.dart';
 import 'package:board_game_app/pages/Collections/collections_screen.dart';
 import 'package:board_game_app/pages/home_screen.dart';
@@ -37,7 +38,7 @@ class MenuBottom extends StatelessWidget {
             Navigator.push(
               context,
               PageRouteBuilder(
-                  pageBuilder: (_, __, ___) => const WishListScreen()),
+                  pageBuilder: (_, __, ___) => const WishlistsScreen()),
             );
             _selectedIndex = index;
             break;
