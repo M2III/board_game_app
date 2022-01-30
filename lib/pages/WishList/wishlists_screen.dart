@@ -50,8 +50,7 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
                   onSwiped: (_) {
                     final index = _collections!.indexOf(collection);
                     setState(() {
-                      _collections!.removeAt(index);
-                      wishlistsBloc.deleteCollections(collection.idGame);
+                      _collections!.elementAt(index).wish=false;
                     });
                   },
                   backgroundBuilder: (
@@ -148,8 +147,7 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
                   onSwiped: (_) {
                     final index = _collections!.indexOf(collection);
                     setState(() {
-                      _collections!.removeAt(index);
-                      wishlistsBloc.deleteCollections(collection.idGame);
+                      _collections!.elementAt(index).wish=false;
                     });
                   },
                   backgroundBuilder: (

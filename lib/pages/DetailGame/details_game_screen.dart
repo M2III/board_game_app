@@ -18,21 +18,6 @@ class DetailGameScreen extends StatefulWidget {
 }
 
 class _GameCardScreenState extends State<DetailGameScreen> {
-  /*AllResponseGames _games = AllResponseGames();
-
-  @override
-  void initState() {
-     detailGameBloc
-          .getGame(widget.game.id)
-          .then((response) {
-            setState(() {
-              _games = response;
-            });
-         });
-     super.initState();
-  }*/
-
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -220,10 +205,6 @@ class _GameCardScreenState extends State<DetailGameScreen> {
             widget.game.imageUrl.toString(),
             widget.game.minPlayers??1,
             widget.game.maxPlayers??1,
-            /*_games.results!.first.name??'',
-            _games.results!.first.imageUrl??'',
-            _games.results?.first.minPlayers??0,
-            _games.results?.first.maxPlayers??0,*/
             toggleUpdateCollection(detailGameBloc.getGameDetails(widget.game.id.toString())?.wish),
             detailGameBloc.getGameDetails(widget.game.id.toString())?.rate ?? widget.game.averageUserRating!.toDouble());
         break;
