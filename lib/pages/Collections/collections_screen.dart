@@ -21,23 +21,21 @@ class _CollectionScreenState extends State<CollectionsScreen> {
   final TextEditingController _textController = TextEditingController();
   final _collections = collectionsBloc.getAllCollection();
   var _filteredList = <Collections>[];
-  AllResponseGames _games = AllResponseGames();
-  String ids = "";
+  late AllResponseGames _games;
+  String _ids = "";
 
   @override
   void initState() {
     var len = _collections!.length;
     // ids
     for(int i=0; i < len; i++){
-     ids += _collections![i].idGame.toString();
+     _ids += _collections![i].idGame.toString();
      if (i < len - 1) {
-       ids += ",";
+       _ids += ",";
      }
     }
-    collectionsBloc.getDetailCollectionGame(ids).then((gameListResponse) {
-      setState(() {
+    collectionsBloc.getDetailCollectionGame(_ids).then((gameListResponse) {
         _games = gameListResponse;
-      });
     });
     super.initState();
   }
@@ -236,12 +234,14 @@ class _CollectionScreenState extends State<CollectionsScreen> {
       child: GestureDetector(
         behavior: HitTestBehavior.translucent,
         onTap: () {
-          Navigator.push(
-            context,
-            PageRouteBuilder(
-                pageBuilder: (_, __, ___) =>
-                    DetailGameScreen(game: _games.results![index])),
-          );
+          if(_games.results!.length==_collections!.length){
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                      pageBuilder: (_, __, ___) =>
+                          DetailGameScreen(game: _games.results![index])),
+                );
+          }
         },
         child: Card(
           child: Container(

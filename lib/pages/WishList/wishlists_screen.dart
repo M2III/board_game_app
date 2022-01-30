@@ -21,26 +21,25 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
   final _collections = wishlistsBloc.getAllCollection();
   var _filteredList = <Collections>[];
 
-  AllResponseGames _games = AllResponseGames();
-  String ids = "";
+  late AllResponseGames _games;
+  String _ids = "";
 
   @override
   void initState() {
     var len = _collections!.length;
     // ids
-    for(int i=0; i < len; i++){
-      if(_collections![i].wish){
-        ids += _collections![i].idGame.toString();
+    for (int i = 0; i < len; i++) {
+      if (_collections![i].wish) {
+        _ids += _collections![i].idGame.toString();
         if (i < len - 1) {
-          ids += ",";
+          _ids += ",";
         }
       }
     }
-    wishlistsBloc.getDetailWishListGame(ids).then((gameListResponse) {
-      setState(() {
+    wishlistsBloc.getDetailWishListGame(_ids).then((gameListResponse) {
         _games = gameListResponse;
-      });
     });
+
     super.initState();
   }
 
@@ -57,120 +56,122 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
 
   Widget _getBody() {
     if (wishlistsBloc.getAllCollection()!.isNotEmpty) {
-      return
-        SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          children: <Widget>[
-        _textfieldfilter(),
-        if (_filteredList.isNotEmpty && _textController.text.isNotEmpty)
-          ListView(
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            padding: const EdgeInsets.symmetric(vertical: 1.0),
-            children: _filteredList
-                .map(
-                  (Collections collection) => SwipeableTile(
-                  color: Colors.white,
-                  swipeThreshold: 0.2,
-                  direction: SwipeDirection.endToStart,
-                  isEelevated: false,
-                  borderRadius: 0,
-                  onSwiped: (_) {
-                    final index = _collections!.indexOf(collection);
-                    setState(() {
-                      _collections!.elementAt(index).wish=false;
-                    });
-                  },
-                  backgroundBuilder: (
-                      _,
-                      SwipeDirection direction,
-                      AnimationController progress,
-                      ) {
-                    if (direction == SwipeDirection.endToStart) {
-                      return Container(
-                          color: progress.value > 0.0
-                              ? const Color(0xFFed7474)
-                              : Colors.white,
-                          padding: const EdgeInsets.fromLTRB(0, 0, 15, 0),
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: const <Widget>[
-                                Icon(
-                                  Icons.delete,
-                                  size: 24,
-                                  color: Colors.white,
-                                ),
-                              ]));
-                    }
-                    return Container(
-                      color: Colors.white,
-                    );
-                  },
-                  key: UniqueKey(),
-                  child:  _getCard(collection, _collections!.indexOf(collection))
-                  ),
-            )
-                .toList(),
-          )
-        else
-          ListView(
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            padding: const EdgeInsets.symmetric(vertical: 1.0),
-            children: wishlistsBloc
-                .getAllCollection()!
-                .map(
-                  (Collections collection) => SwipeableTile(
-                  color: Colors.white,
-                  swipeThreshold: 0.2,
-                  direction: SwipeDirection.endToStart,
-                  isEelevated: false,
-                  borderRadius: 0,
-                  onSwiped: (_) {
-                    final index = _collections!.indexOf(collection);
-                    setState(() {
-                      _collections!.elementAt(index).wish=false;
-                    });
-                  },
-                  backgroundBuilder: (
-                      _,
-                      SwipeDirection direction,
-                      AnimationController progress,
-                      ) {
-                    if (direction == SwipeDirection.endToStart) {
-                      return Container(
-                          color: progress.value > 0.0
-                              ? const Color(0xFFed7474)
-                              : Colors.white,
-                          padding: const EdgeInsets.fromLTRB(0, 0, 15, 0),
-                          child: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: const <Widget>[
-                                Icon(
-                                  Icons.delete,
-                                  size: 24,
-                                  color: Colors.white,
-                                ),
-                              ]));
-                    }
-                    return Container(
-                      color: Colors.white,
-                    );
-                  },
-                  key: UniqueKey(),
-                  child: collection.wish
-                      ? _getCard(collection, _collections!.indexOf(collection))
-                      : const Expanded(
-                    child: Text('No results'),
-                  )),
-            )
-                .toList(),
-          )
-      ]));
+      return SingleChildScrollView(
+          child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+            _textfieldfilter(),
+            if (_filteredList.isNotEmpty && _textController.text.isNotEmpty)
+              ListView(
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                padding: const EdgeInsets.symmetric(vertical: 1.0),
+                children: _filteredList
+                    .map(
+                      (Collections collection) => SwipeableTile(
+                          color: Colors.white,
+                          swipeThreshold: 0.2,
+                          direction: SwipeDirection.endToStart,
+                          isEelevated: false,
+                          borderRadius: 0,
+                          onSwiped: (_) {
+                            final index = _collections!.indexOf(collection);
+                            setState(() {
+                              _collections!.elementAt(index).wish = false;
+                            });
+                          },
+                          backgroundBuilder: (
+                            _,
+                            SwipeDirection direction,
+                            AnimationController progress,
+                          ) {
+                            if (direction == SwipeDirection.endToStart) {
+                              return Container(
+                                  color: progress.value > 0.0
+                                      ? const Color(0xFFed7474)
+                                      : Colors.white,
+                                  padding:
+                                      const EdgeInsets.fromLTRB(0, 0, 15, 0),
+                                  child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: const <Widget>[
+                                        Icon(
+                                          Icons.delete,
+                                          size: 24,
+                                          color: Colors.white,
+                                        ),
+                                      ]));
+                            }
+                            return Container(
+                              color: Colors.white,
+                            );
+                          },
+                          key: UniqueKey(),
+                          child: _getCard(
+                              collection, _collections!.indexOf(collection))),
+                    )
+                    .toList(),
+              )
+            else
+              ListView(
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                padding: const EdgeInsets.symmetric(vertical: 1.0),
+                children: wishlistsBloc
+                    .getAllCollection()!
+                    .map(
+                      (Collections collection) => SwipeableTile(
+                          color: Colors.white,
+                          swipeThreshold: 0.2,
+                          direction: SwipeDirection.endToStart,
+                          isEelevated: false,
+                          borderRadius: 0,
+                          onSwiped: (_) {
+                            final index = _collections!.indexOf(collection);
+                            setState(() {
+                              _collections!.elementAt(index).wish = false;
+                            });
+                          },
+                          backgroundBuilder: (
+                            _,
+                            SwipeDirection direction,
+                            AnimationController progress,
+                          ) {
+                            if (direction == SwipeDirection.endToStart) {
+                              return Container(
+                                  color: progress.value > 0.0
+                                      ? const Color(0xFFed7474)
+                                      : Colors.white,
+                                  padding:
+                                      const EdgeInsets.fromLTRB(0, 0, 15, 0),
+                                  child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: const <Widget>[
+                                        Icon(
+                                          Icons.delete,
+                                          size: 24,
+                                          color: Colors.white,
+                                        ),
+                                      ]));
+                            }
+                            return Container(
+                              color: Colors.white,
+                            );
+                          },
+                          key: UniqueKey(),
+                          child: collection.wish
+                              ? _getCard(
+                                  collection, _collections!.indexOf(collection))
+                              : const Expanded(
+                                  child: Text('No results'),
+                                )),
+                    )
+                    .toList(),
+              )
+          ]));
     } else {
       return const Center(
         child: Text("No results",
@@ -226,8 +227,7 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
         setState(() {
           _filteredList = wishlistsBloc
               .getAllCollection()!
-              .where((element) =>
-              element.nameGame.toLowerCase().contains(text))
+              .where((element) => element.nameGame.toLowerCase().contains(text))
               .cast<Collections>()
               .toList();
         });
@@ -235,70 +235,65 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
     );
   }
 
-  Widget _getCard(Collections collection, int index){
+  Widget _getCard(Collections collection, int index) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4.0),
-    child: GestureDetector(
-    behavior: HitTestBehavior.translucent,
-    onTap: () {
-    Navigator.push(
-    context,
-    PageRouteBuilder(
-    pageBuilder: (_, __, ___) =>
-    DetailGameScreen(game: _games.results![index])),
-    );
-    },
-      child: Card(
-        child: Container(
-          padding: const EdgeInsets.all(10.0),
-          width: 700,
-          height: 100,
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              Expanded(
-                  child: Image.network(
-                      collection.imageUrl.isNotEmpty
+        padding: const EdgeInsets.symmetric(vertical: 4.0),
+        child: GestureDetector(
+          behavior: HitTestBehavior.translucent,
+          onTap: () {
+            if(_games.results!.length==_collections!.length){
+              Navigator.push(
+                context,
+                PageRouteBuilder(
+                    pageBuilder: (_, __, ___) =>
+                        DetailGameScreen(game: _games.results![index])),
+              );
+            }
+          },
+          child: Card(
+            child: Container(
+              padding: const EdgeInsets.all(10.0),
+              width: 700,
+              height: 100,
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                children: <Widget>[
+                  Expanded(
+                      child: Image.network(collection.imageUrl.isNotEmpty
                           ? collection.imageUrl
-                          : TextConstants
-                          .infoNotAvailable)),
-              Flexible(
-                fit: FlexFit.tight,
-                flex: 1,
-                child: Column(
-                  mainAxisAlignment:
-                  MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(collection.nameGame.isNotEmpty
-                        ? collection.nameGame
-                        : TextConstants
-                        .infoNotAvailable),
-                    _getNumberPlayer(collection),
-                  ],
-                ),
+                          : TextConstants.infoNotAvailable)),
+                  Flexible(
+                    fit: FlexFit.tight,
+                    flex: 1,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(collection.nameGame.isNotEmpty
+                            ? collection.nameGame
+                            : TextConstants.infoNotAvailable),
+                        _getNumberPlayer(collection),
+                      ],
+                    ),
+                  ),
+                  Flexible(
+                    fit: FlexFit.tight,
+                    flex: 1,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Text(collection.rate != null
+                            ? collection.rate.toString()
+                            : TextConstants.infoNotAvailable),
+                        Text(collection.played
+                            ? TextConstants.alreadyPlayed
+                            : TextConstants.neverPlayed),
+                      ],
+                    ),
+                  ),
+                ],
               ),
-              Flexible(
-                fit: FlexFit.tight,
-                flex: 1,
-                child: Column(
-                  mainAxisAlignment:
-                  MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(collection.rate != null
-                        ? collection.rate.toString()
-                        : TextConstants
-                        .infoNotAvailable),
-                    Text(collection.played
-                        ? TextConstants.alreadyPlayed
-                        : TextConstants.neverPlayed),
-                  ],
-                ),
-              ),
-            ],
+            ),
           ),
-        ),
-      ),));
-
+        ));
   }
-
 }
