@@ -1,7 +1,6 @@
 import 'package:board_game_app/data/models/collections.dart';
 import 'package:board_game_app/resources/utils/text_constants.dart';
 import 'package:board_game_app/resources/widgets/menu_bottom.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:swipeable_tile/swipeable_tile.dart';
 import 'wishlists_bloc.dart';
