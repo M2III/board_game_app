@@ -57,12 +57,18 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
 
   Widget _getBody() {
     if (wishlistsBloc.getAllCollection()!.isNotEmpty) {
-      return Column(children: <Widget>[
+      return
+        SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
         _textfieldfilter(),
         if (_filteredList.isNotEmpty && _textController.text.isNotEmpty)
           ListView(
             scrollDirection: Axis.vertical,
             shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
             padding: const EdgeInsets.symmetric(vertical: 1.0),
             children: _filteredList
                 .map(
@@ -113,6 +119,7 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
           ListView(
             scrollDirection: Axis.vertical,
             shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
             padding: const EdgeInsets.symmetric(vertical: 1.0),
             children: wishlistsBloc
                 .getAllCollection()!
@@ -163,7 +170,7 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
             )
                 .toList(),
           )
-      ]);
+      ]));
     } else {
       return const Center(
         child: Text("No results",

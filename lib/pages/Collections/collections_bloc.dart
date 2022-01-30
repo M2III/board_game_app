@@ -18,8 +18,8 @@ class CollectionsBloc {
     return _repository.deleteACollection(key);
   }
 
-  Future<AllResponseGames> getDetailCollectionGame(String idGame)  {
-    var game =  _repository.getDetailGame(idGame);
+  Future<AllResponseGames> getDetailCollectionGame(String idGame) async {
+    var game = await _repository.getDetailGame(idGame);
     return game;
   }
 }

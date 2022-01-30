@@ -55,12 +55,15 @@ class _CollectionScreenState extends State<CollectionsScreen> {
 
   Widget _getBody() {
     if (collectionsBloc.getAllCollection()!.isNotEmpty) {
-      return Column(children: <Widget>[
+      return
+        SingleChildScrollView(
+          child: Column(children: <Widget>[
         _textfieldfilter(),
         if (_filteredList.isNotEmpty && _textController.text.isNotEmpty)
           ListView(
             scrollDirection: Axis.vertical,
             shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
             padding: const EdgeInsets.symmetric(vertical: 1.0),
             children: _filteredList
                 .map(
@@ -113,6 +116,7 @@ class _CollectionScreenState extends State<CollectionsScreen> {
           ListView(
             scrollDirection: Axis.vertical,
             shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
             padding: const EdgeInsets.symmetric(vertical: 1.0),
             children: collectionsBloc
                 .getAllCollection()!
@@ -160,7 +164,7 @@ class _CollectionScreenState extends State<CollectionsScreen> {
                 )
                 .toList(),
           )
-      ]);
+      ]));
     } else {
       return const Center(
         child: Text("No results",
