@@ -72,7 +72,7 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
               _filteredList = wishlistsBloc
                   .getAllCollection()!
                   .where((element) =>
-                      element.nameGame.toLowerCase().contains(text))
+                  element.nameGame.toLowerCase().contains(text))
                   .cast<Collections>()
                   .toList();
             });
@@ -87,93 +87,93 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
             children: _filteredList
                 .map(
                   (Collections collection) => SwipeableTile(
-                      color: Colors.white,
-                      swipeThreshold: 0.2,
-                      direction: SwipeDirection.endToStart,
-                      isEelevated: false,
-                      borderRadius: 0,
-                      onSwiped: (_) {
-                        final index = _collections!.indexOf(collection);
-                        setState(() {
-                          _collections!.removeAt(index);
-                          wishlistsBloc.deleteCollections(collection.idGame);
-                        });
-                      },
-                      backgroundBuilder: (
-                        _,
-                        SwipeDirection direction,
-                        AnimationController progress,
+                  color: Colors.white,
+                  swipeThreshold: 0.2,
+                  direction: SwipeDirection.endToStart,
+                  isEelevated: false,
+                  borderRadius: 0,
+                  onSwiped: (_) {
+                    final index = _collections!.indexOf(collection);
+                    setState(() {
+                      _collections!.removeAt(index);
+                      wishlistsBloc.deleteCollections(collection.idGame);
+                    });
+                  },
+                  backgroundBuilder: (
+                      _,
+                      SwipeDirection direction,
+                      AnimationController progress,
                       ) {
-                        if (direction == SwipeDirection.endToStart) {
-                          return Container(
-                              color: progress.value > 0.0
-                                  ? const Color(0xFFed7474)
-                                  : Colors.white,
-                              padding: const EdgeInsets.fromLTRB(0, 0, 15, 0),
-                              child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: const <Widget>[
-                                    Icon(
-                                      Icons.delete,
-                                      size: 24,
-                                      color: Colors.white,
-                                    ),
-                                  ]));
-                        }
-                        return Container(
-                          color: Colors.white,
-                        );
-                      },
-                      key: UniqueKey(),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 4.0),
-                        child: Card(
-                          child: Container(
-                            padding: const EdgeInsets.all(10.0),
-                            width: 700,
-                            height: 100,
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: <Widget>[
-                                Image.network(collection.imageUrl.isNotEmpty
-                                    ? collection.imageUrl
-                                    : TextConstants.infoNotAvailable),
-                                Flexible(
-                                  fit: FlexFit.tight,
-                                  flex: 1,
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Text(collection.nameGame.isNotEmpty
-                                          ? collection.nameGame
-                                          : TextConstants.infoNotAvailable),
-                                      _getNumberPlayer(collection),
-                                    ],
-                                  ),
+                    if (direction == SwipeDirection.endToStart) {
+                      return Container(
+                          color: progress.value > 0.0
+                              ? const Color(0xFFed7474)
+                              : Colors.white,
+                          padding: const EdgeInsets.fromLTRB(0, 0, 15, 0),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: const <Widget>[
+                                Icon(
+                                  Icons.delete,
+                                  size: 24,
+                                  color: Colors.white,
                                 ),
-                                Flexible(
-                                  fit: FlexFit.tight,
-                                  flex: 1,
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Text(collection.rate != null
-                                          ? collection.rate.toString()
-                                          : TextConstants.infoNotAvailable),
-                                      Text(collection.played
-                                          ? TextConstants.alreadyPlayed
-                                          : TextConstants.neverPlayed),
-                                    ],
-                                  ),
-                                ),
-                              ],
+                              ]));
+                    }
+                    return Container(
+                      color: Colors.white,
+                    );
+                  },
+                  key: UniqueKey(),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4.0),
+                    child: Card(
+                      child: Container(
+                        padding: const EdgeInsets.all(10.0),
+                        width: 700,
+                        height: 100,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: <Widget>[
+                            Image.network(collection.imageUrl.isNotEmpty
+                                ? collection.imageUrl
+                                : TextConstants.infoNotAvailable),
+                            Flexible(
+                              fit: FlexFit.tight,
+                              flex: 1,
+                              child: Column(
+                                mainAxisAlignment:
+                                MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text(collection.nameGame.isNotEmpty
+                                      ? collection.nameGame
+                                      : TextConstants.infoNotAvailable),
+                                  _getNumberPlayer(collection),
+                                ],
+                              ),
                             ),
-                          ),
+                            Flexible(
+                              fit: FlexFit.tight,
+                              flex: 1,
+                              child: Column(
+                                mainAxisAlignment:
+                                MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text(collection.rate != null
+                                      ? collection.rate.toString()
+                                      : TextConstants.infoNotAvailable),
+                                  Text(collection.played
+                                      ? TextConstants.alreadyPlayed
+                                      : TextConstants.neverPlayed),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
-                      )),
-                )
+                      ),
+                    ),
+                  )),
+            )
                 .toList(),
           )
         else
@@ -185,103 +185,103 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
                 .getAllCollection()!
                 .map(
                   (Collections collection) => SwipeableTile(
-                      color: Colors.white,
-                      swipeThreshold: 0.2,
-                      direction: SwipeDirection.endToStart,
-                      isEelevated: false,
-                      borderRadius: 0,
-                      onSwiped: (_) {
-                        final index = _collections!.indexOf(collection);
-                        setState(() {
-                          _collections!.removeAt(index);
-                          wishlistsBloc.deleteCollections(collection.idGame);
-                        });
-                      },
-                      backgroundBuilder: (
-                        _,
-                        SwipeDirection direction,
-                        AnimationController progress,
+                  color: Colors.white,
+                  swipeThreshold: 0.2,
+                  direction: SwipeDirection.endToStart,
+                  isEelevated: false,
+                  borderRadius: 0,
+                  onSwiped: (_) {
+                    final index = _collections!.indexOf(collection);
+                    setState(() {
+                      _collections!.removeAt(index);
+                      wishlistsBloc.deleteCollections(collection.idGame);
+                    });
+                  },
+                  backgroundBuilder: (
+                      _,
+                      SwipeDirection direction,
+                      AnimationController progress,
                       ) {
-                        if (direction == SwipeDirection.endToStart) {
-                          return Container(
-                              color: progress.value > 0.0
-                                  ? const Color(0xFFed7474)
-                                  : Colors.white,
-                              padding: const EdgeInsets.fromLTRB(0, 0, 15, 0),
-                              child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: const <Widget>[
-                                    Icon(
-                                      Icons.delete,
-                                      size: 24,
-                                      color: Colors.white,
-                                    ),
-                                  ]));
-                        }
-                        return Container(
-                          color: Colors.white,
-                        );
-                      },
-                      key: UniqueKey(),
-                      child: collection.wish
-                          ? Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 4.0),
-                              child: Card(
-                                child: Container(
-                                  padding: const EdgeInsets.all(10.0),
-                                  width: 700,
-                                  height: 100,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: <Widget>[
-                                      Expanded(
-                                          child: Image.network(
-                                              collection.imageUrl.isNotEmpty
-                                                  ? collection.imageUrl
-                                                  : TextConstants
-                                                      .infoNotAvailable)),
-                                      Flexible(
-                                        fit: FlexFit.tight,
-                                        flex: 1,
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: [
-                                            Text(collection.nameGame.isNotEmpty
-                                                ? collection.nameGame
-                                                : TextConstants
-                                                    .infoNotAvailable),
-                                            _getNumberPlayer(collection),
-                                          ],
-                                        ),
-                                      ),
-                                      Flexible(
-                                        fit: FlexFit.tight,
-                                        flex: 1,
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceEvenly,
-                                          children: [
-                                            Text(collection.rate != null
-                                                ? collection.rate.toString()
-                                                : TextConstants
-                                                    .infoNotAvailable),
-                                            Text(collection.played
-                                                ? TextConstants.alreadyPlayed
-                                                : TextConstants.neverPlayed),
-                                          ],
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                    if (direction == SwipeDirection.endToStart) {
+                      return Container(
+                          color: progress.value > 0.0
+                              ? const Color(0xFFed7474)
+                              : Colors.white,
+                          padding: const EdgeInsets.fromLTRB(0, 0, 15, 0),
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: const <Widget>[
+                                Icon(
+                                  Icons.delete,
+                                  size: 24,
+                                  color: Colors.white,
                                 ),
+                              ]));
+                    }
+                    return Container(
+                      color: Colors.white,
+                    );
+                  },
+                  key: UniqueKey(),
+                  child: collection.wish
+                      ? Padding(
+                    padding:
+                    const EdgeInsets.symmetric(vertical: 4.0),
+                    child: Card(
+                      child: Container(
+                        padding: const EdgeInsets.all(10.0),
+                        width: 700,
+                        height: 100,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: <Widget>[
+                            Expanded(
+                                child: Image.network(
+                                    collection.imageUrl.isNotEmpty
+                                        ? collection.imageUrl
+                                        : TextConstants
+                                        .infoNotAvailable)),
+                            Flexible(
+                              fit: FlexFit.tight,
+                              flex: 1,
+                              child: Column(
+                                mainAxisAlignment:
+                                MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text(collection.nameGame.isNotEmpty
+                                      ? collection.nameGame
+                                      : TextConstants
+                                      .infoNotAvailable),
+                                  _getNumberPlayer(collection),
+                                ],
                               ),
-                            )
-                          : const Expanded(
-                              child: Text('No results'),
-                            )),
-                )
+                            ),
+                            Flexible(
+                              fit: FlexFit.tight,
+                              flex: 1,
+                              child: Column(
+                                mainAxisAlignment:
+                                MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text(collection.rate != null
+                                      ? collection.rate.toString()
+                                      : TextConstants
+                                      .infoNotAvailable),
+                                  Text(collection.played
+                                      ? TextConstants.alreadyPlayed
+                                      : TextConstants.neverPlayed),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
+                      : const Expanded(
+                    child: Text('No results'),
+                  )),
+            )
                 .toList(),
           )
       ]);

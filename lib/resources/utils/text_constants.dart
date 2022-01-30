@@ -4,6 +4,7 @@ class TextConstants {
   static const infoNotAvailable = "Information not available";
   static const alreadyPlayed = "Already played";
   static const neverPlayed = "Never played";
+  static const noResults = "No results";
 
 
 
