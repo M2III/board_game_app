@@ -1,11 +1,6 @@
 import 'package:board_game_app/data/models/collections.dart';
-import 'package:board_game_app/data/models/game.dart';
-import 'package:board_game_app/pages/collections_screen.dart';
 import 'package:board_game_app/resources/utils/text_constants.dart';
-import 'package:board_game_app/resources/widgets/collections_list.dart';
-import 'package:board_game_app/resources/widgets/medium_game_card.dart';
 import 'package:board_game_app/resources/widgets/menu_bottom.dart';
-import 'package:board_game_app/resources/widgets/search_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:swipeable_tile/swipeable_tile.dart';
