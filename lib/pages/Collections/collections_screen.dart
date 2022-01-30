@@ -1,4 +1,6 @@
+import 'package:board_game_app/data/models/all_response_games.dart';
 import 'package:board_game_app/data/models/collections.dart';
+import 'package:board_game_app/pages/DetailGame/details_game_screen.dart';
 import 'package:board_game_app/resources/utils/text_constants.dart';
 import 'package:board_game_app/resources/widgets/menu_bottom.dart';
 import 'package:flutter/material.dart';
@@ -19,6 +21,26 @@ class _CollectionScreenState extends State<CollectionsScreen> {
   final TextEditingController _textController = TextEditingController();
   final _collections = collectionsBloc.getAllCollection();
   var _filteredList = <Collections>[];
+  AllResponseGames _games = AllResponseGames();
+  String ids = "";
+
+  @override
+  void initState() {
+    var len = _collections!.length;
+    // ids
+    for(int i=0; i < len; i++){
+     ids += _collections![i].idGame.toString();
+     if (i < len - 1) {
+       ids += ",";
+     }
+    }
+    collectionsBloc.getDetailCollectionGame(ids).then((gameListResponse) {
+      setState(() {
+        _games = gameListResponse;
+      });
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,9 +49,7 @@ class _CollectionScreenState extends State<CollectionsScreen> {
         title: const Text('Your boardgames collection'),
       ),
       bottomNavigationBar: const MenuBottom(),
-      body: SingleChildScrollView(
-          child: _getBody()
-      ),
+      body: SingleChildScrollView(child: _getBody()),
     );
   }
 
@@ -44,8 +64,7 @@ class _CollectionScreenState extends State<CollectionsScreen> {
             padding: const EdgeInsets.symmetric(vertical: 1.0),
             children: _filteredList
                 .map(
-                  (Collections collection) =>
-                  SwipeableTile(
+                  (Collections collection) => SwipeableTile(
                       color: Colors.white,
                       swipeThreshold: 0.2,
                       direction: SwipeDirection.endToStart,
@@ -55,13 +74,15 @@ class _CollectionScreenState extends State<CollectionsScreen> {
                         final index = _collections!.indexOf(collection);
                         setState(() {
                           _collections!.removeAt(index);
+                          _games.results!.removeAt(index);
                           collectionsBloc.deleteCollections(collection.idGame);
-
                         });
                       },
-                      backgroundBuilder: (_,
-                          SwipeDirection direction,
-                          AnimationController progress,) {
+                      backgroundBuilder: (
+                        _,
+                        SwipeDirection direction,
+                        AnimationController progress,
+                      ) {
                         if (direction == SwipeDirection.endToStart) {
                           return Container(
                               color: progress.value > 0.0
@@ -78,59 +99,14 @@ class _CollectionScreenState extends State<CollectionsScreen> {
                                     ),
                                   ]));
                         }
-                        return Container(color: Colors.white,);
+                        return Container(
+                          color: Colors.white,
+                        );
                       },
                       key: UniqueKey(),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 4.0),
-                        child: Card(
-
-                          child: Container(
-                            padding: const EdgeInsets.all(10.0),
-                            width: 700,
-                            height: 100,
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: <Widget>[
-                                Image.network(collection.imageUrl.isNotEmpty
-                                    ? collection.imageUrl
-                                    : TextConstants.infoNotAvailable),
-                                Flexible(
-                                  fit: FlexFit.tight,
-                                  flex: 1,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment
-                                        .spaceEvenly,
-                                    children: [
-                                      Text(collection.nameGame.isNotEmpty
-                                          ? collection.nameGame
-                                          : TextConstants.infoNotAvailable),
-                                      _getNumberPlayer(collection),
-                                    ],
-                                  ),
-                                ),
-                                Flexible(
-                                  fit: FlexFit.tight,
-                                  flex: 1,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment
-                                        .spaceEvenly,
-                                    children: [
-                                      Text(collection.rate != null
-                                          ? collection.rate.toString()
-                                          : TextConstants.infoNotAvailable),
-                                      Text(collection.played
-                                          ? TextConstants.alreadyPlayed
-                                          : TextConstants.neverPlayed),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      )),
-            )
+                      child: _getCard(
+                          collection, _collections!.indexOf(collection))),
+                )
                 .toList(),
           )
         else
@@ -141,8 +117,7 @@ class _CollectionScreenState extends State<CollectionsScreen> {
             children: collectionsBloc
                 .getAllCollection()!
                 .map(
-                  (Collections collection) =>
-                  SwipeableTile(
+                  (Collections collection) => SwipeableTile(
                       color: Colors.white,
                       swipeThreshold: 0.2,
                       direction: SwipeDirection.endToStart,
@@ -155,9 +130,11 @@ class _CollectionScreenState extends State<CollectionsScreen> {
                           collectionsBloc.deleteCollections(collection.idGame);
                         });
                       },
-                      backgroundBuilder: (_,
-                          SwipeDirection direction,
-                          AnimationController progress,) {
+                      backgroundBuilder: (
+                        _,
+                        SwipeDirection direction,
+                        AnimationController progress,
+                      ) {
                         if (direction == SwipeDirection.endToStart) {
                           return Container(
                               color: progress.value > 0.0
@@ -174,63 +151,15 @@ class _CollectionScreenState extends State<CollectionsScreen> {
                                     ),
                                   ]));
                         }
-                        return Container(color: Colors.white,);
+                        return Container(
+                          color: Colors.white,
+                        );
                       },
                       key: UniqueKey(),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 4.0),
-                        child: Card(
-
-                          child: Container(
-                            padding: const EdgeInsets.all(10.0),
-                            width: 700,
-                            height: 100,
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: <Widget>[
-                                Expanded(
-                                    child: Image.network(collection.imageUrl.isNotEmpty
-                                        ? collection.imageUrl
-                                        : TextConstants.infoNotAvailable)),
-                                Flexible(
-                                  fit: FlexFit.tight,
-                                  flex: 1,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment
-                                        .spaceEvenly,
-                                    children: [
-                                      Text(collection.nameGame.isNotEmpty
-                                          ? collection.nameGame
-                                          : TextConstants.infoNotAvailable),
-                                      _getNumberPlayer(collection),
-                                    ],
-                                  ),
-                                ),
-                                Flexible(
-                                  fit: FlexFit.tight,
-                                  flex: 1,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment
-                                        .spaceEvenly,
-                                    children: [
-                                      Text(collection.rate != null
-                                          ? collection.rate.toString()
-                                          : TextConstants.infoNotAvailable),
-                                      Text(collection.played
-                                          ? TextConstants.alreadyPlayed
-                                          : TextConstants.neverPlayed),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      )),
-            )
+                      child: _getCard(collection, _collections!.indexOf(collection))),
+                )
                 .toList(),
           )
-
       ]);
     } else {
       return const Center(
@@ -254,7 +183,8 @@ class _CollectionScreenState extends State<CollectionsScreen> {
     }
   }
 
-  Widget _textfieldfilter(){
+  Widget _textfieldfilter()
+  {
     return TextField(
       controller: _textController,
       decoration: InputDecoration(
@@ -287,12 +217,72 @@ class _CollectionScreenState extends State<CollectionsScreen> {
         setState(() {
           _filteredList = collectionsBloc
               .getAllCollection()!
-              .where((element) =>
-              element.nameGame.toLowerCase().contains(text)).cast<
-              Collections>()
+              .where((element) => element.nameGame.toLowerCase().contains(text))
+              .cast<Collections>()
               .toList();
         });
       },
+    );
+  }
+
+
+  Widget _getCard(Collections collection, int index) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4.0),
+      child: GestureDetector(
+        behavior: HitTestBehavior.translucent,
+        onTap: () {
+          Navigator.push(
+            context,
+            PageRouteBuilder(
+                pageBuilder: (_, __, ___) =>
+                    DetailGameScreen(game: _games.results![index])),
+          );
+        },
+        child: Card(
+          child: Container(
+            padding: const EdgeInsets.all(10.0),
+            width: 700,
+            height: 100,
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                Image.network(collection.imageUrl.isNotEmpty
+                    ? collection.imageUrl
+                    : TextConstants.infoNotAvailable),
+                Flexible(
+                  fit: FlexFit.tight,
+                  flex: 1,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(collection.nameGame.isNotEmpty
+                          ? collection.nameGame
+                          : TextConstants.infoNotAvailable),
+                      _getNumberPlayer(collection),
+                    ],
+                  ),
+                ),
+                Flexible(
+                  fit: FlexFit.tight,
+                  flex: 1,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Text(collection.rate != null
+                          ? collection.rate.toString()
+                          : TextConstants.infoNotAvailable),
+                      Text(collection.played
+                          ? TextConstants.alreadyPlayed
+                          : TextConstants.neverPlayed),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

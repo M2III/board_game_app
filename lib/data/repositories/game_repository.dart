@@ -52,7 +52,7 @@ class GameRepository {
     return GameApiProvider().searchGamesByInput(input);
   }
 
-  Future<AllResponseGames> getGame(String idGame) {
+  Future<AllResponseGames> getDetailGame(String idGame) {
     return GameApiProvider().getGame(idGame);
   }
 }

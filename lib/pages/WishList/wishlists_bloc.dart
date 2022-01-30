@@ -1,3 +1,4 @@
+import 'package:board_game_app/data/models/all_response_games.dart';
 import 'package:board_game_app/data/models/collections.dart';
 import 'package:board_game_app/data/repositories/game_repository.dart';
 
@@ -24,6 +25,11 @@ class WishlistsBloc {
 
   Future<void>? deleteCollections(key) {
     return _repository.deleteACollection(key);
+  }
+
+  Future<AllResponseGames> getDetailWishListGame(String idGame)  {
+    var game =  _repository.getDetailGame(idGame);
+    return game;
   }
 
 }

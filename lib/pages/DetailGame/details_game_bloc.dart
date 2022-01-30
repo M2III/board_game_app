@@ -1,24 +1,15 @@
 import 'dart:async';
 
-import 'package:board_game_app/data/models/all_response_games.dart';
 import 'package:board_game_app/data/models/collections.dart';
 import 'package:board_game_app/data/repositories/game_repository.dart';
 
 class DetailGameBloc {
   final _gameRepository = GameRepository();
-
-  Future<AllResponseGames> getGame(idGame) {
-    return _gameRepository.getGame(idGame);
-  }
   
   Collections? getGameDetails(String input)  {
     var collection = _gameRepository.getCollection(input);
     return collection;
   }
-
-  /*Future<void> insertACollection(String idGame,bool wished, bool played, bool owned, double rate)  async {
-    await _gameRepository.insertACollection(idGame, wished, played, owned, rate);
-  }*/
 
   Future<void> setWished(
       String idGame,
