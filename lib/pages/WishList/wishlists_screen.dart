@@ -39,45 +39,7 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
   Widget _getBody() {
     if (wishlistsBloc.getAllCollection()!.isNotEmpty) {
       return Column(children: <Widget>[
-        TextField(
-          controller: _textController,
-          decoration: InputDecoration(
-            hintText: "Search a game...",
-            hintStyle: const TextStyle(
-              color: Colors.black26,
-            ),
-            labelStyle: const TextStyle(
-                color: Color.fromARGB(174, 182, 191, 1),
-                fontSize: 15,
-                fontStyle: FontStyle.normal),
-            filled: true,
-            fillColor: const Color.fromRGBO(255, 255, 255, 1),
-            prefixIcon: const Icon(Icons.search),
-            focusedBorder: OutlineInputBorder(
-              borderSide: const BorderSide(
-                color: Colors.transparent,
-              ),
-              borderRadius: BorderRadius.circular(25.7),
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderSide: const BorderSide(
-                color: Colors.transparent,
-              ),
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-          ),
-          onChanged: (text) {
-            text = text.toLowerCase();
-            setState(() {
-              _filteredList = wishlistsBloc
-                  .getAllCollection()!
-                  .where((element) =>
-                  element.nameGame.toLowerCase().contains(text))
-                  .cast<Collections>()
-                  .toList();
-            });
-          },
-        ),
+        _textfieldfilter(),
         //if (_filteredList.isEmpty && _textController.text.isEmpty)
         if (_filteredList.isNotEmpty && _textController.text.isNotEmpty)
           ListView(
@@ -306,4 +268,47 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
       return const Text("Information non disponible");
     }
   }
+
+  Widget _textfieldfilter() {
+    return TextField(
+      controller: _textController,
+      decoration: InputDecoration(
+        hintText: "Search a game...",
+        hintStyle: const TextStyle(
+          color: Colors.black26,
+        ),
+        labelStyle: const TextStyle(
+            color: Color.fromARGB(174, 182, 191, 1),
+            fontSize: 15,
+            fontStyle: FontStyle.normal),
+        filled: true,
+        fillColor: const Color.fromRGBO(255, 255, 255, 1),
+        prefixIcon: const Icon(Icons.search),
+        focusedBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: Colors.transparent,
+          ),
+          borderRadius: BorderRadius.circular(25.7),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: Colors.transparent,
+          ),
+          borderRadius: BorderRadius.circular(10.0),
+        ),
+      ),
+      onChanged: (text) {
+        text = text.toLowerCase();
+        setState(() {
+          _filteredList = wishlistsBloc
+              .getAllCollection()!
+              .where((element) =>
+              element.nameGame.toLowerCase().contains(text))
+              .cast<Collections>()
+              .toList();
+        });
+      },
+    );
+  }
+
 }
