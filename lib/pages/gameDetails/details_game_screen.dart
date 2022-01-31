@@ -217,7 +217,6 @@ class _GameCardScreenState extends State<DetailGameScreen> {
   }
 
   _updateCollection(value) {
-    debugPrint(widget.game.minPlayers.toString());
     switch (value) {
       case 1:
         detailGameBloc.setWished(

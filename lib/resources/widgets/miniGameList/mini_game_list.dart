@@ -62,7 +62,9 @@ class _MiniGameListState extends State<MiniGameList> {
                                   DetailGameScreen(game: _games.results![i])),
                         );
                       },
-                      child: MiniGameCard(_games.results![i]),
+                      child: SingleChildScrollView(
+                        child: MiniGameCard(_games.results![i]),
+                      ),
                     ),
                   );
                 },
