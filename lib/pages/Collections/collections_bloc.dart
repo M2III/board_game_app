@@ -5,9 +5,8 @@ import 'package:board_game_app/data/repositories/game_repository.dart';
 class CollectionsBloc {
   final _repository = GameRepository();
 
-  Collections? showGameDetails(String input)  {
-    var collection = _repository.getCollection(input);
-    return collection;
+  Collections? showGameDetails(String input) {
+    return _repository.getCollection(input);
   }
 
   List<Collections>? getAllCollection() {
@@ -19,8 +18,7 @@ class CollectionsBloc {
   }
 
   Future<AllResponseGames> getDetailCollectionGame(String idGame) async {
-    var game = await _repository.getDetailGame(idGame);
-    return game;
+    return await _repository.getDetailGame(idGame);
   }
 }
 
