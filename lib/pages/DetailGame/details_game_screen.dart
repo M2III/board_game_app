@@ -19,7 +19,6 @@ class DetailGameScreen extends StatefulWidget {
 class _GameCardScreenState extends State<DetailGameScreen> {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
           backgroundColor: const Color(0xFF6200EE),
@@ -97,8 +96,6 @@ class _GameCardScreenState extends State<DetailGameScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            //html(data:widget.game.description!),
-            //Text(widget.game.description!),
             Text(widget.game.averageUserRating != null
                 ? widget.game.averageUserRating!.toStringAsFixed(1)
                 : TextConstants.infoNotAvailable),
@@ -132,9 +129,6 @@ class _GameCardScreenState extends State<DetailGameScreen> {
           child: ToHtml(html: widget.game.description!),
         ),
       ),
-      /*Expanded(
-        child: ToHtml(html: widget.game.description!),
-      )*/
     ]);
   }
 
