@@ -14,7 +14,7 @@ class Collections{
   @HiveField(4)
   final int maxPlayers;
   @HiveField(5)
-  bool wish;
+  bool wished;
   @HiveField(6)
   bool played;
   @HiveField(7)
@@ -28,7 +28,7 @@ class Collections{
     required this.imageUrl,
     required this.minPlayers,
     required this.maxPlayers,
-    required this.wish,
+    required this.wished,
     required this.played,
     required this.owned,
     this.rate});

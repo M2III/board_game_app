@@ -19,7 +19,7 @@ class GameRepository {
         Collections(idGame: idGame, nameGame: nameGame,
             imageUrl: imgUrl,
             maxPlayers: maxPlayers,
-            minPlayers: minPlayers, wish: wishCollection,
+            minPlayers: minPlayers, wished: wishCollection,
             played:playedCollection, owned: ownedCollection, rate: rateCollection));
   }
 

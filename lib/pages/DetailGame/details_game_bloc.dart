@@ -45,7 +45,7 @@ class DetailGameBloc {
         imageUrl,
         minPlayers,
         maxPlayers,
-        _gameRepository.getCollection(idGame)?.wish??false,
+        _gameRepository.getCollection(idGame)?.wished??false,
         played,
         _gameRepository.getCollection(idGame)?.owned??false,
         rate);
@@ -65,7 +65,7 @@ class DetailGameBloc {
         imageUrl,
         minPlayers,
         maxPlayers,
-        _gameRepository.getCollection(idGame)?.wish??false,
+        _gameRepository.getCollection(idGame)?.wished??false,
         _gameRepository.getCollection(idGame)?.played??false,
         owned,
         rate);
@@ -84,7 +84,7 @@ class DetailGameBloc {
         imageUrl,
         minPlayers,
         maxPlayers,
-        _gameRepository.getCollection(idGame)?.wish??false,
+        _gameRepository.getCollection(idGame)?.wished??false,
         _gameRepository.getCollection(idGame)?.played??false,
         _gameRepository.getCollection(idGame)?.owned??false,
         rate);

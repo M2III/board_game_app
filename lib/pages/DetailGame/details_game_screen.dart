@@ -151,8 +151,8 @@ class _GameCardScreenState extends State<DetailGameScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Icon(((detailGameBloc.getGameDetails(widget.game.id!)?.wish==null
-                      ||detailGameBloc.getGameDetails(widget.game.id!)?.wish==false)?
+                  Icon(((detailGameBloc.getGameDetails(widget.game.id!)?.wished==null
+                      ||detailGameBloc.getGameDetails(widget.game.id!)?.wished==false)?
                   Icons.favorite_border_outlined:Icons.favorite),
                       semanticLabel: "Wished", color: Colors.blueGrey),
                   const Text('Wished'),
@@ -205,7 +205,7 @@ class _GameCardScreenState extends State<DetailGameScreen> {
             widget.game.imageUrl.toString(),
             widget.game.minPlayers??1,
             widget.game.maxPlayers??1,
-            toggleUpdateCollection(detailGameBloc.getGameDetails(widget.game.id.toString())?.wish),
+            toggleUpdateCollection(detailGameBloc.getGameDetails(widget.game.id.toString())?.wished),
             detailGameBloc.getGameDetails(widget.game.id.toString())?.rate ?? widget.game.averageUserRating!.toDouble());
         break;
       case 2:

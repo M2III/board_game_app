@@ -29,7 +29,7 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
     var len = _collections!.length;
     // ids
     for (int i = 0; i < len; i++) {
-      if (_collections![i].wish) {
+      if (_collections![i].wished) {
         _ids += _collections![i].idGame.toString();
         if (i < len - 1) {
           _ids += ",";
@@ -78,7 +78,7 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
                           onSwiped: (_) {
                             final index = _collections!.indexOf(collection);
                             setState(() {
-                              _collections!.elementAt(index).wish = false;
+                              _collections!.elementAt(index).wished = false;
                             });
                           },
                           backgroundBuilder: (
@@ -131,7 +131,7 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
                           onSwiped: (_) {
                             final index = _collections!.indexOf(collection);
                             setState(() {
-                              _collections!.elementAt(index).wish = false;
+                              _collections!.elementAt(index).wished = false;
                             });
                           },
                           backgroundBuilder: (
@@ -161,7 +161,7 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
                             );
                           },
                           key: UniqueKey(),
-                          child: collection.wish
+                          child: collection.wished
                               ? _getCard(
                                   collection, _collections!.indexOf(collection))
                               : const Expanded(
