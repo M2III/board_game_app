@@ -26,8 +26,6 @@ class _AuthScreenState extends State<AuthScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // GlobalKey<FormState> _key=GlobalKey();
-
     return Scaffold(
         backgroundColor: Colors.grey,
         body: Center(
@@ -36,7 +34,6 @@ class _AuthScreenState extends State<AuthScreen> {
           child: Stack(children: <Widget>[
             SingleChildScrollView(
               padding: const EdgeInsets.all(8),
-              //padding: const EdgeInsets.fromLTRB(20, 70, 20, 20),
               scrollDirection: Axis.vertical,
               child: Column(
                 children: [
@@ -52,13 +49,11 @@ class _AuthScreenState extends State<AuthScreen> {
                     child: TextFormField(
                       controller: _emailController,
                       decoration: const InputDecoration(
-                        contentPadding: EdgeInsets.only(
-                            top: 20), // add padding to adjust text
+                        contentPadding: EdgeInsets.only(top: 20),
                         isDense: true,
                         hintText: "Email",
                         prefixIcon: Padding(
-                          padding: EdgeInsets.only(
-                              top: 15), // add padding to adjust icon
+                          padding: EdgeInsets.only(top: 15),
                           child: Icon(Icons.email),
                         ),
                       ),
@@ -79,13 +74,11 @@ class _AuthScreenState extends State<AuthScreen> {
                             }
                           },
                           decoration: const InputDecoration(
-                            contentPadding: EdgeInsets.only(
-                                top: 20), // add padding to adjust text
+                            contentPadding: EdgeInsets.only(top: 20),
                             isDense: true,
                             hintText: "Password",
                             prefixIcon: Padding(
-                              padding: EdgeInsets.only(
-                                  top: 15), // add padding to adjust icon
+                              padding: EdgeInsets.only(top: 15),
                               child: Icon(IconData(0xe3ae,
                                   fontFamily: 'MaterialIcons')),
                             ),
