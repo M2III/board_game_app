@@ -19,7 +19,7 @@ class CollectionsScreen extends StatefulWidget {
 
 class _CollectionScreenState extends State<CollectionsScreen> {
   final TextEditingController _textController = TextEditingController();
-  final _collections = collectionsBloc.getAllCollection();
+  final _collections = collectionsBloc.getAllMyOwnedCollection();
   var _filteredList = <Collections>[];
   late AllResponseGames _games;
   String _ids = "";
@@ -52,7 +52,7 @@ class _CollectionScreenState extends State<CollectionsScreen> {
   }
 
   Widget _getBody() {
-    if (collectionsBloc.getAllCollection()!.isNotEmpty) {
+    if (collectionsBloc.getAllMyOwnedCollection()!.isNotEmpty) {
       return Column(children: <Widget>[
         _textfieldfilter(),
         if (_filteredList.isNotEmpty && _textController.text.isNotEmpty)
@@ -72,9 +72,8 @@ class _CollectionScreenState extends State<CollectionsScreen> {
                       onSwiped: (_) {
                         final index = _collections!.indexOf(collection);
                         setState(() {
-                          _collections!.removeAt(index);
+                          _collections!.elementAt(index).owned = false;
                           _games.results!.removeAt(index);
-                          collectionsBloc.deleteCollections(collection.idGame);
                         });
                       },
                       backgroundBuilder: (
@@ -103,8 +102,13 @@ class _CollectionScreenState extends State<CollectionsScreen> {
                         );
                       },
                       key: UniqueKey(),
-                      child: _getCard(
-                          collection, _collections!.indexOf(collection))),
+                      child: collection.owned
+                          ? _getCard(
+                          collection, _collections!.indexOf(collection))
+                          : const Expanded(
+                        child: Text(TextConstants.noResults),
+                      )
+                  ),
                 )
                 .toList(),
           )
@@ -115,7 +119,7 @@ class _CollectionScreenState extends State<CollectionsScreen> {
             physics: const NeverScrollableScrollPhysics(),
             padding: const EdgeInsets.symmetric(vertical: 1.0),
             children: collectionsBloc
-                .getAllCollection()!
+                .getAllMyOwnedCollection()!
                 .map(
                   (Collections collection) => SwipeableTile(
                       color: Colors.white,
@@ -126,8 +130,8 @@ class _CollectionScreenState extends State<CollectionsScreen> {
                       onSwiped: (_) {
                         final index = _collections!.indexOf(collection);
                         setState(() {
-                          _collections!.removeAt(index);
-                          collectionsBloc.deleteCollections(collection.idGame);
+                          _collections!.elementAt(index).owned = false;
+                          _games.results!.removeAt(index);
                         });
                       },
                       backgroundBuilder: (
@@ -156,8 +160,13 @@ class _CollectionScreenState extends State<CollectionsScreen> {
                         );
                       },
                       key: UniqueKey(),
-                      child: _getCard(
-                          collection, _collections!.indexOf(collection))),
+                      child:
+                        collection.owned
+                        ? _getCard(
+                        collection, _collections!.indexOf(collection))
+                            : const Expanded(
+                        child: Text(TextConstants.noResults),
+                        )),
                 )
                 .toList(),
           )
@@ -216,7 +225,7 @@ class _CollectionScreenState extends State<CollectionsScreen> {
         text = text.toLowerCase();
         setState(() {
           _filteredList = collectionsBloc
-              .getAllCollection()!
+              .getAllMyOwnedCollection()!
               .where((element) => element.nameGame.toLowerCase().contains(text))
               .cast<Collections>()
               .toList();

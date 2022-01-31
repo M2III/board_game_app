@@ -10,8 +10,15 @@ class CollectionsBloc {
     return collection;
   }
 
-  List<Collections>? getAllCollection() {
-    return _repository.getAll();
+  List<Collections>? getAllMyOwnedCollection() {
+    final _collections = _repository.getAll();
+    List<Collections> temp =[];
+    for(var i=0; i < _collections!.length; i++){
+      if(_collections.elementAt(i).owned){
+        temp.add(_collections.elementAt(i));
+      }
+    }
+    return temp;
   }
 
   Future<void>? deleteCollections(key) {
