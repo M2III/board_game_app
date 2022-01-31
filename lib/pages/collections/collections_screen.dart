@@ -1,6 +1,6 @@
 import 'package:board_game_app/data/models/all_response_games.dart';
 import 'package:board_game_app/data/models/collections.dart';
-import 'package:board_game_app/pages/DetailGame/details_game_screen.dart';
+import 'package:board_game_app/pages/gameDetails/details_game_screen.dart';
 import 'package:board_game_app/resources/utils/text_constants.dart';
 import 'package:board_game_app/resources/widgets/menu_bottom.dart';
 import 'package:flutter/material.dart';
@@ -26,17 +26,21 @@ class _CollectionScreenState extends State<CollectionsScreen> {
 
   @override
   void initState() {
-    var len = _collections!.length;
-    // ids
-    for (int i = 0; i < len; i++) {
-      _ids += _collections![i].idGame.toString();
-      if (i < len - 1) {
-        _ids += ",";
+    if (_collections != null) {
+      int len = _collections?.length ?? 0;
+      if (len > 0) {
+        for (int i = 0; i < len; i++) {
+          _ids += _collections![i].idGame.toString();
+          if (i < len - 1) {
+            _ids += ",";
+          }
+        }
+        collectionsBloc.getDetailCollectionGame(_ids).then((gameListResponse) {
+          _games = gameListResponse;
+        });
       }
     }
-    collectionsBloc.getDetailCollectionGame(_ids).then((gameListResponse) {
-      _games = gameListResponse;
-    });
+
     super.initState();
   }
 
@@ -52,7 +56,7 @@ class _CollectionScreenState extends State<CollectionsScreen> {
   }
 
   Widget _getBody() {
-    if (collectionsBloc.getAllCollection()!.isNotEmpty) {
+    if (_collections != null) {
       return Column(children: <Widget>[
         _textfieldfilter(),
         if (_filteredList.isNotEmpty && _textController.text.isNotEmpty)
