@@ -26,9 +26,6 @@ class _GameScreenState extends State<GameScreen> {
         centerTitle: true,
         actions: <Widget>[
           PopupMenuButton(
-              onSelected: (value) {
-                _updateCollection(value);
-              },
               itemBuilder: (context) => [
                     PopupMenuItem(
                       child: Row(
@@ -99,7 +96,6 @@ class _GameScreenState extends State<GameScreen> {
       ),
       RatingBar.builder(
         initialRating: 3,
-        /* Pour l'initial rating on ajoutera un fetch pour recuperer la note mise par l'user */
         minRating: 0.5,
         direction: Axis.horizontal,
         allowHalfRating: true,
@@ -128,8 +124,6 @@ class _GameScreenState extends State<GameScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            //html(data:widget.game.description!),
-            //Text(widget.game.description!),
             Text(widget.game.averageUserRating != null
                 ? widget.game.averageUserRating!.toStringAsFixed(1)
                 : TextConstants.infoNotAvailable),
@@ -163,25 +157,6 @@ class _GameScreenState extends State<GameScreen> {
           child: ToHtml(html: widget.game.description!),
         ),
       ),
-      /*Expanded(
-        child: ToHtml(html: widget.game.description!),
-      )*/
     ]);
-  }
-
-  _updateCollection(value) {
-    switch (value) {
-      case 1:
-        // print("I wish "+widget.game.name!);
-        break;
-      case 2:
-        // print("I played at "+widget.game.name!);
-        break;
-      case 3:
-        // print("I owned at "+widget.game.name!);
-        break;
-      default:
-        break;
-    }
   }
 }

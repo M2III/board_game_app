@@ -2,14 +2,16 @@ import 'package:board_game_app/data/models/collections.dart';
 import 'package:board_game_app/data/providers/local/database/base_hive_provider.dart';
 import 'package:hive/hive.dart';
 
-class CollectionHiveProvider extends BaseHiveProvider<Collections,CollectionHiveProvider>{
+class CollectionHiveProvider
+    extends BaseHiveProvider<Collections, CollectionHiveProvider> {
   CollectionHiveProvider._privateConstructor();
-  static final CollectionHiveProvider _singleton= CollectionHiveProvider._privateConstructor();
+  static final CollectionHiveProvider _singleton =
+      CollectionHiveProvider._privateConstructor();
 
-  factory CollectionHiveProvider()=> _singleton;
+  factory CollectionHiveProvider() => _singleton;
   static Box<Collections>? _box;
 
-  static Future<CollectionHiveProvider> create() async{
+  static Future<CollectionHiveProvider> create() async {
     final component = CollectionHiveProvider();
     Hive.registerAdapter<Collections>(CollectionsAdapter());
     _box = await Hive.openBox('Collections');
@@ -17,7 +19,7 @@ class CollectionHiveProvider extends BaseHiveProvider<Collections,CollectionHive
   }
 
   @override
-  Future<void> add(String key, Collections object) => _box!.put(key,object);
+  Future<void> add(String key, Collections object) => _box!.put(key, object);
 
   @override
   Future<void> addAll(Map<String, Collections> map) => _box!.putAll(map);
@@ -39,8 +41,4 @@ class CollectionHiveProvider extends BaseHiveProvider<Collections,CollectionHive
 
   @override
   Map<dynamic, dynamic> getMap() => _box!.toMap();
-
-
-
-
 }

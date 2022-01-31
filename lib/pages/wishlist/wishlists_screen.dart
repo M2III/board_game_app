@@ -1,6 +1,6 @@
 import 'package:board_game_app/data/models/all_response_games.dart';
 import 'package:board_game_app/data/models/collections.dart';
-import 'package:board_game_app/pages/DetailGame/details_game_screen.dart';
+import 'package:board_game_app/pages/gameDetails/details_game_screen.dart';
 import 'package:board_game_app/resources/utils/text_constants.dart';
 import 'package:board_game_app/resources/widgets/menu_bottom.dart';
 import 'package:flutter/material.dart';
@@ -26,19 +26,22 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
 
   @override
   void initState() {
-    var len = _collections!.length;
-    // ids
-    for (int i = 0; i < len; i++) {
-      if (_collections![i].wish) {
-        _ids += _collections![i].idGame.toString();
-        if (i < len - 1) {
-          _ids += ",";
+    if (_collections != null) {
+      int len = _collections?.length ?? 0;
+      if (len > 0) {
+        for (int i = 0; i < len; i++) {
+          if (_collections![i].wished) {
+            _ids += _collections![i].idGame.toString();
+            if (i < len - 1) {
+              _ids += ",";
+            }
+          }
         }
+        wishlistsBloc.getDetailWishListGame(_ids).then((gameListResponse) {
+          _games = gameListResponse;
+        });
       }
     }
-    wishlistsBloc.getDetailWishListGame(_ids).then((gameListResponse) {
-      _games = gameListResponse;
-    });
 
     super.initState();
   }
@@ -55,7 +58,7 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
   }
 
   Widget _getBody() {
-    if (wishlistsBloc.getAllCollection()!.isNotEmpty) {
+    if (_collections != null && _collections!.isNotEmpty) {
       return Column(
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
@@ -78,7 +81,7 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
                           onSwiped: (_) {
                             final index = _collections!.indexOf(collection);
                             setState(() {
-                              _collections!.elementAt(index).wish = false;
+                              _collections!.elementAt(index).wished = false;
                             });
                           },
                           backgroundBuilder: (
@@ -131,7 +134,7 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
                           onSwiped: (_) {
                             final index = _collections!.indexOf(collection);
                             setState(() {
-                              _collections!.elementAt(index).wish = false;
+                              _collections!.elementAt(index).wished = false;
                             });
                           },
                           backgroundBuilder: (
@@ -161,7 +164,7 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
                             );
                           },
                           key: UniqueKey(),
-                          child: collection.wish
+                          child: collection.wished
                               ? _getCard(
                                   collection, _collections!.indexOf(collection))
                               : const Expanded(

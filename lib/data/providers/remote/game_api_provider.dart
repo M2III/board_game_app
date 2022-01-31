@@ -19,8 +19,6 @@ class GameApiProvider {
     return games;
   }
 
-  //CollectionHiveProvider?_collectionHiveProvider;
-
   Future<AllResponseGames> getPopularKickstartersOrderByTrendingRank() async {
     var uri = Uri.parse(
         'https://api.boardgameatlas.com/api/search?kickstarter=true&limit=10&client_id=${TextConstants.clientId}&order_by=trending_rank');
@@ -39,8 +37,7 @@ class GameApiProvider {
       'client_id': TextConstants.clientId
     };
     String queryString = Uri(queryParameters: queryParams).query;
-    var uri = Uri.parse(
-        '$endpointUrl?$queryString'); // result - https://api.boardgameatlas.com/api/search?name=Catan&pretty=true&exact=true&client_id=JLBr5npPhV
+    var uri = Uri.parse('$endpointUrl?$queryString');
     var responseFromApi = await http.get(uri);
     var formattedResponse = responseFromApi.body.replaceAll('�', '');
     var games = AllResponseGames.fromJson(jsonDecode(formattedResponse));
@@ -54,7 +51,5 @@ class GameApiProvider {
     var formattedResponse = responseFromApi.body.replaceAll('�', '');
     var games = AllResponseGames.fromJson(jsonDecode(formattedResponse));
     return games;
-    // example result -/https://api.boardgameatlas.com/api/search?ids=yqR4PtpO8X&client_id=JLBr5npPhV
-
   }
 }

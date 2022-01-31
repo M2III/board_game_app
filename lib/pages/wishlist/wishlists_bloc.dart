@@ -2,26 +2,25 @@ import 'package:board_game_app/data/models/all_response_games.dart';
 import 'package:board_game_app/data/models/collections.dart';
 import 'package:board_game_app/data/repositories/game_repository.dart';
 
-class CollectionsBloc {
+class WishlistsBloc {
   final _repository = GameRepository();
 
-  Collections? showGameDetails(String input)  {
-    var collection = _repository.getCollection(input);
-    return collection;
+  Collections? showGameDetails(String input) {
+    return _repository.getCollection(input);
   }
 
   List<Collections>? getAllCollection() {
-    return _repository.getAll();
+    return _repository.getAll()?.where((element) => element.wished).toList() ??
+        List.empty();
   }
 
   Future<void>? deleteCollections(key) {
     return _repository.deleteACollection(key);
   }
 
-  Future<AllResponseGames> getDetailCollectionGame(String idGame) async {
-    var game = await _repository.getDetailGame(idGame);
-    return game;
+  Future<AllResponseGames> getDetailWishListGame(String idGame) {
+    return _repository.getDetailGame(idGame);
   }
 }
 
-final collectionsBloc = CollectionsBloc();
+final wishlistsBloc = WishlistsBloc();
