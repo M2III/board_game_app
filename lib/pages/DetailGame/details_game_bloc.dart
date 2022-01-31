@@ -7,8 +7,7 @@ class DetailGameBloc {
   final _gameRepository = GameRepository();
 
   Collections? getGameDetails(String input) {
-    var collection = _gameRepository.getCollection(input);
-    return collection;
+    return _gameRepository.getCollection(input);
   }
 
   Future<void> setWished(String idGame, String gameName, String imageUrl,
