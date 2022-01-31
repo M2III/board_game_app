@@ -10,7 +10,8 @@ class WishlistsBloc {
   }
 
   List<Collections>? getAllCollection() {
-    return _repository.getAll()!.where((element) => element.wished).toList();
+    return _repository.getAll()?.where((element) => element.wished).toList() ??
+        List.empty();
   }
 
   Future<void>? deleteCollections(key) {

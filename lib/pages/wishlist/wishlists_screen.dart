@@ -26,19 +26,22 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
 
   @override
   void initState() {
-    var len = _collections!.length;
-    // ids
-    for (int i = 0; i < len; i++) {
-      if (_collections![i].wished) {
-        _ids += _collections![i].idGame.toString();
-        if (i < len - 1) {
-          _ids += ",";
+    if (_collections != null) {
+      int len = _collections?.length ?? 0;
+      if (len > 0) {
+        for (int i = 0; i < len; i++) {
+          if (_collections![i].wished) {
+            _ids += _collections![i].idGame.toString();
+            if (i < len - 1) {
+              _ids += ",";
+            }
+          }
         }
+        wishlistsBloc.getDetailWishListGame(_ids).then((gameListResponse) {
+          _games = gameListResponse;
+        });
       }
     }
-    wishlistsBloc.getDetailWishListGame(_ids).then((gameListResponse) {
-      _games = gameListResponse;
-    });
 
     super.initState();
   }
@@ -55,7 +58,7 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
   }
 
   Widget _getBody() {
-    if (wishlistsBloc.getAllCollection()!.isNotEmpty) {
+    if (_collections != null && _collections!.isNotEmpty) {
       return Column(
           mainAxisAlignment: MainAxisAlignment.center,
           mainAxisSize: MainAxisSize.max,
