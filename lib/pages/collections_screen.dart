@@ -15,6 +15,7 @@ class CollectionsScreen extends StatelessWidget {
         body: const SearchBar(),
         bottomNavigationBar: const MenuBottom(),
       ),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

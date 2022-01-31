@@ -29,6 +29,7 @@ class SettingsScreen extends StatelessWidget {
                       )
                     ])))),
       ),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

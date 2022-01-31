@@ -16,6 +16,7 @@ class WishListScreen extends StatelessWidget {
           body: Column(
             children: const [SearchBar()],
           )),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
