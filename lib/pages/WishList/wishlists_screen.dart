@@ -37,7 +37,7 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
       }
     }
     wishlistsBloc.getDetailWishListGame(_ids).then((gameListResponse) {
-        _games = gameListResponse;
+      _games = gameListResponse;
     });
 
     super.initState();
@@ -56,11 +56,10 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
 
   Widget _getBody() {
     if (wishlistsBloc.getAllCollection()!.isNotEmpty) {
-      return SingleChildScrollView(
-          child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              mainAxisSize: MainAxisSize.max,
-              children: <Widget>[
+      return Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisSize: MainAxisSize.max,
+          children: <Widget>[
             _textfieldfilter(),
             if (_filteredList.isNotEmpty && _textController.text.isNotEmpty)
               ListView(
@@ -171,7 +170,7 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
                     )
                     .toList(),
               )
-          ]));
+          ]);
     } else {
       return const Center(
         child: Text("No results",
@@ -241,7 +240,7 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
         child: GestureDetector(
           behavior: HitTestBehavior.translucent,
           onTap: () {
-            if(_games.results!.length==_collections!.length){
+            if (_games.results!.length == _collections!.length) {
               Navigator.push(
                 context,
                 PageRouteBuilder(

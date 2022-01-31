@@ -28,14 +28,14 @@ class _CollectionScreenState extends State<CollectionsScreen> {
   void initState() {
     var len = _collections!.length;
     // ids
-    for(int i=0; i < len; i++){
-     _ids += _collections![i].idGame.toString();
-     if (i < len - 1) {
-       _ids += ",";
-     }
+    for (int i = 0; i < len; i++) {
+      _ids += _collections![i].idGame.toString();
+      if (i < len - 1) {
+        _ids += ",";
+      }
     }
     collectionsBloc.getDetailCollectionGame(_ids).then((gameListResponse) {
-        _games = gameListResponse;
+      _games = gameListResponse;
     });
     super.initState();
   }
@@ -53,9 +53,7 @@ class _CollectionScreenState extends State<CollectionsScreen> {
 
   Widget _getBody() {
     if (collectionsBloc.getAllCollection()!.isNotEmpty) {
-      return
-        SingleChildScrollView(
-          child: Column(children: <Widget>[
+      return Column(children: <Widget>[
         _textfieldfilter(),
         if (_filteredList.isNotEmpty && _textController.text.isNotEmpty)
           ListView(
@@ -158,11 +156,12 @@ class _CollectionScreenState extends State<CollectionsScreen> {
                         );
                       },
                       key: UniqueKey(),
-                      child: _getCard(collection, _collections!.indexOf(collection))),
+                      child: _getCard(
+                          collection, _collections!.indexOf(collection))),
                 )
                 .toList(),
           )
-      ]));
+      ]);
     } else {
       return const Center(
         child: Text("No results",
@@ -185,8 +184,7 @@ class _CollectionScreenState extends State<CollectionsScreen> {
     }
   }
 
-  Widget _textfieldfilter()
-  {
+  Widget _textfieldfilter() {
     return TextField(
       controller: _textController,
       decoration: InputDecoration(
@@ -227,20 +225,19 @@ class _CollectionScreenState extends State<CollectionsScreen> {
     );
   }
 
-
   Widget _getCard(Collections collection, int index) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4.0),
       child: GestureDetector(
         behavior: HitTestBehavior.translucent,
         onTap: () {
-          if(_games.results!.length==_collections!.length){
-                Navigator.push(
-                  context,
-                  PageRouteBuilder(
-                      pageBuilder: (_, __, ___) =>
-                          DetailGameScreen(game: _games.results![index])),
-                );
+          if (_games.results!.length == _collections!.length) {
+            Navigator.push(
+              context,
+              PageRouteBuilder(
+                  pageBuilder: (_, __, ___) =>
+                      DetailGameScreen(game: _games.results![index])),
+            );
           }
         },
         child: Card(
