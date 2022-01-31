@@ -149,7 +149,7 @@ class _GameCardScreenState extends State<DetailGameScreen> {
 
             PopupMenuItem(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children: <Widget>[
                   Icon(((detailGameBloc.getGameDetails(widget.game.id!)?.wish==null
                       ||detailGameBloc.getGameDetails(widget.game.id!)?.wish==false)?
@@ -175,7 +175,7 @@ class _GameCardScreenState extends State<DetailGameScreen> {
             ),
             PopupMenuItem(
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
                 children:  <Widget>[
                   Icon(((detailGameBloc.getGameDetails(widget.game.id!)?.owned==null
                       ||detailGameBloc.getGameDetails(widget.game.id!)?.owned==false)
