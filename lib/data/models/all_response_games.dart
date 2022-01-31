@@ -19,8 +19,8 @@ class AllResponseGames {
     /*_count = json['count'] != null ? json['count'] : null;*/
     if (json['games'] != null) {
       _results = [];
-      json['games'].forEach((v) {
-        _results?.add(Game.fromJson(v));
+      json['games'].forEach((game) {
+        _results?.add(Game.fromJson(game));
       });
     }
   }
@@ -31,7 +31,7 @@ class AllResponseGames {
       map['count'] = _count as Game;
     }*/
     if (_results != null) {
-      map['results'] = _results?.map((v) => v.toJson()) as Game;
+      map['results'] = _results?.map((game) => game.toJson()) as Game;
     }
     return map;
   }
@@ -41,30 +41,3 @@ class AllResponseGames {
     return 'AllResponseGames{_results: $_results}';
   }
 }
-
-/*
-class Count {
-  int? _count;
-
-
-  int? get count => _count;
-
-
-  Count({
-    int? count,
-    }){
-    _count = count;
-
-  }
-
-  Count.fromJson(dynamic json) {
-    _count = json['count'];
-  }
-
-  Map<String, dynamic> toJson() {
-    var map = <String, dynamic>{};
-    map['count'] = _count;
-    return map;
-  }
-
-}*/
