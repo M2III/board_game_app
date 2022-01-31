@@ -4,7 +4,6 @@ import 'package:board_game_app/data/models/all_response_games.dart';
 import 'package:board_game_app/data/models/game.dart';
 import 'package:board_game_app/resources/utils/text_constants.dart';
 import 'package:board_game_app/resources/widgets/medium_game_card.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 

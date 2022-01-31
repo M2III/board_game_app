@@ -1,5 +1,4 @@
 import 'package:board_game_app/resources/widgets/menu_bottom.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SettingsScreen extends StatelessWidget {

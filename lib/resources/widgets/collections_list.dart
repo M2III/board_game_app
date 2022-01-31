@@ -1,22 +1,16 @@
-import 'package:board_game_app/data/models/game.dart';
-import 'package:board_game_app/pages/DetailGame/details_game_screen.dart';
+import 'package:board_game_app/data/models/collections.dart';
 import 'package:board_game_app/resources/utils/text_constants.dart';
 import 'package:flutter/material.dart';
 
-class MediumGameCard extends StatelessWidget {
-  const MediumGameCard({Key? key, required this.game}) : super(key: key);
+class CollectionList extends StatelessWidget {
+  const CollectionList({Key? key, required this.collections}) : super(key: key);
 
-  final Game game;
+  final Collections collections;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Navigator.push(
-          context,
-          PageRouteBuilder(pageBuilder: (_, __, ___) => DetailGameScreen(game: game)),
-        );
-      },
+
       child: Card(
         child: Container(
           padding: const EdgeInsets.all(10.0),
@@ -25,8 +19,8 @@ class MediumGameCard extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
-              Image.network(game.imageUrl != null
-                  ? game.imageUrl!
+              Image.network(collections.imageUrl != ''
+                  ? collections.imageUrl
                   : TextConstants.infoNotAvailable),
               Flexible(
                 fit: FlexFit.tight,
@@ -34,9 +28,7 @@ class MediumGameCard extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text(game.name != null
-                        ? game.name!
-                        : TextConstants.infoNotAvailable),
+                    Text(collections.nameGame),
                     _getNumberPlayer(),
                   ],
                 ),
@@ -47,12 +39,12 @@ class MediumGameCard extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Text(game.averageUserRating != null
-                        ? game.averageUserRating!.toStringAsFixed(1)
+                    Text(collections.rate != null
+                        ? collections.rate.toString()
                         : TextConstants.infoNotAvailable),
-                    Text(game.yearPublished != null
-                        ? game.yearPublished.toString()
-                        : TextConstants.infoNotAvailable),
+                    Text(collections.played
+                        ? TextConstants.alreadyPlayed
+                        : TextConstants.neverPlayed),
                   ],
                 ),
               ),
@@ -64,13 +56,13 @@ class MediumGameCard extends StatelessWidget {
   }
 
   Widget _getNumberPlayer() {
-    if (game.minPlayers != null && game.maxPlayers != null) {
-      return Text(game.minPlayers.toString() +
+    if (collections.idGame.isNotEmpty) {
+      return Text(collections.minPlayers.toString() +
           " - " +
-          game.maxPlayers.toString() +
+          collections.maxPlayers.toString() +
           " players");
     } else {
-      return const Text("Information non disponible");
+      return const Text(TextConstants.infoNotAvailable);
     }
   }
 }
