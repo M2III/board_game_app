@@ -37,8 +37,7 @@ class GameApiProvider {
       'client_id': TextConstants.clientId
     };
     String queryString = Uri(queryParameters: queryParams).query;
-    var uri = Uri.parse(
-        '$endpointUrl?$queryString'); // result - https://api.boardgameatlas.com/api/search?name=Catan&pretty=true&exact=true&client_id=JLBr5npPhV
+    var uri = Uri.parse('$endpointUrl?$queryString');
     var responseFromApi = await http.get(uri);
     var formattedResponse = responseFromApi.body.replaceAll('�', '');
     var games = AllResponseGames.fromJson(jsonDecode(formattedResponse));
