@@ -284,7 +284,7 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Text(collection.rate != null
-                            ? collection.rate.toString()
+                            ? collection.rate!.toStringAsFixed(1)
                             : TextConstants.infoNotAvailable),
                         Text(collection.played
                             ? TextConstants.alreadyPlayed
