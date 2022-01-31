@@ -1,6 +1,6 @@
-import 'package:board_game_app/pages/WishList/wishlists_screen.dart';
+import 'package:board_game_app/pages/wishlist/wishlists_screen.dart';
 import 'package:board_game_app/pages/auth_screen.dart';
-import 'package:board_game_app/pages/Collections/collections_screen.dart';
+import 'package:board_game_app/pages/collections/collections_screen.dart';
 import 'package:board_game_app/pages/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -134,7 +134,7 @@ class MenuBottom extends StatelessWidget {
                         onPressed: () => {
                           signOut(),
                           Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) =>  const AuthScreen(),
+                            builder: (context) => const AuthScreen(),
                           ))
                         },
                         child: const Text('OK'),
