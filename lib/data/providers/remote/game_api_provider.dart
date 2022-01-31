@@ -19,8 +19,6 @@ class GameApiProvider {
     return games;
   }
 
-  //CollectionHiveProvider?_collectionHiveProvider;
-
   Future<AllResponseGames> getPopularKickstartersOrderByTrendingRank() async {
     var uri = Uri.parse(
         'https://api.boardgameatlas.com/api/search?kickstarter=true&limit=10&client_id=${TextConstants.clientId}&order_by=trending_rank');
@@ -54,7 +52,5 @@ class GameApiProvider {
     var formattedResponse = responseFromApi.body.replaceAll('�', '');
     var games = AllResponseGames.fromJson(jsonDecode(formattedResponse));
     return games;
-    // example result -/https://api.boardgameatlas.com/api/search?ids=yqR4PtpO8X&client_id=JLBr5npPhV
-
   }
 }
