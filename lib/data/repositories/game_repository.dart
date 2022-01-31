@@ -8,14 +8,14 @@ class GameRepository {
   factory GameRepository() => _singleton;
 
   GameRepository._internal(){
-    if(_testCollectionHiveProvide == null){
-      CollectionHiveProvider.create().then((provider) => _testCollectionHiveProvide = provider);
+    if(_collectionHiveProvide == null){
+      CollectionHiveProvider.create().then((provider) => _collectionHiveProvide = provider);
     }
   }
-  CollectionHiveProvider? _testCollectionHiveProvide;
+  CollectionHiveProvider? _collectionHiveProvide;
 
   Future insertACollection(String idGame,String nameGame, String imgUrl, int maxPlayers, int minPlayers, bool wishCollection, bool playedCollection, bool ownedCollection, double rateCollection) async {
-    return _testCollectionHiveProvide?.add(idGame,
+    return _collectionHiveProvide?.add(idGame,
         Collections(idGame: idGame, nameGame: nameGame,
             imageUrl: imgUrl,
             maxPlayers: maxPlayers,
@@ -24,19 +24,19 @@ class GameRepository {
   }
 
   List<Collections>? getAll() {
-    return _testCollectionHiveProvide?.getAll();
+    return _collectionHiveProvide?.getAll();
   }
 
   Collections? get(String key) {
-    return _testCollectionHiveProvide?.get(key);
+    return _collectionHiveProvide?.get(key);
   }
 
   Collections? getCollection(String key) {
-    return _testCollectionHiveProvide?.get(key);
+    return _collectionHiveProvide?.get(key);
   }
 
   Future<void>? deleteACollection(String key) {
-    return _testCollectionHiveProvide?.delete(key);
+    return _collectionHiveProvide?.delete(key);
   }
 
 

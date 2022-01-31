@@ -164,7 +164,7 @@ class _CollectionScreenState extends State<CollectionsScreen> {
       ]);
     } else {
       return const Center(
-        child: Text("No results",
+        child: Text(TextConstants.noResults,
             style: TextStyle(
                 color: Colors.amber,
                 fontSize: 20.0,

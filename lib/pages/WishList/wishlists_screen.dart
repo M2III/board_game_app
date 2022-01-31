@@ -165,7 +165,7 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
                               ? _getCard(
                                   collection, _collections!.indexOf(collection))
                               : const Expanded(
-                                  child: Text('No results'),
+                                  child: Text(TextConstants.noResults),
                                 )),
                     )
                     .toList(),
@@ -173,7 +173,7 @@ class _WishlistsScreenState extends State<WishlistsScreen> {
           ]);
     } else {
       return const Center(
-        child: Text("No results",
+        child: Text(TextConstants.noResults,
             style: TextStyle(
                 color: Colors.amber,
                 fontSize: 20.0,
