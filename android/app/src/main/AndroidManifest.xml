@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.m2iii.board_game_app">
    <application
-        android:label="board_game_app"
+        android:label="Board Game App"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
