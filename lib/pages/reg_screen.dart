@@ -19,12 +19,8 @@ class RegScreen extends StatelessWidget {
 
     const Color color = Color.fromRGBO(255, 255, 255, 1.0);
 
-    final ButtonStyle styleRegister = ElevatedButton.styleFrom(primary: Colors.red, textStyle: const TextStyle(fontSize: 20,color:  color),shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(25.7),
-    ) );
-    final ButtonStyle styleLogin = ElevatedButton.styleFrom(primary: Colors.blueAccent, textStyle: const TextStyle(fontSize: 20,color:  color),shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(25.7),
-    ) );
+    final ButtonStyle styleRegister = ElevatedButton.styleFrom(primary: Colors.redAccent, textStyle: const TextStyle(fontSize: 20,color:  color), );
+    final ButtonStyle styleLogin = ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
 
     bool _obscureText = true;
 
@@ -174,7 +170,6 @@ class RegScreen extends StatelessWidget {
                                   onPressed: () {
                                     Navigator.of(context).push(
                                       MaterialPageRoute(builder: (context)=> const AuthScreen()),);
-
                                     },
                                   style: styleLogin,
                                 ),
@@ -189,6 +184,7 @@ class RegScreen extends StatelessWidget {
           ),
         )
       )
+
 
     );
   }

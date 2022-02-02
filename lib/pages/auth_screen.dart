@@ -15,6 +15,7 @@ class _AuthScreenState extends State<AuthScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+  final ButtonStyle styleLogin = ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
 
   bool _obscureText = true;
 
@@ -115,6 +116,7 @@ class _AuthScreenState extends State<AuthScreen> {
                               .size
                               .width, //width of button
                           child: ElevatedButton(
+                            style: styleLogin,
                               onPressed: () async {
                                 if (_formKey.currentState!.validate()) {
                                   try {
@@ -157,6 +159,7 @@ class _AuthScreenState extends State<AuthScreen> {
                           ));
                         },
                         child: const Text('Signup'),
+
                       ),
                     ],
                   )
