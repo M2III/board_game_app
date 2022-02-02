@@ -23,6 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           bottomNavigationBar: const MenuBottom(),
           body: _getBody()),
+      debugShowCheckedModeBanner: false,
     );
   }
 

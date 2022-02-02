@@ -3,6 +3,7 @@ import 'package:board_game_app/pages/searchResult/search_result_bloc.dart';
 import 'package:board_game_app/resources/widgets/medium_game_card.dart';
 import 'package:board_game_app/resources/widgets/menu_bottom.dart';
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class SearchResultScreen extends StatefulWidget {
   final String inputSearch;
@@ -51,13 +52,10 @@ class _SearchResultScreenState extends State<SearchResultScreen> {
         },
       );
     } else {
-      return const Center(
-        child: Text("No results",
-            style: TextStyle(
-                color: Colors.amber,
-                fontSize: 20.0,
-                fontWeight: FontWeight.w900)),
-      );
+      return Center( child: LoadingAnimationWidget.fallingDot(
+        color: Colors.blue,
+        size: 100,
+      ),);
     }
   }
 }

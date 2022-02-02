@@ -19,6 +19,7 @@ class Main extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(primarySwatch: Colors.blueGrey),
       home: const AuthScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }

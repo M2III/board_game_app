@@ -10,6 +10,8 @@ void main() {
     await tester.pumpWidget(
       const MaterialApp(
           home: AuthScreen(),
+        debugShowCheckedModeBanner: false,
+
       ),
     );
 
