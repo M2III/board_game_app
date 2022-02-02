@@ -15,6 +15,7 @@ class _AuthScreenState extends State<AuthScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+  final ButtonStyle styleLogin = ElevatedButton.styleFrom(textStyle: const TextStyle(fontSize: 20));
 
   bool _obscureText = true;
 
@@ -147,16 +148,15 @@ class _AuthScreenState extends State<AuthScreen> {
                     children: [
                       const Text("Don't have an account ?  ",
                           style: TextStyle(fontSize: 16.0)),
-                      TextButton(
-                        style: TextButton.styleFrom(
-                          textStyle: const TextStyle(fontSize: 20),
-                        ),
+                      ElevatedButton(
+                        style: styleLogin,
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => RegScreen(),
                           ));
                         },
                         child: const Text('Signup'),
+
                       ),
                     ],
                   )
