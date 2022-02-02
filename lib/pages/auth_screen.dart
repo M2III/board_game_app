@@ -116,6 +116,7 @@ class _AuthScreenState extends State<AuthScreen> {
                               .size
                               .width, //width of button
                           child: ElevatedButton(
+                            style: styleLogin,
                               onPressed: () async {
                                 if (_formKey.currentState!.validate()) {
                                   try {
@@ -148,8 +149,10 @@ class _AuthScreenState extends State<AuthScreen> {
                     children: [
                       const Text("Don't have an account ?  ",
                           style: TextStyle(fontSize: 16.0)),
-                      ElevatedButton(
-                        style: styleLogin,
+                      TextButton(
+                        style: TextButton.styleFrom(
+                          textStyle: const TextStyle(fontSize: 20),
+                        ),
                         onPressed: () {
                           Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => RegScreen(),
